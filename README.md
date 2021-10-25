@@ -5,13 +5,7 @@ This is going to be a simple interface to the list of eligible training programs
 
 The list is available on the [TWC Website as an Excel Spreadsheet](https://www.twc.texas.gov/files/partners/statewide-eligible-training-program-list-twc.xlsx) , this code just makes it searchable/filterable via a webform. 
 
-## Why Laravel? Why not X, or Y, or Z?
-Because it's my time, and I want to learn Laravel and React/Next.js etc. I needed to reference this sheet for something else that I'm doing and I thought it would better if this sheet could be a web app of it's own, so I'm building it. 
-
-## NoCode solutions exist for this!!
-Yes, I know. I've already imported this into Airtable, but I'm over the free plan. I would need to pay $10/month, and I wouldn't have a reason to learn Laravel.
-
-### Roadmap 
+## Roadmap 
 
 Here's what I see as the steps to learning Laravel. 
 
@@ -25,3 +19,12 @@ Here's what I see as the steps to learning Laravel.
 1. Add ability to search all records. 
 1. Do the CRUD 
 1. Import the latest version of the file from the internet. 
+
+
+
+## Why Laravel? Why not X, or Y, or Z?
+Because it's my time, and I want to learn Laravel and React/Next.js etc. I needed to reference this sheet for something else that I'm doing and I thought it would better if this sheet could be a web app of it's own, so I'm building it. 
+
+## NoCode solutions exist for this!!
+Yes, I know. I've already imported this into Airtable, but I'm over the free plan. I would need to pay $10/month, and I wouldn't have a reason to learn Laravel.
+
