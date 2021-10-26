@@ -8,7 +8,7 @@
     </head>
     <body class="min-h-screen bg-gray-100">
     <h1> TWC-WIOA Approved Program List </h1>
-    
+
     </header>
         <hr/>
         {{ $slot }}
