@@ -1,3 +1,5 @@
+[![GitHub Super-Linter](https://github.com/vidluther/twc-wioa-programs/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 # TWC Workforce Innovation & Opportunity Act    
 
 ## WIO wha?
