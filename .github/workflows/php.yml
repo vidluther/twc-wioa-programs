@@ -43,6 +43,7 @@ jobs:
       # Check the readme, this means only new or just checked in files will be linted, not EVERYTHING, that should make things run a lot faster than phplinter. 
         VALIDATE_ALL_CODEBASE: false         
         DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       
 
