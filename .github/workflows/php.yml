@@ -32,22 +32,22 @@ jobs:
       run: composer install --prefer-dist --no-progress
     
     # PHP Linter (https://github.com/marketplace/actions/check-php-syntax-errors)
-  
-    # - name: Linter
-    #   uses: overtrue/phplint@8.0
-    #   with:
-    #     path: .
-    #     options: --exclude=*.log
+    - name: Linter
+      uses: overtrue/phplint@8.0
+      with:
+        path: .
+        options: --exclude=*.log
     # May want to use Github's super linter (https://github.com/github/super-linter)
-    - name: Super-Linter
-      uses: github/super-linter@v4.8.1
-      env:
-      # Check the readme, this means only new or just checked in files will be linted, not EVERYTHING, that should make things run a lot faster than phplinter. 
-        VALIDATE_ALL_CODEBASE: false         
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VALIDATE_PHP: true
-        VALIDATE_PHP_BUILTIN: true
+    # As of 11/01/2021 .. couldn't figure out why it was passing. when it clearly shouldn't be. 
+    # - name: Super-Linter
+    #   uses: github/super-linter@v4.8.1
+    #   env:
+    #   # Check the readme, this means only new or just checked in files will be linted, not EVERYTHING, that should make things run a lot faster than phplinter. 
+    #     VALIDATE_ALL_CODEBASE: false         
+    #     DEFAULT_BRANCH: main
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     VALIDATE_PHP: true
+    #     VALIDATE_PHP_BUILTIN: true
         
       
 
