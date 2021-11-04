@@ -19,8 +19,9 @@ jobs:
       with:
         path: .
         options: --exclude=*.log
+
   laravel-tests:
-    needs: phplinter
+    needs: phplinter   # This only runs if php linter passed first
     runs-on: ubuntu-latest
 
     steps:
