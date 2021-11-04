@@ -1,4 +1,4 @@
-name: Laravel
+name: Laravel & PHP Linter
 
 on:
   push:
