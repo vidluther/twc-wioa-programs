@@ -7,8 +7,20 @@ on:
     branches: [ main ]
 
 jobs:
-  laravel-tests:
+  phplinter:
 
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    # PHP Linter (https://github.com/marketplace/actions/check-php-syntax-errors)
+    - name: Linter
+      uses: overtrue/phplint@8.0
+      with:
+        path: .
+        options: --exclude=*.log
+  laravel-tests:
+    needs: phplinter
     runs-on: ubuntu-latest
 
     steps:
