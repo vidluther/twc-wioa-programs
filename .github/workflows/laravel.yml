@@ -29,12 +29,6 @@ jobs:
       with:
         php-version: '8.1'
     - uses: actions/checkout@v2
-    # PHP Linter (https://github.com/marketplace/actions/check-php-syntax-errors)
-    - name: Linter
-      uses: overtrue/phplint@8.0
-      with:
-        path: .
-        options: --exclude=*.log
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
