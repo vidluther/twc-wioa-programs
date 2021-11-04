@@ -33,3 +33,9 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+    # PHP Linter (https://github.com/marketplace/actions/check-php-syntax-errors)
+    - name: Linter
+      uses: overtrue/phplint@8.0
+      with:
+        path: .
+        options: --exclude=*.log
