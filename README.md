@@ -1,5 +1,4 @@
-[![Check PHP syntax errors](https://github.com/vidluther/twc-wioa-programs/workflows/PHP%20Composer%20and%20Linter/badge.svg)](https://github.com/marketplace/actions/check-php-syntax-errors)
-
+[![Laravel & PHP Linter](https://github.com/vidluther/twc-wioa-programs/actions/workflows/laravel.yml/badge.svg)](https://github.com/vidluther/twc-wioa-programs/actions/workflows/laravel.yml)
 # TWC Workforce Innovation & Opportunity Act    
 
 ## WIO wha?
