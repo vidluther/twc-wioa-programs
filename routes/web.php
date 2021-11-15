@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/posts', function () {
 
     return view('posts', 
     [
@@ -29,6 +29,6 @@ Route::get('posts/{post}', function ($id) {
     ]); 
 }); 
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('welcome');
 });
