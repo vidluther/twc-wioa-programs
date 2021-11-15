@@ -34,6 +34,7 @@ Yes, I know. I've already imported this into Airtable, but I'm over the free pla
 If you look at the spreadsheet, you can see that there are **Providers** that provide **Programs** at different **Campuses**, so the database tries to reflect that. 
 
 > One Provider can provide multiple Programs, so the relationship between Provders and Programs is one-to-many.
+
 > One Provider may also have multiple Campuses, so the relationship here is also one-to-many. 
 
 
