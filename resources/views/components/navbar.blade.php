@@ -1,7 +1,7 @@
 
     <!-- Desktop sidebar -->
     <aside
-            class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
+            class="z-20 hidden w-38 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
         >
             <div class="py-4 text-gray-500 dark:text-gray-400">
                 <a
@@ -33,14 +33,19 @@
                     <span class="ml-4">Home</span>
                 </a>
             </li>
-            <li class="relative px-6 py-3"> 
-                <a href="/posts"> <span class="ml-4"> Posts </a> 
-            </li> 
+            <li class="relative px-6 py-3">
+                <a href="/posts"> <span class="ml-4"> Posts </a>
+            </li>
 
-            <li class="relative px-6 py-3"> 
-                <a href="/providers"> <span class="ml-4"> Providers </a> 
-            </li> 
-
+            <li class="relative px-6 py-3">
+                <a href="/providers"> <span class="ml-4"> Providers </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a href="/campus"> <span class="ml-4"> Campus </span> </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a href="/programs"> <span class="ml-4"> Programs</a>
+            </li>
             <li class="relative px-6 py-3">
                 <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"

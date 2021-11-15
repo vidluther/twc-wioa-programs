@@ -29,8 +29,8 @@
         class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
     >
         <p class="text-sm text-gray-600 dark:text-gray-400">
-            If you live in Texas, and need to learn a new skill, but don't have the money for it, you should look into
-            these programs and their vendors, because they are approved vendors by the TWC and they may pay for you to
-            take these classes.
+            If you live in Texas, and need to learn a new skill, but don't have the money to go to school and learn it,
+            you should look into these programs, this is a list of approved providers that the <strong> Texas Workforce
+                Commission </strong> (TWC) will work with, and pay for your classes.
         </p>
     </div>
