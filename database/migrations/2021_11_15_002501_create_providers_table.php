@@ -21,16 +21,6 @@ class CreateProvidersTable extends Migration
             $table->string('description');
             $table->string('url');
             $table->integer('provider_type');
-//            $table->enum('type', array(
-//                        'Higher Ed - Associates',
-//                        'Higher Ed - BA',
-//                        'Higher Ed - CC',
-//                        'National Apprenticeship',
-//                        'Private - for Profit',
-//                        'Private - Non Profit',
-//                        'Public',
-//                        'Other'
-//                ));
         });
 
 

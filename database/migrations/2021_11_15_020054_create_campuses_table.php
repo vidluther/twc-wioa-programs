@@ -16,6 +16,14 @@ class CreateCampusesTable extends Migration
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('provider');
+            $table->integer('twc_id');
+            $table->string('addr1');
+            $table->string('addr2');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip');
+            $table->string('county');
         });
     }
 
