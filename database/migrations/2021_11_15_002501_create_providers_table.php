@@ -16,10 +16,10 @@ class CreateProvidersTable extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('twc_id');
+            $table->integer('twc_id')->unique();
             $table->string('name');
             $table->string('description');
-            $table->string('url');
+            $table->string('url')->unique();
             $table->integer('provider_type');
         });
 
