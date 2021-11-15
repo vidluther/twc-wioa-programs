@@ -44,7 +44,7 @@ If you look at the spreadsheet, you can see that there are **Providers** that pr
  - name (string) - the name of the provider 
  - description (string) - description of the provider 
  - url (string) - website
- - institution_type (string) - type of institution 
+ - type (string) - type of institution 
 
  
 
