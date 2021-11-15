@@ -10,16 +10,16 @@ The list is available on the [TWC Website as an Excel Spreadsheet](https://www.t
 
 Here's what I see as the steps to learning Laravel. 
 
-[x] Install and run Laravel Locally.
-[x] Change the default view to a nicer home page that explains what this project is.
-[ ] Create model(s) in Eloquent to represent the data in the spreadsheet.
-[ ] Import said data from spreadsheet into a database. 
-[ ] View all records in the database. 
-[ ] Add Pagination to the view all records.
-[ ] Add ability to search by City
-[ ] Add ability to search all records. 
-[ ] Do the CRUD 
-[ ] Import the latest version of the file from the internet. 
+- [x] Install and run Laravel Locally.
+- [x] Change the default view to a nicer home page that explains what this project is.
+- [ ] Create model(s) in Eloquent to represent the data in the spreadsheet.
+- [ ] Import said data from spreadsheet into a database. 
+- [ ] View all records in the database. 
+- [ ] Add Pagination to the view all records.
+- [ ] Add ability to search by City
+- [ ] Add ability to search all records. 
+- [ ] Do the CRUD 
+- [ ] Import the latest version of the file from the internet. 
 
 
 
