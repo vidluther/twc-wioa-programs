@@ -16,8 +16,8 @@ class CreateProviderTypesTable extends Migration
         Schema::create('provider_types', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->string('slug');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
         });
     }
 
