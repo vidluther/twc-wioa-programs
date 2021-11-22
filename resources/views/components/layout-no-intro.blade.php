@@ -19,14 +19,11 @@
         class="flex h-screen bg-gray-50 dark:bg-gray-900"
         :class="{ 'overflow-hidden': isSideMenuOpen }"
     >
-    
+
 <x-navbar>
 <!-- this doesn't feel right.. but it should be loading the navbar component -->
 </x-navbar>
-
-<x-basicintro> 
-
-</x-basicintro> 
+        <main class="h-full pb-16 overflow-y-auto">
 
         {{ $slot }}
 

@@ -1,5 +1,15 @@
 
-
+    <!-- Desktop sidebar -->
+    <aside
+            class="z-20 hidden w-38 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
+        >
+            <div class="py-4 text-gray-500 dark:text-gray-400">
+                <a
+                    class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
+                    href="#"
+                >
+                    TWC-WIOA
+                </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
                 <a
@@ -22,6 +32,19 @@
                     </svg>
                     <span class="ml-4">Home</span>
                 </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a href="/posts"> <span class="ml-4"> Posts </a>
+            </li>
+
+            <li class="relative px-6 py-3">
+                <a href="/providers"> <span class="ml-4"> Providers </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a href="/campus"> <span class="ml-4"> Campus </span> </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a href="/programs"> <span class="ml-4"> Programs</a>
             </li>
             <li class="relative px-6 py-3">
                 <a
