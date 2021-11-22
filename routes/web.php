@@ -3,6 +3,7 @@
 use App\Models\Post;
 use App\Models\Provider;
 use App\Models\ProviderType;
+use App\Models\Program;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,10 @@ Route::get('providertypes/{providertype:slug}', function (ProviderType $provider
 });
 
 Route::get('/programs', function () {
+    return view('programs/all',
+        [
+            'programs' => Program::all()
+        ]);
 
 
 });
