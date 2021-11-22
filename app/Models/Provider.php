@@ -10,12 +10,11 @@ class Provider extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
-    public function providertype()
+    /*
+        A provider can only be of one type. or Belongs to one Provider type.
+    */
+    public function provider_type()
     {
         return $this->belongsTo(ProviderType::class);
     }

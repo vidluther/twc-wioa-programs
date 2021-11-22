@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\Provider;
+use App\Models\ProviderType;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,17 @@ Route::get('providers/{provider:twc_id}', function (Provider $provider) {
     return view('providers/detail', [
         'provider' => $provider
     ]);
+});
+
+Route::get('providertypes/{providertype:slug}', function (ProviderType $providertype) {
+
+    return view('providers/bytype',
+        [
+            'providertypename' => $providertype->name,
+            'providers' => $providertype->providers
+        ]);
+
+
 });
 
 Route::get('/programs', function () {

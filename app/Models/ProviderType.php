@@ -9,4 +9,11 @@ class ProviderType extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    /*
+     * A providertype has many providers..
+     */
+    public function providers() {
+        return $this->hasMany(Provider::class);
+    }
 }
