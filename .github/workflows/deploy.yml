@@ -1,7 +1,8 @@
 name: deploy
 # Manually trigger this workflow
 # https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_dispatch
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 
 # The deployment job is Inspired by https://www.twilio.com/blog/build-test-deploy-laravel-application-github-actions
 
