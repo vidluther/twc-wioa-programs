@@ -26,7 +26,7 @@ class ProviderFactory extends Factory
          */
 
         return [
-            'twc_id' => $this->faker->randomNumber(),
+            'twc_id' => $this->faker->unique()->randomDigit,
             'name' => $this->faker->company(),
             'url' => $this->faker->unique()->url(),
             'description' => $this->faker->paragraph(10),

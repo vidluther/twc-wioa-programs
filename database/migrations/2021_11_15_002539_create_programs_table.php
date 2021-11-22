@@ -19,7 +19,7 @@ class CreateProgramsTable extends Migration
             $table->integer('twc_id')->unique();
             $table->integer('provider_id'); // need to learn how to make this a FK to Provider model
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->enum('pell_eligible', array('Yes', 'No'));
             $table->longText('pre_reqs');
             $table->string('url');

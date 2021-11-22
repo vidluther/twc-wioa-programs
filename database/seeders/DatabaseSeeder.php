@@ -36,7 +36,8 @@ class DatabaseSeeder extends Seeder
 
 //        $n = 5;
 //        $nproviders = 30; // number of providers to create
-        \App\Models\Provider::factory(30)->create();
+        \App\Models\Provider::factory(10)->create();
+        \App\Models\Program::factory(60)->create();
 
 //       for($i=0; $i<$nproviders; $i++) {
 //           Provider::create([
