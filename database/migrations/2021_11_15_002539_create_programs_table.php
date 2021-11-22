@@ -16,8 +16,8 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('twc_id');
-            $table->integer('provider'); // need to learn how to make this a FK to Provider model
+            $table->integer('twc_id')->unique();
+            $table->integer('provider_id'); // need to learn how to make this a FK to Provider model
             $table->string('name');
             $table->string('description');
             $table->enum('pell_eligible', array('Yes', 'No'));

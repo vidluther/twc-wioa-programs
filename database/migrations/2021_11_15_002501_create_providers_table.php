@@ -19,7 +19,7 @@ class CreateProvidersTable extends Migration
 
             $table->integer('twc_id')->unique();
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('url')->unique();
             $table->timestamps();
         });

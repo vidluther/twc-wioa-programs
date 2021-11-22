@@ -1,7 +1,8 @@
 <x-layout>
-    <h2> <a href="/providers"> List of All Providers  </a></h2> <br />
-
+<h2>
     <p> List of <strong> {{ $providertypename }} </strong> Providers </h3>
+</h2>
+
     <!-- New Table -->
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
@@ -40,4 +41,8 @@
     @endforeach
                 </tbody>
             </table>
+<p>
+    <a href="/providers"> Back to All Providers </a>
+
+</p>
 </x-layout>
