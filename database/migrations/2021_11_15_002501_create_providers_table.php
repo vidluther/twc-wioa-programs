@@ -15,12 +15,13 @@ class CreateProvidersTable extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
+            $table->foreignId('providertype_id');
             $table->timestamps();
             $table->integer('twc_id')->unique();
             $table->string('name');
             $table->string('description');
             $table->string('url')->unique();
-            $table->integer('provider_type');
         });
 
 

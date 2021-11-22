@@ -12,7 +12,7 @@
                     <th class="px-4 py-3">Name</th>
                     <th class="px-4 py-3">Url</th>
                     <th class="px-4 py-3">Description</th>
-                    <th class="px-2 py-3">Type</th>
+                    <th class="px-2 py-3">Provider Type</th>
                     <th class="px-4 py-3">Date Added</th>
                     <th> Actions </th>
                 </tr>
@@ -32,7 +32,7 @@
 
 
             <td> {!! $provider->description !!} </td>
-            <td class="px-2 py-3 text-xs"> {{ $provider->provider_type }}</td>
+            <td class="px-2 py-3 text-xs"> {{ $provider->providertype->name }}</td>
             <td> {{ date_format($provider->created_at, "Y-m-d h:i:s T") }}</td>
             <td> Edit , Delete etc. </td>
         </tr>
