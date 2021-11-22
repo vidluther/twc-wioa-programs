@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/providers', function () {
     return view('providers/all',
         [
-            'providers' => Provider::all()
+            'providers' => Provider::with('provider_type')->get()
         ]);
 
 
