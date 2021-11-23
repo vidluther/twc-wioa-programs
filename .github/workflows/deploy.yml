@@ -33,6 +33,7 @@ jobs:
         path: .
         options: --exclude=*.log
   deploy:
+    needs: phplinter   # This only runs if php linter passed first
     runs-on: ubuntu-latest
     environment: 
       name: staging
