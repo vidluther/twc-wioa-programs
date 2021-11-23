@@ -8,9 +8,9 @@
 name: deploy
 
 on:
-  push:
-    branches:
-      - deploy_staging
+  # push:
+  #   branches:
+  #     - deploy_staging
   pull_request:
     branches: 
       - deploy_staging
