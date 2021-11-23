@@ -37,8 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: staging
-      url: https://twc.atestpage.com
-
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -51,8 +50,9 @@ jobs:
           script: |
             cd twc-webapp
             php artisan down --render dfm
-            git fetch origin ${{ secrets.DEPLOY_BRANCH }}
-            git reset --hard origin/${{ secrets.DEPLOY_BRANCH }}
+            sleep 10
+            git checkout -f
+            git pull
             composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
             cp ${{ secrets.PATH_TO_ENV_FILE }} /home/twc/twc-webapp/.env
             php artisan optimize 
