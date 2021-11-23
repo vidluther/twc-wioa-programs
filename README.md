@@ -45,3 +45,4 @@ If you look at the spreadsheet, you can see that there are **Providers** that pr
 **SSH_HOST**: The hostname or ip address we will deploy to 
 **SSH_PRIVATE_KEY**: The key to use for deployment. Ideally the key that deploys to staging can't deploy to production. 
 **SSH_USERNAME**: The username we deploy as. 
+**DEPLOY_BRANCH**: branch we are deploying from
