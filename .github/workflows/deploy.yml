@@ -1,0 +1,30 @@
+name: deploy
+# Manually trigger this workflow
+# https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_dispatch
+on:
+  push:
+ # workflow_dispatch:
+
+# The deployment job is Inspired by https://www.twilio.com/blog/build-test-deploy-laravel-application-github-actions
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            whoami
+            cd twc-webapp
+
+            git checkout -f
+
+            git pull
