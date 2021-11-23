@@ -8,12 +8,12 @@
 name: deploy
 
 on:
-  # push:
-  #   branches:
-  #     - deploy_staging
-  pull_request:
-    branches: 
+  push:
+    branches:
       - deploy_staging
+  # pull_request:
+  #   branches: 
+  #     - deploy_staging
 
 # The deployment job is Inspired by https://www.twilio.com/blog/build-test-deploy-laravel-application-github-actions
 # and https://laravel-news.com/push-deploy-with-github-actions 
