@@ -22,9 +22,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            whoami
             cd twc-webapp
-
             git checkout -f
-
             git pull
+            cp ${{ secrets.PATH_TO_ENV_FILE }} /home/twc/twc-webapp/.env
