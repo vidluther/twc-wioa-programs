@@ -38,47 +38,10 @@ If you look at the spreadsheet, you can see that there are **Providers** that pr
 
 > One Provider may also have multiple Campuses, so the relationship here is also one-to-many. 
 
+## Deployment Strategies
 
-### Providers
- - id (integer) (autoincrement)
- - twc-id (integer) - the unique identifier as provided by the twc-spreadsheet
- - name (string) - the name of the provider 
- - description (string) - description of the provider 
- - url (string) - website
- - type (string) - type of institution 
+### Actions Secrets
 
- 
-
- ### Campus 
- - id (integer) (autoincrement)
- - provider (integer) (FK Provider.id)
- - twc-id (integer) - the unique identifier as provided by the twc-spreadsheet
- - address1 
- - address2
- - city 
- - state 
- - zip
- - county 
-
- ### Program 
- - id (integer)(autoincrement)
- - provider (integer)(FK provider id)
- - name (string)
- - description (string)
- - pell eligible (enum) ('Y', 'N')
- - pre_requisites 
- - url 
- - outcome 
- - assoc_credential_name (string)
- - length_hours (integer)
- - length_weeks (integer)
- - format (string)
- - code_1 (integer)
- - code_2 (integer)
- - code_3 (integer)
- - req_cost (integer)
- - req_cost_description (string)
- - req_cost_books (integer)
- - number_apprentices (integer)
- - program_start_date (datetime)
- - last_update (timestamp)
+**SSH_HOST**: The hostname or ip address we will deploy to 
+**SSH_PRIVATE_KEY**: The key to use for deployment. Ideally the key that deploys to staging can't deploy to production. 
+**SSH_USERNAME**: The username we deploy as. 
