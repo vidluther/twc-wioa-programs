@@ -1,4 +1,5 @@
 [![Laravel & PHP Linter](https://github.com/vidluther/twc-wioa-programs/actions/workflows/laravel.yml/badge.svg)](https://github.com/vidluther/twc-wioa-programs/actions/workflows/laravel.yml)
+[![deploy](https://github.com/vidluther/twc-wioa-programs/actions/workflows/deploy.yml/badge.svg)](https://github.com/vidluther/twc-wioa-programs/actions/workflows/deploy.yml)
 # TWC Workforce Innovation & Opportunity Act    
 
 ## WIO wha?
