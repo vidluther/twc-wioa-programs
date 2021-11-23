@@ -50,8 +50,8 @@ jobs:
           script: |
             cd twc-webapp
             php artisan down --render dfm
-            git checkout -f ${{ secrets.DEPLOY_BRANCH }}
-            git pull
+            git fetch origin ${{ secrets.DEPLOY_BRANCH }}
+            git reset --hard origin/${{ secrets.DEPLOY_BRANCH }}
             composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
             cp ${{ secrets.PATH_TO_ENV_FILE }} /home/twc/twc-webapp/.env
             php artisan optimize 
