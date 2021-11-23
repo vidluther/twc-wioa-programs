@@ -36,9 +36,7 @@
             <li class="relative px-6 py-3">
                 <a href="/providers"> <span class="ml-4"> Providers </a>
             </li>
-            <li class="relative px-6 py-3">
-                <a href="/campus"> <span class="ml-4"> Campus </span> </a>
-            </li>
+            
             <li class="relative px-6 py-3">
                 <a href="/programs"> <span class="ml-4"> Programs</a>
             </li>
