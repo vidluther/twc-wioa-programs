@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/programs', function () {
-    return view('programs/all',
-        [
-            'programs' => Program::all()
-        ]);
+//Route::get('/programs', function () {
+//    return view('programs/all',
+//        [
+//            'programs' => Program::all()
+//        ]);
+//
+//
+//});
 
-
-});
-
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
+
+Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
