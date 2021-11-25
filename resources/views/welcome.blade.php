@@ -7,7 +7,7 @@
             >
                 Some Interesting Stats
             </h4>
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="grid gap-3 mb-8 md:grid-cols-2 xl:grid-cols-4">
                 <!-- Card -->
                 <div
                     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
@@ -25,12 +25,12 @@
                         <p
                             class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                         >
-                            Unique Providers
+                            # of Programs
                         </p>
                         <p
-                            class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                            class="text-lg font-semibold text-gray-900 dark:text-gray-200"
                         >
-                            391
+                            {{ $num_documents }}
                         </p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <p
                             class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                         >
-                            $ 6,064.25
+                            $ {{ $average_cost }}
                         </p>
                     </div>
                 </div>
@@ -81,12 +81,12 @@
                         <p
                             class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                         >
-                            # Of Campuses
+                            # Of Providers
                         </p>
                         <p
                             class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                         >
-                            705
+                            {{ $count_unique_providers }}
                         </p>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                         <p
                             class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                         >
-                            355
+                            {{ $count_unique_cities }}
                         </p>
                     </div>
                 </div>

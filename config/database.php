@@ -15,8 +15,10 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+//    'default' => env('DB_CONNECTION', 'mysql'),
+    // Changed to use MongoDB as per https://www.mongodb.com/compatibility/mongodb-laravel-intergration
 
+    'default' => env('DB_CONNECTION', 'mongodb'),
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -34,6 +36,11 @@ return [
     */
 
     'connections' => [
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('MONGO_DB_URI', 'mongodb+srv://username:password@<atlas-cluster-uri>/myappdb?retryWrites=true&w=majority'),
+            'database' => env( 'MONGO_DB_NAME'),
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',

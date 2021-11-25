@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'display_analytics_js' => env('DISPLAY_ANALYTICS_JS', false),
+    'analytics_domain' => env ('DISPLAY_ANALYTICS_DOMAIN', 'example.com'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -67,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Chicago',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +163,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        ## Added because of https://www.mongodb.com/compatibility/mongodb-laravel-intergration
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
         /*
          * Package Service Providers...
