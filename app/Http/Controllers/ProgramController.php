@@ -14,7 +14,53 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+        $programs = Program::all();
+        $num_documents = Program::count();
+
+        return view('programs/all', [
+            'num_documents' => $num_documents,
+            'programs' => $programs
+        ]);
+    }
+
+    /**
+     * Display a dashboard for the home page.
+     * The way I'm calculating some of the numbers could probably be done better with aggregates/mongodb
+     * itself, but I don't know how to do that.. hopefully I can learn how to do the eloquent ORM way of
+     * doing it soon.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        $programs = Program::all();
+        $num_documents = Program::count();
+        $cost = 0;
+        $count_unique_providers = 0;
+        $count_unique_cities = 0;
+        $average_cost = 0;
+        if($num_documents > 0 ) {
+            foreach($programs AS $program) {
+                $cost = $cost + (int) $program->program_cost_tuition_and_fees;
+                $twc_ids[] = $program->twc_provider_id;
+                $citys[] = $program->provider_campus_city;
+            }
+            $count_unique_cities = count(array_unique($citys));
+            $count_unique_providers = count(array_unique($twc_ids));
+
+            $average = $cost / $num_documents;
+            $average_cost = money_format('%i', $average);
+
+        }
+
+
+        return view('welcome', [
+            'num_documents' => $num_documents,
+            'count_unique_cities' => $count_unique_cities,
+            'count_unique_providers' => $count_unique_providers,
+            'programs' => $programs,
+            'average_cost' => $average_cost
+        ]);
     }
 
     /**
