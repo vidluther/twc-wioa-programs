@@ -46,3 +46,15 @@ If you look at the spreadsheet, you can see that there are **Providers** that pr
 **SSH_PRIVATE_KEY**: The key to use for deployment. Ideally the key that deploys to staging can't deploy to production. 
 **SSH_USERNAME**: The username we deploy as. 
 **DEPLOY_BRANCH**: branch we are deploying from
+
+
+# Building the Database/Importing the records. 
+
+I take the XLS file found on the website, and import it into a Google Sheet, and then download it as a CSV. 
+
+Once I have the CSV, I can then read it using a [CSV reader](https://csv.thephpleague.com/9.0/) in PHP. 
+
+# Using MongoDB instead of MySQL as of 11/24/2021 
+
+While I was thinking through the process of importing the records from the spreadsheet, I realized that in 2021
+this is probably a job for a document database like MongoDB. So, I refactored a lot of code to use MongoDB. 
