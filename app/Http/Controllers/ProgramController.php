@@ -28,7 +28,7 @@ class ProgramController extends Controller
      * The way I'm calculating some of the numbers could probably be done better with aggregates/mongodb
      * itself, but I don't know how to do that.. hopefully I can learn how to do the eloquent ORM way of
      * doing it soon.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function dashboard()
