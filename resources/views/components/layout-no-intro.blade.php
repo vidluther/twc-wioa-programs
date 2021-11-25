@@ -28,7 +28,8 @@
         {{ $slot }}
 
 
-
-
+    @if(config('app.display_analytics_js') === true)
+                <x-analytics> </x-analytics>
+    @endif
     </body>
 </html>
