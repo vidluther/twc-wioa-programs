@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'display_analytics_js' => env('DISPLAY_ANALYTICS_JS', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

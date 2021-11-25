@@ -19,18 +19,21 @@
         class="flex h-screen bg-gray-50 dark:bg-gray-900"
         :class="{ 'overflow-hidden': isSideMenuOpen }"
     >
-    
+
 <x-navbar>
 <!-- this doesn't feel right.. but it should be loading the navbar component -->
 </x-navbar>
 
-<x-basicintro> 
+<x-basicintro>
 
-</x-basicintro> 
+</x-basicintro>
 
         {{ $slot }}
 
 
+@if(config('app.display_analytics_js') === true)
+            <x-analytics> </x-analytics>
+@endif
 
 
     </body>
