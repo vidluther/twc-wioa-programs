@@ -49,7 +49,8 @@ class ProgramController extends Controller
             $count_unique_providers = count(array_unique($twc_ids));
 
             $average = $cost / $num_documents;
-            $average_cost = money_format('%i', $average);
+
+            $average_cost = number_format($average, '2');
 
         }
 
