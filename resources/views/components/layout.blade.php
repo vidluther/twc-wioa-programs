@@ -9,9 +9,9 @@
         />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <x-seo>
+        </x-seo>
 
-
-        <title>{{ $title ?? 'TWC-WIOA Program List' }}</title>
     </head>
     <body>
 
