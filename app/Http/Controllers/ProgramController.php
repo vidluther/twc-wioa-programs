@@ -8,18 +8,26 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show a paginated list of programs.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $programs = Program::all();
+        $cities = Program::getUniquesFor('provider_campus_city');
+        $counties = Program::getUniquesFor('provider_campus_county');
+
+        $programs = Program::paginate(15);
+
         $num_documents = Program::count();
+
 
         return view('programs/all', [
             'num_documents' => $num_documents,
-            'programs' => $programs
+            'programs' => $programs,
+            'cities' => $cities,
+            'counties' => $counties,
+            'page_title' => "I am a page title"
         ]);
     }
 
@@ -42,14 +50,14 @@ class ProgramController extends Controller
         if($num_documents > 0 ) {
             foreach($programs AS $program) {
                 $cost = $cost + (int) $program->program_cost_tuition_and_fees;
-                $twc_ids[] = $program->twc_provider_id;
-                $citys[] = $program->provider_campus_city;
+
             }
-            $count_unique_cities = count(array_unique($citys));
-            $count_unique_providers = count(array_unique($twc_ids));
+
+            $cities = Program::getUniquesFor('provider_campus_city');
+            $counties = Program::getUniquesFor('provider_campus_county');
+            $providers = Program::getUniquesFor('twc_provider_id');
 
             $average = $cost / $num_documents;
-
             $average_cost = number_format($average, '2');
 
         }
@@ -57,8 +65,9 @@ class ProgramController extends Controller
 
         return view('welcome', [
             'num_documents' => $num_documents,
-            'count_unique_cities' => $count_unique_cities,
-            'count_unique_providers' => $count_unique_providers,
+            'cities' => $cities,
+            'providers' => $providers,
+            'counties' => $counties,
             'programs' => $programs,
             'average_cost' => $average_cost
         ]);

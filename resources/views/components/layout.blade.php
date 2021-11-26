@@ -7,11 +7,13 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
         />
+
+        @livewireStyles
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <x-seo>
+        </x-seo>
 
-
-        <title>{{ $title ?? 'TWC-WIOA Program List' }}</title>
     </head>
     <body>
 
@@ -27,6 +29,9 @@
 <x-basicintro>
 
 </x-basicintro>
+    <a href="/programs"> Programs </a>
+    @livewire("search")
+
 
         {{ $slot }}
 
@@ -34,5 +39,6 @@
             <x-analytics> </x-analytics>
         @endif
 
+        @livewireScripts
     </body>
 </html>
