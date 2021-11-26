@@ -1,20 +1,6 @@
 <x-layout-no-intro>
     <h2> List of All Programs  </h2> <br />
-    <label> County: </label>
-
-        <select name="county">
-            @foreach ($counties AS $county)
-                <option value="{{ $county->provider_campus_county }}"> {{ ucfirst($county->provider_campus_county)  }} </option>
-            @endforeach
-        </select>
-    OR &middot;
-    <label> City: </label>
-    <select name="city">
-        @foreach ($cities AS $city)
-            <option value="{{ $city->provider_campus_city }}"> {{ ucfirst($city->provider_campus_city)  }} </option>
-        @endforeach
-    </select>
-
+    <a href="/"> Home </a> &middot; <a href="/programs"> Reload </a>
     <!-- New Table -->
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">

@@ -50,9 +50,6 @@ class ProgramController extends Controller
         if($num_documents > 0 ) {
             foreach($programs AS $program) {
                 $cost = $cost + (int) $program->program_cost_tuition_and_fees;
-//
-//                $twc_ids[] = $program->twc_provider_id;
-//                $citys[] = $program->provider_campus_city;
 
             }
 
@@ -60,11 +57,7 @@ class ProgramController extends Controller
             $counties = Program::getUniquesFor('provider_campus_county');
             $providers = Program::getUniquesFor('twc_provider_id');
 
-//            $count_unique_cities = count(array_unique($citys));
-//            $count_unique_providers = count(array_unique($twc_ids));
-
             $average = $cost / $num_documents;
-            //dd($providers->count());
             $average_cost = number_format($average, '2');
 
         }

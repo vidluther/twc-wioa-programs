@@ -29,8 +29,8 @@
 <x-basicintro>
 
 </x-basicintro>
-
-    @livewire("hello-world")
+    <a href="/programs"> Programs </a>
+    @livewire("search")
 
 
         {{ $slot }}
