@@ -8,18 +8,20 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show all the programs
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $programs = Program::all();
+        $programs = Program::paginate(15);
+
         $num_documents = Program::count();
 
         return view('programs/all', [
             'num_documents' => $num_documents,
-            'programs' => $programs
+            'programs' => $programs,
+            'page_title' => "I am a page title"
         ]);
     }
 

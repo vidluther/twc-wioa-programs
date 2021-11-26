@@ -24,7 +24,7 @@ class CsvSeeder extends Seeder
         echo count($csv) . " records found" . PHP_EOL;
         #dd($header);
         foreach($csv AS $offset => $line) {
-           //dd($line);
+          // dd($line);
 
             Program::create([
                 'twc_provider_id' => $line['Provider #'],
@@ -39,6 +39,10 @@ class CsvSeeder extends Seeder
                 'provider_campus_state' => $line['Campus State'],
                 'provider_campus_zip' => $line['Campus Zip Code'],
                 'provider_campus_county' => $line['Campus County'],
+
+                'provider_twist_id' => $line['TWIST Provider ID'],
+                'program_twist_id' => $line['TWIST Program ID'],
+
 
                 'public_transit' => $line["Information:\nPublic Transit?"],
                 'onsite_childcare' => $line["Information:\nOnsite Childcare?"],

@@ -10,6 +10,6 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class Program extends Model
 {
-    protected $connection = 'mongodb';
+   // protected $connection = 'mongodb';
     use HasFactory;
 }

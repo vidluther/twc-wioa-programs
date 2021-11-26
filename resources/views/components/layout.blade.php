@@ -7,6 +7,8 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
         />
+
+        @livewireStyles
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
         <x-seo>
@@ -28,11 +30,15 @@
 
 </x-basicintro>
 
+    @livewire("hello-world")
+
+
         {{ $slot }}
 
         @if(config('app.display_analytics_js') === true)
             <x-analytics> </x-analytics>
         @endif
 
+        @livewireScripts
     </body>
 </html>
