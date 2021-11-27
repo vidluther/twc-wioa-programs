@@ -30,7 +30,7 @@
 
 </x-basicintro>
     <a href="/programs"> Programs </a>
-    @livewire("search")
+    @livewire('search')
 
 
         {{ $slot }}
