@@ -1,7 +1,7 @@
-# If something shows up in deploy_staging 
+# If something shows up in deploy_staging
 # we will do the lint check and deploy using the staging environment variables
 # I may make a separate workflow that only runs on deploy_production branch
-# and that uses the production environment variables 
+# and that uses the production environment variables
 # Environments are specified here: https://github.com/vidluther/twc-wioa-programs/settings/environments
 # More info https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment
 
@@ -12,11 +12,11 @@ on:
     branches:
       - deploy_staging
   # pull_request:
-  #   branches: 
+  #   branches:
   #     - deploy_staging
 
 # The deployment job is Inspired by https://www.twilio.com/blog/build-test-deploy-laravel-application-github-actions
-# and https://laravel-news.com/push-deploy-with-github-actions 
+# and https://laravel-news.com/push-deploy-with-github-actions
 
 
 jobs:
@@ -35,9 +35,9 @@ jobs:
   deploy:
     needs: phplinter   # This only runs if php linter passed first
     runs-on: ubuntu-latest
-    environment: 
+    environment:
       name: staging
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -55,5 +55,6 @@ jobs:
             git pull
             composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
             cp ${{ secrets.PATH_TO_ENV_FILE }} /home/twc/twc-webapp/.env
-            php artisan optimize 
+            php artisan optimize
+            php artisan view:clear
             php artisan up
