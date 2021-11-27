@@ -11,6 +11,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <x-seo>
         </x-seo>
+        @livewireStyles
     </head>
     <body>
 
@@ -22,6 +23,7 @@
 <x-navbar>
 <!-- this doesn't feel right.. but it should be loading the navbar component -->
 </x-navbar>
+        @livewire('search')
         <main class="h-full pb-16 overflow-y-auto">
 
         {{ $slot }}
@@ -30,5 +32,8 @@
     @if(config('app.display_analytics_js') === true)
                 <x-analytics> </x-analytics>
     @endif
+
+
+            @livewireScripts
     </body>
 </html>
