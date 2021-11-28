@@ -1,5 +1,5 @@
-<x-layout>
-
+<x-layout :pagetitle="$pagetitle">
+<main class="h-full pb-16 overflow-y-auto">
 
             <!-- Interesting Stat cards -->
             <h4
@@ -8,7 +8,7 @@
                 Some Interesting Stats
             </h4>
             <div class="grid gap-3 mb-8 md:grid-cols-2 xl:grid-cols-4">
-                <!-- Card -->
+                <!-- # Of Programs Card -->
                 <div
                     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                 >
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <!-- Card -->
+                <!-- Cost of Tuition Card -->
                 <div
                     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                 >
@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <!-- Card -->
+                <!-- # of Providers Card -->
                 <div
                     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                 >
@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <!-- Card -->
+                <!-- # of Cities Card -->
                 <div
                     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                 >
@@ -113,9 +113,12 @@
                         <p
                             class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                         >
-                            {{ $cities->count() }}
+                            {{ $cities->count()  }}
                         </p>
                     </div>
                 </div>
+</main> 
 
+<h2> The List of Programs eligible for WIOA in Texas </h2> 
+    @include('programs.list')
 </x-layout>

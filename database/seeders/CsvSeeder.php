@@ -66,8 +66,8 @@ class CsvSeeder extends Seeder
                 'program_cost_other' => trim($line[" Optional Cost:\nOther "]),
                 'outofdistrict_tuition_and_fees' => trim($line[" (Out Of District)\nCost: \nTuition & Fees "]),
                 'program_total_apprentices' => $line['Number Of Apprentices'],
-                'program_start_date' => $line['Program Start Date'],
-                'program_last_updated' => $line['Program Last Update Date']
+                'program_start_date' => strtotime($line['Program Start Date']),
+                'program_last_updated' => strtotime($line['Program Last Update Date'])
 
 
 

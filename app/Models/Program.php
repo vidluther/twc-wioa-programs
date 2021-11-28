@@ -24,6 +24,20 @@ class Program extends Model
 
     }
 
+    public static function getAverageCost() {
+        $programs = Program::all(); 
+        $cost = 0 ;
+        $average_cost = 0; 
+
+        foreach($programs AS $program) {
+            $cost = $cost + (int) $program->program_cost_tuition_and_fees;
+        }
+
+        $average = $cost / Program::count();
+        $average_cost = number_format($average, '2');
+        return $average_cost; 
+    }
+
 //    public static function getCities()
 //    {
 //        $cities = Program::select('provider_campus_city')->distinct()->get();
