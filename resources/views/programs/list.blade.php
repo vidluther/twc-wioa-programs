@@ -1,5 +1,6 @@
  <!-- New Table -->
- <div class="px-4 py-4 w-full">  {{ $programs->links()  }}</div> 
+
+ <div class="px-4 py-4 w-full">   {{ $programs->links()  }} </div> 
 
  <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
@@ -48,4 +49,3 @@
                 </tbody>
             </table>
 
-            <div>  {{ $programs->links()  }}</div> 
