@@ -23,10 +23,23 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+//Route::get('/sandbox', function () {
+//    return view('sandbox');
+//});
+
+
 
 Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
+Route::get( '/about', function () {
+    return view('about', [
+        'pagetitle' => "About TexasWFC.com"
+    ]); 
+});
 
 Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
+
+// Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'programs']);
+
+// Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'render']);
+
+// Route::get( '/sandbox', [\App\Http\Livewire\HelloWorld::class, 'render']);

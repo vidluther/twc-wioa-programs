@@ -55,6 +55,7 @@ jobs:
             git pull
             composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
             cp ${{ secrets.PATH_TO_ENV_FILE }} /home/twc/twc-webapp/.env
-            php artisan optimize
+            php artisan cache:clear
             php artisan view:clear
+            php artisan optimize
             php artisan up

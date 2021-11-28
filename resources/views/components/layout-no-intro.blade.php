@@ -9,7 +9,7 @@
         />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <x-seo>
+        <x-seo :page_title="$pageTitle">
         </x-seo>
         @livewireStyles
     </head>
@@ -23,7 +23,7 @@
 <x-navbar>
 <!-- this doesn't feel right.. but it should be loading the navbar component -->
 </x-navbar>
-        @livewire('search')
+
         <main class="h-full pb-16 overflow-y-auto">
 
         {{ $slot }}

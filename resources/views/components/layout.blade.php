@@ -12,34 +12,23 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <script src="{{ mix('/js/app.js') }}" defer></script>
-        <x-seo>
-        </x-seo>
+        <x-seo :pagetitle="$pagetitle"/>
 
     </head>
-    <body>
+    <body class="antialiased">
+   
+<x-navbar />
 
-    <div
-        class="flex h-screen bg-gray-50 dark:bg-gray-900"
-        :class="{ 'overflow-hidden': isSideMenuOpen }"
-    >
-
-<x-navbar>
-<!-- this doesn't feel right.. but it should be loading the navbar component -->
-</x-navbar>
-
-<x-basicintro>
-
-</x-basicintro>
-    <a href="/programs"> Programs </a>
-    @livewire('search')
+<div class="container px-6 mx-auto grid">
 
 
         {{ $slot }}
 
-        @if(config('app.display_analytics_js') === true)
-            <x-analytics> </x-analytics>
-        @endif
+@if(config('app.display_analytics_js') === true)
+    <x-analytics> </x-analytics>
+@endif
 
+<x-footer /> 
         @livewireScripts
     </body>
 </html>

@@ -27,7 +27,7 @@ class ProgramController extends Controller
             'programs' => $programs,
             'cities' => $cities,
             'counties' => $counties,
-            'page_title' => "I am a page title"
+            'pagetitle' => "List of WIOA Programs in Texass"
         ]);
     }
 
@@ -41,24 +41,20 @@ class ProgramController extends Controller
      */
     public function dashboard()
     {
-        $programs = Program::all();
+        $programs = Program::orderBy('program_start_date', 'desc')->paginate(15); #->orderBy('program_start_date','desc');
         $num_documents = Program::count();
         $cost = 0;
         $count_unique_providers = 0;
         $count_unique_cities = 0;
         $average_cost = 0;
         if($num_documents > 0 ) {
-            foreach($programs AS $program) {
-                $cost = $cost + (int) $program->program_cost_tuition_and_fees;
-
-            }
+            
 
             $cities = Program::getUniquesFor('provider_campus_city');
             $counties = Program::getUniquesFor('provider_campus_county');
             $providers = Program::getUniquesFor('twc_provider_id');
-
-            $average = $cost / $num_documents;
-            $average_cost = number_format($average, '2');
+            $average_cost = Program::getAverageCost(); 
+            
 
         }
 
@@ -69,7 +65,8 @@ class ProgramController extends Controller
             'providers' => $providers,
             'counties' => $counties,
             'programs' => $programs,
-            'average_cost' => $average_cost
+            'average_cost' => $average_cost,
+            'pagetitle' => "The Texas Workforce Commission WIOA Program List"
         ]);
     }
 
