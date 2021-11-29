@@ -37,8 +37,8 @@
                     <td class="px-1 py-1">{{ $program->program_description }} </td>
 
 
-                    <td class="px-2 py-3"> {{ $program->provider_campus_city }} </td>
-                    <td class="px-2 py-3"> {{ $program->provider_campus_county }} </td>
+                    <td class="px-2 py-3"> {{ ucfirst($program->provider_campus_city) }} </td>
+                    <td class="px-2 py-3"> {{ ucfirst($program->provider_campus_county) }} </td>
                     <td class="px-2 py-3"> ${{ number_format((float) $program->program_cost_tuition_and_fees,2) }} </td>
                     <td class="px-2 py-3"> {{ $program->program_length_weeks }}</td>
                     <td class="px-1 py-1"> {{ strftime("%Y-%m-%d", (int) $program->program_start_date) }} </td>

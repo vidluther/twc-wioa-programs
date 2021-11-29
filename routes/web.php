@@ -28,12 +28,17 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
+# This one works
+#Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
 
-Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
-Route::get( '/about', function () {
-    return view('about', [
-    ]);
-});
+
+# Livewire magic?
+#Route::get( '/', [\App\Http\Livewire\Listing::class, 'render']);
+
+Route::match(['get', 'post'], '/', [\App\Http\Livewire\Listing::class, 'render']);
+
+
+Route::get('/about', [\App\Http\Livewire\About::class, 'render']);
 
 Route::get( '/dashboard', [\App\Http\Livewire\Dashboard::class, 'render']);
 
@@ -42,7 +47,10 @@ Route::get ('/show/{program_twist_id}',
                                 \App\Http\Livewire\Show::class, 'render'
                             ]);
 
-Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
+
+
+
+//Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
 
 
 // Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'programs']);
