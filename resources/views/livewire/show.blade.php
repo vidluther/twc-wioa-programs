@@ -8,7 +8,7 @@
     </h4>
 
     <div
-        class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+        class="w-full px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
     >
         <x-program.label> Name </x-program.label>
         <x-program.detail> {{ $program->program_name }}</x-program.detail>
