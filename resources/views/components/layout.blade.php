@@ -10,7 +10,7 @@
         <script src="{{ mix('/js/app.js') }}" defer></script>
 
     </head>
-    <body class="antialiased font-sans bg-gray-200">
+    <body class="antialiased font-sans">
 
 <x-navbar />
 

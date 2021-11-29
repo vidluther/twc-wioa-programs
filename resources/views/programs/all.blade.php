@@ -1,5 +1,5 @@
-<x-layout :pagetitle="$pagetitle">
+<x-layout>
     <h2> List of All Programs  </h2> <br />
-  
+
    @include('programs.list')
 </x-layout>
