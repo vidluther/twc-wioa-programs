@@ -32,11 +32,18 @@ use Illuminate\Support\Facades\Route;
 Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
 Route::get( '/about', function () {
     return view('about', [
-        'pagetitle' => "About TexasWFC.com"
-    ]); 
+    ]);
 });
 
+Route::get( '/dashboard', [\App\Http\Livewire\Dashboard::class, 'render']);
+
+Route::get ('/show/{program_twist_id}',
+                            [
+                                \App\Http\Livewire\Show::class, 'render'
+                            ]);
+
 Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
+
 
 // Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'programs']);
 

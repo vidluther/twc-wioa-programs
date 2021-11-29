@@ -1,12 +1,20 @@
 <x-layout :pagetitle="$pagetitle">
-<main class="h-full pb-16 overflow-y-auto">
 
+<main class="h-full pb-16 overflow-y-auto">
+        
             <!-- Interesting Stat cards -->
-            <h4
+            <h1
                 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
             >
-                Some Interesting Stats
-            </h4>
+                {{ $pagetitle }}
+            </h1>
+        <div class="px-1 py-1"> 
+            <p class="text-md text-gray-600 dark:text-gray-400">
+            If you live in Texas, and need to learn a new skill, but don't have the money to go to school and learn it,
+            you should look into these programs, this is a list of approved providers that the <strong> Texas Workforce
+                Commission </strong> (TWC) will work with, and pay for your classes.
+            </p>
+        </div> 
             <div class="grid gap-3 mb-8 md:grid-cols-2 xl:grid-cols-4">
                 <!-- # Of Programs Card -->
                 <div
@@ -117,8 +125,7 @@
                         </p>
                     </div>
                 </div>
-</main> 
+</main>  
 
-<h2> The List of Programs eligible for WIOA in Texas </h2> 
     @include('programs.list')
 </x-layout>

@@ -41,7 +41,9 @@ class ProgramController extends Controller
      */
     public function dashboard()
     {
-        $programs = Program::orderBy('program_start_date', 'desc')->paginate(15); #->orderBy('program_start_date','desc');
+        $programs = Program::orderBy('provider_campus_city', 'asc')->paginate(20); #->orderBy('program_start_date','desc');
+
+        
         $num_documents = Program::count();
         $cost = 0;
         $count_unique_providers = 0;
@@ -66,7 +68,7 @@ class ProgramController extends Controller
             'counties' => $counties,
             'programs' => $programs,
             'average_cost' => $average_cost,
-            'pagetitle' => "The Texas Workforce Commission WIOA Program List"
+            'pagetitle' => "Programs eligible for WIOA in Texas "
         ]);
     }
 
