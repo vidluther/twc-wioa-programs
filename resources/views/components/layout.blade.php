@@ -1,22 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        />
+        {!! Meta::toHtml() !!}
+
 
         @livewireStyles
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <script src="{{ mix('/js/app.js') }}" defer></script>
-        <x-seo :pagetitle="$pagetitle"/>
 
     </head>
-    <body class="antialiased">
-   
+    <body class="antialiased font-sans bg-gray-200">
+
 <x-navbar />
 
 <div class="container px-6 mx-auto grid">
@@ -28,7 +23,7 @@
     <x-analytics> </x-analytics>
 @endif
 
-<x-footer /> 
+<x-footer />
         @livewireScripts
     </body>
 </html>

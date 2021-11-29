@@ -1,6 +1,6 @@
  <!-- New Table -->
 
- <div class="px-4 py-4 w-full">   {{ $programs->links()  }} </div> 
+ <div class="px-4 py-4 w-full">   {{ $programs->links()  }} </div>
 
  <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
@@ -30,7 +30,7 @@
 
                 <tr class="text-gray-700 dark:text-gray-400">
                     <td class="px-1 py-1">
-                        <a href="/programs/{{ $program->program_twist_id }}" class="font-semibold">
+                        <a href="/show/{{ $program->program_twist_id }}" class="font-semibold">
                             {!! $program->program_name !!}
                         </a>
                     </td>
