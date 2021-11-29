@@ -24,12 +24,12 @@ class Listing extends Component
         }
 
         if(!is_null($search_for_city)) {
-            $programs = Program::where('provider_campus_city','LIKE', $search_for_city)->paginate(30);
+            $programs = Program::where('provider_campus_city','LIKE', $search_for_city)->paginate(40);
             $searched_for = "CITY: $search_for_city";
         }
 
         if(!is_null($search_for_county)) {
-            $programs = Program::where('provider_campus_county','LIKE', $search_for_county)->paginate(30);
+            $programs = Program::where('provider_campus_county','LIKE', $search_for_county)->paginate(40);
             $searched_for = "COUNTY: $search_for_county";
         }
 
