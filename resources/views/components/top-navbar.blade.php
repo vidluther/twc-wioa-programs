@@ -1,4 +1,3 @@
-
 <header>
     <nav
         class="
@@ -15,7 +14,7 @@
     >
         <div class="font-bold">
             <a href="/">
-              TexasWFC-WIOA
+              TexasWFC
             </a>
         </div>
 
@@ -60,17 +59,16 @@
                         List by City
                     </a>
                 </li>
---> 
+-->
                 <li>
                     <a class="md:p-4 py-2 block hover:text-purple-400" href="/about">About</a
                     >
                 </li>
-                <li> 
-                    <a class="md:p-4 py-2 block hover:text-purple-400" href="https://www.twc.texas.gov/"> TWC </a> 
-                </li> 
+                <li>
+                    <a class="md:p-4 py-2 block hover:text-purple-400" href="https://www.twc.texas.gov/"> TWC </a>
+                </li>
             </ul>
         </div>
     </nav>
-
 
 </header>

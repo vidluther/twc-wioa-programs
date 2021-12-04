@@ -12,7 +12,7 @@
     </head>
     <body class="antialiased font-sans">
 
-<x-navbar />
+<x-top-navbar />
 
 <div class="container px-6 mx-auto grid">
 
