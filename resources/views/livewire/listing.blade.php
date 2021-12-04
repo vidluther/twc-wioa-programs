@@ -5,7 +5,9 @@
     <div
         class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
     >
-        <h4 class="py-4"> You Searched for {{ $searched_for }} </h4>
+        @if (!is_null($searched_for))
+         <h4 class="py-4"> You Searched for {{ $searched_for }} </h4>
+        @endif
         <form method="post" action="/">
             @csrf
 

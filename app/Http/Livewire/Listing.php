@@ -39,7 +39,7 @@ class Listing extends Component
 
         if(is_null($programs)) {
             $programs = Program::orderBy('provider_campus_city', 'asc')->paginate(20);
-            $searched_for = "Nothing yet.. please try filtering the results below. Sorry, you can't chain the criteria yet";
+            $searched_for = null;
 
         }
 
