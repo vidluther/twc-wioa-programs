@@ -10,13 +10,13 @@
         class="w-full px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
     >
         <x-program.label> Name </x-program.label>
-        <x-program.detail> {{ $program->program_name }}</x-program.detail>
+        <x-program.detail> <span class="capitalize">  {{ $program->program_name }} </span> </x-program.detail>
 
         <x-program.label> Description </x-program.label>
         <x-program.detail> {{ $program->program_description }}</x-program.detail>
 
         <x-program.label> Program Website </x-program.label>
-        <x-program.detail> <a href="{{ $program->program_url }}" target="new"> {{ $program->program_url }}</a></x-program.detail>
+        <x-program.detail> <a class="underline" href="{{ $program->program_url }}" target="new"> {{ $program->program_url }}</a></x-program.detail>
 
         <x-program.label> Cost </x-program.label>
         <x-program.detail> ${{ number_format($program->program_cost_tuition_and_fees,2) }}</x-program.detail>
@@ -62,9 +62,8 @@
 
 
 </div>
-    <h3 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"> How to Apply </h3>
-Visit the <a href="{{ $local_twc_website }}" target="new"> {{ $local_twc_website }} </a> and tell them you want to enroll in this program.
-    <p>
+
+    @include('programs.nextsteps')
 
 <div class="px-4 py-4 mb-8 bg-white rounded-lg dark:bg-gray-800">
 <a
