@@ -43,32 +43,16 @@ class Listing extends Component
 
         }
 
+        $cities = Program::getUniquesFor('provider_campus_city');
+        $counties = Program::getUniquesFor('provider_campus_county');
 
 
-
-        $num_documents = Program::count();
-        $cost = 0;
-        $count_unique_providers = 0;
-        $count_unique_cities = 0;
-        $average_cost = 0;
-        if($num_documents > 0 ) {
-
-
-            $cities = Program::getUniquesFor('provider_campus_city');
-            $counties = Program::getUniquesFor('provider_campus_county');
-            $providers = Program::getUniquesFor('twc_provider_id');
-            $average_cost = Program::getAverageCost();
-
-
-        }
         return view('livewire.listing',
         [
-            'num_documents' => $num_documents,
+
             'cities' => $cities,
-            'providers' => $providers,
             'counties' => $counties,
             'programs' => $programs,
-            'average_cost' => $average_cost,
             'request'   => $request,
             'searched_for' => $searched_for
         ]

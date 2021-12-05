@@ -1,10 +1,9 @@
 <x-layout>
 <div>
-    {{-- Do your work, then step back. --}}
     <h4
         class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
     >
-    Showing Details of {{ $program->program_name }}
+    Details of {{ $program->program_name }}
     </h4>
 
     <div

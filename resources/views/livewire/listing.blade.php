@@ -1,9 +1,8 @@
 <x-layout>
 
-    @include('statcards')
 
     <div
-        class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+        class="px-4 py-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
     >
         @if (!is_null($searched_for))
          <h4 class="py-4"> You Searched for {{ $searched_for }} </h4>
@@ -14,7 +13,7 @@
             <div
                 class="relative text-gray-500 focus-within:text-purple-600"
             >
-                <input name="search_in_name" type='text' class="px-2
+    <input name="search_in_name" type='text' class="px-2
       py-1
       placeholder-gray-400
       text-gray-600
@@ -28,7 +27,7 @@
       w-full
       "
 
-                    placeholder="Search for a class by name or Keyword"
+                    placeholder="Search for a class by Name or Keyword"
                 />
 
 

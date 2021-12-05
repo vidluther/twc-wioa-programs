@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind forms; 
+@tailwind forms;
 
 @layer base {
     h1 {
