@@ -13,10 +13,11 @@ Here's what I see as the steps to learning Laravel.
 
 - [x] Install and run Laravel Locally.
 - [x] Change the default view to a nicer home page that explains what this project is.
-- [ ] Create model(s) in Eloquent to represent the data in the spreadsheet.
-- [ ] Import said data from spreadsheet into a database. 
-- [ ] View all records in the database. 
-- [ ] Add Pagination to the view all records.
+- [x] Create model(s) in Eloquent to represent the data in the spreadsheet.
+- [x] Import said data from spreadsheet into a database. 
+- [x] View all records in the database. 
+- [x] Add Pagination to the view all records.
+- [ ] View a record in detail 
 - [ ] Add ability to search by City
 - [ ] Add ability to search all records. 
 - [ ] Do the CRUD 

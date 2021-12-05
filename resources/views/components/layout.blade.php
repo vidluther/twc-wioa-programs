@@ -1,38 +1,34 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        />
+        {!! Meta::toHtml() !!}
+
+
+        @livewireStyles
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <x-seo>
-        </x-seo>
 
+        <script src="{{ mix('/js/app.js') }}" defer></script>
     </head>
-    <body>
 
-    <div
-        class="flex h-screen bg-gray-50 dark:bg-gray-900"
-        :class="{ 'overflow-hidden': isSideMenuOpen }"
-    >
+<body class="flex-col h-screen antialiased">
+<x-leftnav />
 
-<x-navbar>
-<!-- this doesn't feel right.. but it should be loading the navbar component -->
-</x-navbar>
+<main role="main" class="w-full h-full flex-grow p-3 overflow-auto">
+    <h1 class="text-2xl md:text-5xl mb-4 font-extrabold" id="home">Texas WFC-WIOA </h1>
+{{ $slot }}
+</main>
+</div>
 
-<x-basicintro>
 
-</x-basicintro>
+<x-footer />
 
-        {{ $slot }}
 
-        @if(config('app.display_analytics_js') === true)
-            <x-analytics> </x-analytics>
-        @endif
 
+@if(config('app.display_analytics_js') === true)
+    <x-analytics> </x-analytics>
+@endif
+
+
+        @livewireScripts
     </body>
 </html>

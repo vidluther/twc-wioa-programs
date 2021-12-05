@@ -23,10 +23,38 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+//Route::get('/sandbox', function () {
+//    return view('sandbox');
+//});
 
-Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
 
-Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
+# This one works
+#Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
+
+
+# Livewire magic?
+#Route::get( '/', [\App\Http\Livewire\Listing::class, 'render']);
+
+Route::match(['get', 'post'], '/', [\App\Http\Livewire\Listing::class, 'render']);
+
+
+Route::get('/about', [\App\Http\Livewire\About::class, 'render']);
+
+Route::get( '/dashboard', [\App\Http\Livewire\Dashboard::class, 'render']);
+
+Route::get ('/show/{program_twist_id}',
+                            [
+                                \App\Http\Livewire\Show::class, 'render'
+                            ]);
+
+
+
+
+//Route::get( '/programs', [\App\Http\Controllers\ProgramController::class, 'index']);
+
+
+// Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'programs']);
+
+// Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'render']);
+
+// Route::get( '/sandbox', [\App\Http\Livewire\HelloWorld::class, 'render']);

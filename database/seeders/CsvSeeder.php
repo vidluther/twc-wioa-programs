@@ -24,21 +24,25 @@ class CsvSeeder extends Seeder
         echo count($csv) . " records found" . PHP_EOL;
         #dd($header);
         foreach($csv AS $offset => $line) {
-           //dd($line);
+          // dd($line);
 
             Program::create([
                 'twc_provider_id' => $line['Provider #'],
                 'provider_name' => $line['Provider Name'],
-                'provider_url' => strtolower($line['Provider URL']),
+                'provider_url' => mb_strtolower($line['Provider URL']),
                 'provider_description' => $line['Description Of Provider'],
                 'provider_type' => $line['Institution Type'],
                 'provider_campus_name' => $line['Campus Name'],
                 'provider_campus_addr1' => $line['Campus Address1'],
                 'provider_campus_addr2' => $line['Campus Address2'],
-                'provider_campus_city' => $line['Campus City'],
+                'provider_campus_city' => mb_strtolower($line['Campus City']),
                 'provider_campus_state' => $line['Campus State'],
                 'provider_campus_zip' => $line['Campus Zip Code'],
-                'provider_campus_county' => $line['Campus County'],
+                'provider_campus_county' => mb_strtolower($line['Campus County']),
+
+                'provider_twist_id' => $line['TWIST Provider ID'],
+                'program_twist_id' => $line['TWIST Program ID'],
+
 
                 'public_transit' => $line["Information:\nPublic Transit?"],
                 'onsite_childcare' => $line["Information:\nOnsite Childcare?"],
@@ -62,8 +66,8 @@ class CsvSeeder extends Seeder
                 'program_cost_other' => trim($line[" Optional Cost:\nOther "]),
                 'outofdistrict_tuition_and_fees' => trim($line[" (Out Of District)\nCost: \nTuition & Fees "]),
                 'program_total_apprentices' => $line['Number Of Apprentices'],
-                'program_start_date' => $line['Program Start Date'],
-                'program_last_updated' => $line['Program Last Update Date']
+                'program_start_date' => strtotime($line['Program Start Date']),
+                'program_last_updated' => strtotime($line['Program Last Update Date'])
 
 
 
