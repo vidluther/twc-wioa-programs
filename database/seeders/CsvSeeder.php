@@ -23,13 +23,18 @@ class CsvSeeder extends Seeder
         $header = $csv->getHeader();
         echo count($csv) . " records found" . PHP_EOL;
         #dd($header);
+        $provider_url = null;
         foreach($csv AS $offset => $line) {
           // dd($line);
+            // sanitize provider_url
+            $provider_url = $this->fixUrl(trim($line['Provider URL']));
+            $program_url = $this->fixUrl(trim($line['Program URL']));
+
 
             Program::create([
                 'twc_provider_id' => $line['Provider #'],
                 'provider_name' => $line['Provider Name'],
-                'provider_url' => mb_strtolower($line['Provider URL']),
+                'provider_url' => mb_strtolower($provider_url),
                 'provider_description' => $line['Description Of Provider'],
                 'provider_type' => $line['Institution Type'],
                 'provider_campus_name' => $line['Campus Name'],
@@ -52,7 +57,7 @@ class CsvSeeder extends Seeder
                 'program_description' => $line['Program Description'],
                 'program_pell_eligible' => $line['Pell Eligible'],
                 'program_pre_reqs' => $line['Academic PreRequisites'],
-                'program_url' => strtolower($line['Program URL']),
+                'program_url' => mb_strtolower($program_url),
                 'program_outcome' => $line['Program Outcome'],
                 'program_credential_name' => $line['Associated Credential Name'],
                 'program_length_hours' => $line["Length:\nContact Hours"],
@@ -79,6 +84,17 @@ class CsvSeeder extends Seeder
 
     }
 
+    public function fixUrl($url)
+    {
+        #$url = 'www.bluediamondweldingcc.com';
+        #echo "Checking if $url is valid.. " . PHP_EOL;
+        if ((!(substr($url, 0, 7) == 'http://')) && (!(substr($url, 0, 8) == 'https://'))) {
+            $url = 'https://' . $url;
+        }
+        #echo "\t Returned: $url" . PHP_EOL;
+
+        return $url;
+    }
 
     public function slugify($str)
     {

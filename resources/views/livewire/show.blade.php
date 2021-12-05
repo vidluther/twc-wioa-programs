@@ -16,7 +16,7 @@
         <x-program.detail> {{ $program->program_description }}</x-program.detail>
 
         <x-program.label> Program Website </x-program.label>
-        <x-program.detail> <a href="https://{{ $program->program_url }}" target="new"> {{ $program->program_url }}</a></x-program.detail>
+        <x-program.detail> <a href="{{ $program->program_url }}" target="new"> {{ $program->program_url }}</a></x-program.detail>
 
         <x-program.label> Cost </x-program.label>
         <x-program.detail> ${{ number_format($program->program_cost_tuition_and_fees,2) }}</x-program.detail>
@@ -47,11 +47,11 @@
         <x-program.label> Address </x-program.label>
         <x-program.detail> {{ $program->provider_campus_addr1 }}
             {{ $program->provider_campus_addr2 }} <br />
-            {{ $program->provider_campus_city }} {{ $program->provider_campus_state }}, {{ $program->provider_campus_zip }}
+            {{ ucwords($program->provider_campus_city) }} {{ $program->provider_campus_state }}, {{ $program->provider_campus_zip }}
         </x-program.detail>
 
         <x-program.label> County</x-program.label>
-        <x-program.detail> {{ ucfirst($program->provider_campus_county) }}</x-program.detail>
+        <x-program.detail> {{ ucwords($program->provider_campus_county) }}</x-program.detail>
 
         <x-program.label> Day Care on Site? </x-program.label>
         <x-program.detail> {{ $program->onsite_childcare }}</x-program.detail>
@@ -62,12 +62,16 @@
 
 
 </div>
-<div>
-    <a
-        class="py-4 px-4 items-center justify-between p-4  text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-        href="/"
-    > <span>Go Back &LeftArrow;</span>
-    </a>
- <br />
+    <h3 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"> How to Apply </h3>
+Visit the <a href="{{ $local_twc_website }}" target="new"> {{ $local_twc_website }} </a> and tell them you want to enroll in this program.
+    <p>
+
+<div class="px-4 py-4 mb-8 bg-white rounded-lg dark:bg-gray-800">
+<a
+    class="items-center justify-between p-4 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+    href="/"
+> Go Back
+</a>
+
 </div>
 </x-layout>

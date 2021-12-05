@@ -18,10 +18,12 @@ class Show extends Component
             ->prependTitle('Details about ')
             ->setDescription($program->program_description);
 
+        $local_twc_website = Program::getOfficeByCounty($program->provider_campus_county);
 
         return view('livewire.show', [
                 'program_twist_id' => $request->program_twist_id,
-                'program' => $program
+                'program' => $program,
+                'local_twc_website' => $local_twc_website
             ]
         );
     }
