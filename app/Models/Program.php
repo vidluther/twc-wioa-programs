@@ -38,6 +38,20 @@ class Program extends Model
         return $average_cost;
     }
 
+    public static function getOfficeByCounty($county) {
+        $officeMap = array (
+            'county' => 'https://www.officeoflocalcountywfc.com',
+            'atascosa' => 'https://www.workforcesolutionsalamo.org/',
+            'nueces' => 'https://www.workforcesolutionscb.org/'
+        );
+
+        if(array_key_exists($county, $officeMap)) {
+            return $officeMap[$county];
+        } else {
+            return 'https://www.twc.texas.gov/';
+        }
+    }
+
 //    public static function getProgramName($program_twist_id) {
 //        $program = Program::select($column)->groupBy($column)->orderBy($column)->get();
 //
