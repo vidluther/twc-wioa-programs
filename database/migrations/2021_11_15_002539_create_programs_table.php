@@ -16,7 +16,14 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->index('twist_program_id');
+            $table->index('program_twist_id');
+            $table->index('provider_type');
+            $table->index(['provider_campus_city','program_name']);
+
+
+//            $table->index('provider_campus_city');
+//            $table->index('provider_campus_city', 'program_name');
+
 //            $table->integer('twist_program_id')->unique();
 //            $table->integer('twc_id')->unique();
 //            $table->integer('provider_id'); // need to learn how to make this a FK to Provider model
