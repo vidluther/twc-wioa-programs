@@ -11,6 +11,8 @@
     </head>
 
 <body class="flex-col h-screen antialiased">
+
+
 <x-leftnav />
 
 <main role="main" class="w-full h-full flex-grow p-3 overflow-auto">
