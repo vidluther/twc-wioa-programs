@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "league/csv": "^9.0",
         "livewire/livewire": "^2.8",
-        "sentry/sentry-laravel": "^2.10"
+        "sentry/sentry-laravel": "^2.10",
+        "spatie/laravel-sitemap": "^6.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
