@@ -23,7 +23,7 @@ class Listing extends Component
 
             $searched_for = "NAME: $search_in_name";
             Meta::setDescription("Classes that contain the following words: $search_in_name")
-                ->setTitle("WIOA Eligible Providers that teach $search_in_name in Texas");
+                ->setTitle("WIOA Eligible Providers that teach $search_in_name classes in Texas");
         }
 
         if(!is_null($search_for_city)) {

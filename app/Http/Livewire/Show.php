@@ -14,8 +14,8 @@ class Show extends Component
 #        $program = Program::where('program_twist_id', $request->program_twist_id)->get();
         $program = Program::where('program_twist_id', $request->program_twist_id)->firstOrFail();
 
-        Meta::setTitle($program->program_name)
-            ->prependTitle('Details about ')
+        Meta::setTitle($program->program_name . " class by " . $program->provider_name)
+            ->prependTitle('')
             ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
                 ', '. $program->provider_campus_state
                 .', ' . $program->provider_campus_zip

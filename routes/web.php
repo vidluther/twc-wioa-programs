@@ -58,3 +58,7 @@ Route::get ('/show/{program_twist_id}',
 // Route::get( '/listing', [\App\Http\Livewire\Listing::class, 'render']);
 
 // Route::get( '/sandbox', [\App\Http\Livewire\HelloWorld::class, 'render']);
+
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
