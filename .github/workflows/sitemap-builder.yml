@@ -1,0 +1,24 @@
+name: Build Sitemap
+
+on:
+ workflow_dispatch:
+
+jobs:
+  build-sitemap:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+
+    steps:
+      - name: Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd twc-webapp
+            php artisan optimize:clear
+            php artisan sitemap:generate
+            php artisan optimize
+
