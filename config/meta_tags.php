@@ -22,8 +22,8 @@ return [
      * Meta description section
      */
     'description' => [
-        'default' => 'A list of programs and providers that the Texas Workforce Commission (TWC) will work with,
-         to help you retrain or learn a new skill. ',
+        'default' => 'A list of ETPs (eligible training providers and programs) for Texas Workforce Commission (TWC)
+        WIOA program',
         'max_length' => 255,
     ],
 
@@ -32,7 +32,7 @@ return [
      * Meta keywords section
      */
     'keywords' => [
-        'default' => 'texas workforce comission, welding classes tx, CDL Training Texas',
+        'default' => 'welding, CDL, pipe fitter, electrical, plumber training in Texas',
         'max_length' => 255
     ],
 
