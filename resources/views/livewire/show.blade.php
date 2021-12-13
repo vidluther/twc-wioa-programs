@@ -19,7 +19,7 @@
         <x-program.detail> <a class="underline" href="{{ $program->program_url }}" target="new"> {{ $program->program_url }}</a></x-program.detail>
 
         <x-program.label> Cost </x-program.label>
-        <x-program.detail> ${{ number_format($program->program_cost_tuition_and_fees,2) }}</x-program.detail>
+        <x-program.detail> {{   $program->cost }} </x-program.detail>
         <x-program.label> Pell Eligible </x-program.label>
         <x-program.detail> {{ $program->program_pell_eligible }}</x-program.detail>
 

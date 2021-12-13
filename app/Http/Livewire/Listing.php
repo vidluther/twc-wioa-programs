@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Program;
+use Butschster\Head\Facades\Meta;
 use Livewire\Component;
 use Illuminate\Http\Request;
 class Listing extends Component
@@ -21,16 +22,22 @@ class Listing extends Component
                 ->orderBy('provider_campus_city','asc')->paginate(30);
 
             $searched_for = "NAME: $search_in_name";
+            Meta::setDescription("Classes that contain the following words: $search_in_name")
+                ->setTitle("WIOA Eligible Providers that teach $search_in_name in Texas");
         }
 
         if(!is_null($search_for_city)) {
             $programs = Program::where('provider_campus_city','LIKE', $search_for_city)->paginate(40);
             $searched_for = "CITY: $search_for_city";
+            Meta::setDescription("Eligible Training Providers and classes in: $search_for_city, TX")
+                ->setTitle("WIOA Eligible Training Providers in $search_for_city, TX");
         }
 
         if(!is_null($search_for_county)) {
             $programs = Program::where('provider_campus_county','LIKE', $search_for_county)->paginate(40);
             $searched_for = "COUNTY: $search_for_county";
+            Meta::setDescription("Eligible Training Providers and classes in: $search_for_county, TX")
+                ->setTitle("WIOA Eligible Training Providers in $search_for_county county TX ");
         }
 
         // I know there's a better way to do this.. I just don't know what it is.
@@ -45,6 +52,9 @@ class Listing extends Component
 
         $cities = Program::getUniquesFor('provider_campus_city');
         $counties = Program::getUniquesFor('provider_campus_county');
+
+
+
 
 
         return view('livewire.listing',

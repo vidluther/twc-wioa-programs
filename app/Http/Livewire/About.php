@@ -39,7 +39,7 @@ class About extends Component
 
         Meta::setTitle('About')
             ->prependTitle('TexasWFC.com ')
-            ->setDescription('About the Texas Workforce Commission WIOA program');
+            ->setDescription('This is a list of Eligibile Training Providers for the TWC-WIOA program in Texas');
 
         return view('livewire.about',
         [
