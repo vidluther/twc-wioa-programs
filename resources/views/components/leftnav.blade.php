@@ -16,7 +16,7 @@
                 </li>
                 <li class="py-2 hover:bg-indigo-300 rounded">
                     <a class="" href="https://www.twc.texas.gov/" target="new">
-                        <img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/external-link.svg" class="w-7 sm:mx-2 mx-4 inline" /> <span class="hidden sm:inline">Workforce Commission</span>
+                        <img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/external-link.svg" class="w-7 sm:mx-2 mx-4 inline" /> <span class="hidden sm:inline">TX Workforce Commission</span>
                     </a>
                 </li>
             </ul>
