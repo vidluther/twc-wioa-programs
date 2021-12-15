@@ -7,6 +7,7 @@ use Butschster\Head\Facades\PackageManager;
 use Butschster\Head\MetaTags\Meta;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Butschster\Head\Contracts\Packages\ManagerInterface;
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Providers\MetaTagsApplicationServiceProvider as ServiceProvider;
 
 class MetaTagsServiceProvider extends ServiceProvider
@@ -14,6 +15,11 @@ class MetaTagsServiceProvider extends ServiceProvider
     protected function packages()
     {
         // Create your own packages here
+        $og = new OpenGraphPackage('OG');
+        $og->setType('website')
+            ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
+            ->setTitle('I am a OG title');
+       // Meta::registerPackage($og);
     }
 
     // if you don't want to change anything in this method just remove it

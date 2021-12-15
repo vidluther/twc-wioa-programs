@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Butschster\Head\Facades\Meta;
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Program;
@@ -16,14 +17,14 @@ class Show extends Component
     {
         $program = Program::where('program_twist_id', $request->program_twist_id)->firstOrFail();
 
-        Meta::setTitle($program->program_name . " class by " . $program->provider_name)
+        Meta::setTitle($program->program_name . " class in " . $program->provider_campus_city . " " . $program->provider_campus_state)
             ->prependTitle('')
             ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
                 ', '. $program->provider_campus_state
                 .', ' . $program->provider_campus_zip
             )
             ->setDescription($program->program_description . " classes in " . $program->provider_campus_city . " ".
-            $program->provider_campus_state);
+            $program->provider_campus_state . " by " . $program->provider_name);
 
         $local_twc_website = Program::getOfficeByCounty($program->provider_campus_county);
 
@@ -65,6 +66,14 @@ class Show extends Component
                 ->priceCurrency('USD')
         );
 
+        $og = new OpenGraphPackage('og');
+        $og->setType('website')
+            ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
+            ->setTitle($program->program_name .
+                    ' class in ' . $program->provider_campus_city .
+                    ', ' . $program->provider_campus_state);
+
+        Meta::registerPackage($og);
         return view('livewire.show', [
                 'program_twist_id' => $request->program_twist_id,
                 'program' => $program,
