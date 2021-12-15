@@ -9,7 +9,7 @@
 
         <script src="{{ mix('/js/app.js') }}" defer></script>
 
-        <link rel="canonical" href="{{ url()->current() }}">
+        <link rel="canonical" href="{{ url()->current() }}" />
     </head>
 
 <body class="flex-col h-screen antialiased">
