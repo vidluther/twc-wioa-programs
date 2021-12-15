@@ -1,8 +1,8 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Details about ') . $program->program_name }} class
-        </h2>
+        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('') . $program->program_name }} class in {{ ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state }}
+        </h1>
     </x-slot>
 <div>
     {!! $schema !!}
