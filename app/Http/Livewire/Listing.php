@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 #use Butschster\Head\Packages\Entities\OpenGraphPackage;
 
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
-
+use Butschster\Head\Packages\Entities\TwitterCardPackage;
 class Listing extends Component
 {
     public $programs;
@@ -54,18 +54,11 @@ class Listing extends Component
 
         }
 
-        /*
-         * https://github.com/butschster/LaravelMetaTags#opengraphpackage
-        */
-
-        $og = new OpenGraphPackage('og');
-        $og->setType('website')
-            ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
-            ->setTitle('Texas WFC Eligible Training Provider and Program List')
-            ->setUrl(request()->url());
+        $this->setOgandCard($programs);
 
 
-        Meta::registerPackage($og);
+
+
 
         $cities = Program::getUniquesFor('provider_campus_city');
         $counties = Program::getUniquesFor('provider_campus_county');
@@ -83,5 +76,32 @@ class Listing extends Component
             'searched_for' => $searched_for
         ]
         );
+    }
+
+    private function setOgandCard($program)
+    {
+        /*
+        * https://github.com/butschster/LaravelMetaTags#opengraphpackage
+       */
+
+        $og = new OpenGraphPackage('og');
+        $og->setType('website')
+            ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
+            ->setTitle('Texas WFC Eligible Training Provider and Program List')
+
+            ->setUrl(request()->url());
+        $og->addImage(env('APP_URL') . '/images/texas.svg',[
+                'type' => 'image/svg+xml'
+            ]
+        );
+        Meta::registerPackage($og);
+
+        $card = new TwitterCardPackage('twitter');
+        $card->setType('summary')
+            ->setSite('@vidluther')
+            ->setTitle('Directory of Eligible Training Providers and Programs for the Texas WFC-WIOA Program');
+
+
+        Meta::registerPackage($card);
     }
 }

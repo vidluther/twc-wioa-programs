@@ -20,7 +20,7 @@
                    placeholder="Search for a class by Name or Keyword"
             />
 
-            <button class="bg-transparent
+            <button type="submit" data-analytics='"Search by Keyword"' class="bg-transparent
                 hover:bg-blue-500
                 text-blue-700
                 font-semibold
@@ -34,6 +34,20 @@
             </button>
         </div>
 
+        <p> OR </p>
+        <form method="post" action="/"> @csrf
+            <select name="search_for_city">
+                @foreach ($cities AS $city)
+                    <option value="{{ $city->provider_campus_city }}"> {{ ucwords($city->provider_campus_city) }} </option>
+                @endforeach
+            </select>
+            <button data-analytics='"Search by City"' class="bg-transparent
+                                hover:bg-blue-500 text-blue-700
+                                font-semibold hover:text-white py-2 px-4 border
+                                border-blue-500 hover:border-transparent rounded"
+            > Search by city
+            </button>
+        </form>
 
     </form>
 </div>
