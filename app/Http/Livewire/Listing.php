@@ -6,6 +6,10 @@ use App\Models\Program;
 use Butschster\Head\Facades\Meta;
 use Livewire\Component;
 use Illuminate\Http\Request;
+#use Butschster\Head\Packages\Entities\OpenGraphPackage;
+
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
+
 class Listing extends Component
 {
     public $programs;
@@ -22,7 +26,7 @@ class Listing extends Component
                 ->orderBy('provider_campus_city','asc')->paginate(30);
 
             $searched_for = "NAME: $search_in_name";
-            Meta::setDescription("Classes that contain the following words: $search_in_name")
+            Meta::setDescription("WIOA eligible classes that for : $search_in_name in Texas")
                 ->setTitle("WIOA Eligible Providers that teach $search_in_name classes in Texas");
         }
 
@@ -50,9 +54,21 @@ class Listing extends Component
 
         }
 
+        /*
+         * https://github.com/butschster/LaravelMetaTags#opengraphpackage
+        */
+
+        $og = new OpenGraphPackage('og');
+        $og->setType('website')
+            ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
+            ->setTitle('Texas WFC Eligible Training Provider and Program List')
+            ->setUrl(env('APP_URL'));
+
+
+//        //dd($og);
+        Meta::registerPackage($og);
         $cities = Program::getUniquesFor('provider_campus_city');
         $counties = Program::getUniquesFor('provider_campus_county');
-
 
 
 

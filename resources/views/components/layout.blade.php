@@ -1,15 +1,21 @@
 <!doctype html>
 <html lang="en">
     <head>
+        {{-- https://github.com/butschster/LaravelMetaTags  --}}
         {!! Meta::toHtml() !!}
 
 
-        @livewireStyles
+
+        <meta property="og:url" content="{{ url()->current() }}" />
+
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <script src="{{ mix('/js/app.js') }}" defer></script>
 
         <link rel="canonical" href="{{ url()->current() }}" />
+
+        @livewireStyles
+
     </head>
 
 <body class="flex-col h-screen antialiased">

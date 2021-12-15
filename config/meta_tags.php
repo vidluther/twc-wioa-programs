@@ -42,11 +42,12 @@ return [
      * Packages, that should be included everywhere
      */
     'packages' => [
+        'OG'
         // 'jquery', 'bootstrap', ...
     ],
 
     'charset' => 'utf-8',
-    'robots' => null,
+    'robots' => 'all',
     'viewport' => Viewport::RESPONSIVE,
     'csrf_token' => true,
 ];
