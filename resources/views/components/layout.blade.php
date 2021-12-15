@@ -6,7 +6,7 @@
 
 
 
-        <meta property="og:url" content="{{ url()->current() }}" />
+{{--        <meta property="og:url" content="{{ url()->current() }}" />--}}
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 

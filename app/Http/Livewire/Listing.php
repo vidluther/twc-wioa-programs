@@ -62,11 +62,11 @@ class Listing extends Component
         $og->setType('website')
             ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
             ->setTitle('Texas WFC Eligible Training Provider and Program List')
-            ->setUrl(env('APP_URL'));
+            ->setUrl(request()->url());
 
 
-//        //dd($og);
         Meta::registerPackage($og);
+
         $cities = Program::getUniquesFor('provider_campus_city');
         $counties = Program::getUniquesFor('provider_campus_county');
 
