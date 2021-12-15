@@ -1,5 +1,9 @@
 <x-layout>
-
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('List of Eligible Training Providers and Programs in Texas') }}
+        </h2>
+    </x-slot>
 
     <div
         class="px-4 py-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
