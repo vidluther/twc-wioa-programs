@@ -1,10 +1,11 @@
 <x-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Details about ') . $program->program_name }} class
+        </h2>
+    </x-slot>
 <div>
-    <h4
-        class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
-    >
-    Details of {{ $program->program_name }}
-    </h4>
+    {!! $schema !!}
 
     <div
         class="w-full px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
