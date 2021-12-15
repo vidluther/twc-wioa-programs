@@ -71,7 +71,8 @@ class Show extends Component
             ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
             ->setTitle($program->program_name .
                     ' class in ' . $program->provider_campus_city .
-                    ', ' . $program->provider_campus_state);
+                    ', ' . $program->provider_campus_state)
+            ->setUrl(request()->url());
 
         Meta::registerPackage($og);
         return view('livewire.show', [
