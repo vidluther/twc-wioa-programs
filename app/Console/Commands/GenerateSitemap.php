@@ -41,6 +41,11 @@ class GenerateSitemap extends Command
         $this->info("Going to generate a sitemap for " . config('app.url'));
         SitemapGenerator::create(config('app.url'))
             ->writeToFile(public_path('sitemap.xml'));
+
+        $this->info(
+            "Finished.. please check that it works by going to: " 
+            . config('app.url') . "/sitemap.xml"
+        );
         return Command::SUCCESS;
     }
 }
