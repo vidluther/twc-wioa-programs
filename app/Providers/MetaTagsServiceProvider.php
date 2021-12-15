@@ -12,6 +12,7 @@ use Butschster\Head\Providers\MetaTagsApplicationServiceProvider as ServiceProvi
 
 class MetaTagsServiceProvider extends ServiceProvider
 {
+
     protected function packages()
     {
         // Create your own packages here
@@ -19,7 +20,12 @@ class MetaTagsServiceProvider extends ServiceProvider
         $og->setType('website')
             ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
             ->setTitle('I am a OG title');
-       // Meta::registerPackage($og);
+
+        $og->addImage(env('APP_URL') . '/images/texas.svg',[
+                'type' => 'image/svg+xml'
+            ]
+        );
+       //Meta::registerPackage($og);
     }
 
     // if you don't want to change anything in this method just remove it

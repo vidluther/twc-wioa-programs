@@ -13,7 +13,7 @@ return [
 //    ],
 
     'title' => [
-        'default' => "TexasWFC Homepage",
+        'default' => "A list of WIOA eligible training providers and programs in Texas",
         'separator' => '-',
         'max_length' => 255,
     ],
@@ -22,7 +22,7 @@ return [
      * Meta description section
      */
     'description' => [
-        'default' => 'A list of ETPs (eligible training providers and programs) for Texas Workforce Commission (TWC)
+        'default' => 'A list of ETPs (eligible training providers and programs) for the Texas Workforce Commission (TWC)
         WIOA program',
         'max_length' => 255,
     ],
