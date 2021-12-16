@@ -31,7 +31,7 @@
                 rounded
                 ">
                 Search
-            </button>
+            </button></form>
         </div>
 
         <p> OR </p>
