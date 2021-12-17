@@ -26,6 +26,10 @@
     {{ $slot }}
 
 </main>
+
+@if(config('app.display_analytics_js') === true)
+    <x-analytics> </x-analytics>
+@endif
 @livewireScripts
 </body>
 </html>
