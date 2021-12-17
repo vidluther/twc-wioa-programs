@@ -6,8 +6,8 @@
 
 <div class="py-4 space-y-4">
     <!-- Top Bar -->
-    <div class="flex justify-between">
-        <div class="w-2/3 flex space-x-4">
+    <div class="w-1/3 justify-between">
+        <div class="space-x-4">
             <x-input.text wire:model="search" placeholder="Search for a class by name..."
                   class="bg-gray-100 border-1 rounded-md pl-8 pr-2 text-sm text-gray-700"/> &nbsp;
 {{--            <x-input.select wire:model="search_city" id="search_city">--}}
@@ -58,13 +58,13 @@
                             </span>
                         </x-table.cell>
                         <x-table.cell>
-                            <span class="text-cool-gray-900 font-medium">{{ $program->program_description }} </span>
+                            <span class="text-cool-gray-900">{{ $program->program_description }} </span>
                         </x-table.cell>
                         <x-table.cell>
                             {{ ucwords($program->provider_campus_city) }}
                         </x-table.cell>
                         <x-table.cell>
-                            <span class="text-cool-gray-900 font-medium">${{ number_format((float) $program->program_cost_tuition_and_fees,2) }} </span>
+                            <span class="text-cool-gray-900">${{ number_format((float) $program->program_cost_tuition_and_fees,2) }} </span>
                         </x-table.cell>
 
 
