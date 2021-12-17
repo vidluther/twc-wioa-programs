@@ -18,7 +18,7 @@
 
     </head>
 
-<body class="flex-col h-screen antialiased">
+<body class="antialiased font-sans bg-gray-200">
 
 
 <x-leftnav />

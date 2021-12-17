@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
+use Butschster\Head\Packages\Entities\TwitterCardPackage;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Program;
@@ -12,7 +13,8 @@ use Spatie\SchemaOrg\Schema;
 
 class Show extends Component
 {
-    public string $schema;
+
+
     public function render(Request $request)
     {
         $program = Program::where('program_twist_id', $request->program_twist_id)->firstOrFail();
@@ -73,8 +75,33 @@ class Show extends Component
                     ' class in ' . $program->provider_campus_city .
                     ', ' . $program->provider_campus_state)
             ->setUrl(request()->url());
-
+        $og->addImage(env('APP_URL') . '/images/texas.svg',[
+                'type' => 'image/svg+xml'
+            ]
+        );
         Meta::registerPackage($og);
+
+
+        $card = new TwitterCardPackage('twitter');
+        $card->setType('summary')
+            ->setSite('@vidluther')
+            ->setImage(env('APP_URL') . '/images/texas.svg')
+            ->setDescription("More information on".
+                $program->program_name .
+                ' class in ' . $program->provider_campus_city .
+                ', ' . $program->provider_campus_state
+
+            )
+            ->setTitle(
+                $program->program_name .
+                ' class in ' . $program->provider_campus_city .
+                ', ' . $program->provider_campus_state
+            );
+
+
+        Meta::registerPackage($card);
+
+
         return view('livewire.show', [
                 'program_twist_id' => $request->program_twist_id,
                 'program' => $program,
