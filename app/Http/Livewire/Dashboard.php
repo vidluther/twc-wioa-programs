@@ -25,7 +25,9 @@ class Dashboard extends Component
 
         $cities = Program::getUniquesFor('provider_campus_city');
 
-        $programs = Program::search('program_name', $this->search)->paginate(30);
+        $programs = Program::search('program_name', $this->search)
+            ->orderBy('provider_campus_city', 'ASC')
+            ->paginate(30);
 
         Meta::setDescription("WIOA eligible providers and classes that teach " . $this->search . " in Texas")
             ->setTitle("WIOA Eligible Providers that teach " . $this->search . " classes in Texas");
