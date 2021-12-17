@@ -8,7 +8,7 @@
     {!! $schema !!}
 
     <div
-        class="w-full px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+        class="w-full px-4 py-3 mb-8 bg-white rounded-lg shadow-md"
     >
         <x-program.label> Name </x-program.label>
         <x-program.detail> <span class="capitalize">  {{ $program->program_name }} </span> </x-program.detail>
@@ -66,7 +66,7 @@
 
     @include('programs.nextsteps')
 
-<div class="px-4 py-4 mb-8 bg-white rounded-lg dark:bg-gray-800">
+<div class="px-4 py-4 mb-8 bg-white rounded-lg">
 <a
     class="items-center justify-between p-4 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
     href="/"

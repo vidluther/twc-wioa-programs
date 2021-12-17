@@ -2,7 +2,7 @@
 
 use App\Models\Program;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Livewire\Dashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 //Route::get('/programs', function () {
 //    return view('programs/all',
@@ -28,19 +30,18 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-# This one works
-#Route::get( '/', [\App\Http\Controllers\ProgramController::class, 'dashboard']);
+
 
 
 # Livewire magic?
 #Route::get( '/', [\App\Http\Livewire\Listing::class, 'render']);
+//
+//Route::match(['get', 'post'], '/', [\App\Http\Livewire\Listing::class, 'render']);
 
-Route::match(['get', 'post'], '/', [\App\Http\Livewire\Listing::class, 'render']);
-
+Route::match(['get','post'],'/', Dashboard::class);
 
 Route::get('/about', [\App\Http\Livewire\About::class, 'render']);
 
-Route::get( '/dashboard', [\App\Http\Livewire\Dashboard::class, 'render']);
 
 Route::get ('/show/{program_twist_id}',
                             [

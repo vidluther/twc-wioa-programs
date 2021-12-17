@@ -1,9 +1,9 @@
 <x-layout>
 
-<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+<h2 class="my-6 text-2xl font-semibold text-gray-700">
         About TexasWFC.com
     </h2>
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
          <p class="text-gray-600 dark:text-gray-400"> This website shows you what programs are eligible for for
              the TWC-WIOA program. It lets you search by keyword, city, or county. <br />
          </p>
@@ -15,7 +15,7 @@
     </div>
 
 
-    <h3 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"> How to Qualify </h3>
+    <h3 class="my-6 text-2xl font-semibold text-gray-700"> How to Qualify </h3>
     While anyone can take these classes, not everyone will qualify for the WIOA assistance. In order to qualify you'll
     need to show you're eligible for this program. To do that you'll need to present the TWC with the following items.
     <p>
