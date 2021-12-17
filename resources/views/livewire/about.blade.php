@@ -1,12 +1,12 @@
-<x-layout>
+
 
 <h2 class="my-6 text-2xl font-semibold text-gray-700">
         About TexasWFC.com
     </h2>
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
-         <p class="text-gray-600 dark:text-gray-400"> This website shows you what programs are eligible for for
-             the TWC-WIOA program. It lets you search by keyword, city, or county. <br />
-         </p>
+         <span class="space-x-2 space-y-4"> This is a list of eligible training providers and programs for the
+             TWC-WIOA program in Texas. <br />
+         </span>
 
         <p>
         If you live in Texas, and need to learn a new skill, but don't have the money to go to school and learn it,
@@ -31,5 +31,3 @@
     @include('statcards')
     <h2> <a href="/" class="text-bold"> Go checkout the list </h2>
 
-
-</x-layout>

@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Program;
 use Butschster\Head\Facades\Meta;
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
+use Butschster\Head\Packages\Entities\TwitterCardPackage;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Http\Livewire\DataTable\WithSorting;
@@ -28,28 +30,40 @@ class Dashboard extends Component
         Meta::setDescription("WIOA eligible providers and classes that teach " . $this->search . " in Texas")
             ->setTitle("WIOA Eligible Providers that teach " . $this->search . " classes in Texas");
 
-
-//        if(is_null($this->search)) {
-////            dd("search is null");
-//            $programs = Program::orderBy('provider_campus_city', 'asc')->paginate(20);
-//        }
-//
-//        if(strlen($this->search) === 0) {
-//           // dd("strlen is 0");
-//            $programs = Program::orderBy('provider_campus_city', 'asc')->paginate(20);
-//        }
-//
-//        if(!is_null($this->search)) {
-//
-//            $programs = Program::where('program_name', 'LIKE', '%'.$this->search.'%')
-//                    ->paginate(20);
-//        }
-
-
+        $this->setOgandCard();
 
         return view('livewire.dashboard', [
             'cities' => $cities,
             'programs' => $programs
         ]);
+    }
+
+
+    private function setOgandCard()
+    {
+        /*
+        * https://github.com/butschster/LaravelMetaTags#opengraphpackage
+       */
+
+        $og = new OpenGraphPackage('og');
+        $og->setType('website')
+            ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
+            ->setTitle('Texas WFC Eligible Training Provider and Program List')
+
+            ->setUrl(request()->url());
+        $og->addImage(env('APP_URL') . '/images/texas.svg',[
+                'type' => 'image/svg+xml'
+            ]
+        );
+        Meta::registerPackage($og);
+
+        $card = new TwitterCardPackage('twitter');
+        $card->setType('summary')
+            ->setSite('@vidluther')
+            ->setImage(env('APP_URL') . '/images/texas.svg')
+            ->setTitle('Directory of Eligible Training Providers and Programs for the Texas WFC-WIOA Program');
+
+
+        Meta::registerPackage($card);
     }
 }

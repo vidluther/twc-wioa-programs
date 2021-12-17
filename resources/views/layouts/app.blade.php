@@ -17,7 +17,7 @@
 <main role="main" class="w-full h-full flex-grow p-3 overflow-auto">
 <!-- Page Header -->
 @if (isset($header))
-    {{ $header ?? 'List of Eligible Traininddg Providers and Programs'}}
+    {{ $header ?? 'List of Eligible Training Providers and Programs'}}
 @endif
 <!-- /Page Header -->
 

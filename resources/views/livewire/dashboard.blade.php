@@ -7,8 +7,9 @@
 <div class="py-4 space-y-4">
     <!-- Top Bar -->
     <div class="flex justify-between">
-        <div class="w-1/3 flex space-x-4">
-            <x-input.text wire:model="search" placeholder="Search for a class by name..." /> &nbsp;
+        <div class="w-2/3 flex space-x-4">
+            <x-input.text wire:model="search" placeholder="Search for a class by name..."
+                  class="bg-gray-100 border-1 rounded-md pl-8 pr-2 text-sm text-gray-700"/> &nbsp;
 {{--            <x-input.select wire:model="search_city" id="search_city">--}}
 {{--                @foreach ($cities AS $city)--}}
 {{--                    <option value="{{ $city->provider_campus_city }}"> {{ ucwords($city->provider_campus_city) }} </option>--}}
