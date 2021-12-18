@@ -56,7 +56,7 @@ class Dashboard extends Component
 
 
         $itemList = new ItemList();
-
+        $listItems = null;
         foreach($programs AS $program) {
             $listItems[] =  Schema::listItem()
                 ->position($i)
@@ -64,10 +64,12 @@ class Dashboard extends Component
                 //->url("https://www.foo.com/show/" . $program->program_twist_id);
             $i++;
         }
+        if(!is_null($listItems)) {
+            $itemList->itemListElement(
+                $listItems
+            );
+        }
 
-        $itemList->itemListElement(
-            $listItems
-        );
         return $itemList;
     }
 
