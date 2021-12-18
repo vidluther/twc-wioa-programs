@@ -86,5 +86,8 @@
         <div>
             {{ $programs->links() }}
         </div>
+        <!-- Schema.org Stuff -->
+    {!! $schema !!}
 
+        <!-- / Schema.org Stuff -->
   </div>

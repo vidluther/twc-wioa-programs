@@ -13,6 +13,11 @@ use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
 
+use Spatie\SchemaOrg\Schema;
+use Spatie\SchemaOrg\Graph;
+use Spatie\SchemaOrg\ListItem;
+use Spatie\SchemaOrg\ItemList;
+
 class Dashboard extends Component
 {
     use WithPerPagePagination;
@@ -34,12 +39,37 @@ class Dashboard extends Component
 
         $this->setOgandCard();
 
+        $schema = $this->buildSchema($programs);
+
         return view('livewire.dashboard', [
             'cities' => $cities,
-            'programs' => $programs
+            'programs' => $programs,
+            'schema' => $schema
         ]);
     }
 
+    private function buildSchema($programs)
+    {
+        $schema = Schema::itemList();
+        $i = 1;
+
+
+
+        $itemList = new ItemList();
+
+        foreach($programs AS $program) {
+            $listItems[] =  Schema::listItem()
+                ->position($i)
+                ->url(env('APP_URL') . '/show/' . $program->program_twist_id);
+                //->url("https://www.foo.com/show/" . $program->program_twist_id);
+            $i++;
+        }
+
+        $itemList->itemListElement(
+            $listItems
+        );
+        return $itemList;
+    }
 
     private function setOgandCard()
     {
