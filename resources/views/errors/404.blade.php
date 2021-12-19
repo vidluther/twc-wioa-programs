@@ -10,6 +10,8 @@
 </head>
 
 <body class="bg-gray-100">
+<!-- inspired/copied from https://github.com/mdjamal/tailwindcss-rails-custom-error-page-templates -->
+<!-- this file lives in views/errors/500.blade.php -->
 <div class="container mx-auto px-4">
     <section class="py-8 px-4 text-center">
         <div class="max-w-auto mx-auto">
