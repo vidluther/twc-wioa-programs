@@ -17,11 +17,11 @@ Here's what I see as the steps to learning Laravel.
 - [x] Import said data from spreadsheet into a database. 
 - [x] View all records in the database. 
 - [x] Add Pagination to the view all records.
-- [ ] View a record in detail 
-- [ ] Add ability to search by City
-- [ ] Add ability to search all records. 
+- [x] View a record in detail 
+- [x] Add ability to search by City
+- [x] Add ability to search all records. 
 - [ ] Do the CRUD 
-- [ ] Import the latest version of the file from the internet. 
+- [x] Import the latest version of the file from the internet. 
 
 
 
