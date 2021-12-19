@@ -1,19 +1,12 @@
-
-
-    <div class="px-1 py-1">
-        <p class="text-md text-gray-600">
-
-        </p>
-    </div>
-    <main class="h-full pb-16 overflow-y-auto">
+<main class="h-full pb-16 overflow-y-auto">
 
     <div class="px-1 py-1 w-auto">
-        <h3 class="mb-2 pt-4 text-md font-semibold text-gray-600"> Some interesting statistics from this list </h3> <br />
+        <h3 class="mb-2 pt-4 text-md font-semibold text-gray-600"> Some interesting numbers from this list </h3> <br />
     </div>
     <div class="grid gap-3 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <!-- # Of Programs Card -->
         <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs"
+            class="flex items-center p-4 bg-gray-100 rounded-lg shadow-xs"
         >
             <div
                 class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full"
@@ -38,7 +31,7 @@
 
         <!-- Cost of Tuition Card -->
         <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs"
+            class="flex items-center p-4 bg-gray-100 rounded-lg shadow-xs"
         >
             <div
                 class="p-3 mr-4 text-green-500 bg-green-100 rounded-full"
@@ -63,7 +56,7 @@
 
         <!-- # of Providers Card -->
         <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs"
+            class="flex items-center p-4 bg-gray-100 rounded-lg shadow-xs"
         >
             <div
                 class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full "
@@ -90,7 +83,7 @@
 
         <!-- # of Cities Card -->
         <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs"
+            class="flex items-center p-4 bg-gray-100 rounded-lg shadow-xs"
         >
             <div
                 class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full "
@@ -113,5 +106,5 @@
                 </p>
             </div>
         </div>
-</main>
+
 </div>

@@ -20,7 +20,7 @@ class ProgramSeeder extends Seeder
         $header_offset = $csv->getHeaderOffset(); //returns 0
         $header = $csv->getHeader();
         $this->command->info(count($csv) . " records found");
-        #dd($header);
+        //dd($header);
         $provider_url = null;
         foreach($csv AS $offset => $line) {
 
@@ -32,8 +32,14 @@ class ProgramSeeder extends Seeder
             $provider_twist_id = null;
 
             if(trim($line['TWIST Program ID']) === '') {
-                $program_twist_id = rand(200000,299999);
-                $this->command->error("Program id was blank at line $offset, I changed it to $program_twist_id " . $line['Provider Name']);
+#                $program_twist_id = rand(200000,299999);
+//                $this->command->error("Program id was blank at line $offset,
+//                    I changed it to $program_twist_id " . $line['Provider Name']);
+                $this->command->error("TWIST Program id was blank at line # $offset".
+                    " I am skipping ". $line['Program Name'] . ' by ' . $line['Provider Name']
+
+                );
+                continue;
             } else {
                 $program_twist_id = trim($line['TWIST Program ID']);
             }
@@ -84,7 +90,7 @@ class ProgramSeeder extends Seeder
                 'program_cost_tuition_and_fees' => trim($line[" Required Cost:\nTuition & Fees "]),
                 'program_cost_books_and_supplies' => trim($line[" Required Cost:\nBooks Supplies "]),
                 'program_cost_other' => trim($line[" Optional Cost:\nOther "]),
-                'outofdistrict_tuition_and_fees' => trim($line[" (Out Of District)\nCost: \nTuition & Fees "]),
+                'outofdistrict_tuition_and_fees' => $line[" out_of_district_cost_tuition_and_fees "],
                 'program_total_apprentices' => $line['Number Of Apprentices'],
                 'program_start_date' => strtotime($line['Program Start Date']),
                 'program_last_updated' => strtotime($line['Program Last Update Date'])

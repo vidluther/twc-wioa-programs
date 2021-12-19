@@ -31,17 +31,25 @@
         </div>
         <span class="space-y-4 space-x-4"> &nbsp; </span>
         <div class="sticky top-0 p-4 bg-gray-100 rounded-xl w-full">
-            <p class="space-y-2 px-1 py-1 prose"> This is a list of eligible training providers for the Texas Workforce
-                Commission WIOA program. All this website shows you what's in the
+            <p class="space-y-2 px-1 py-1 prose"> This is the list of eligible training providers for the Texas Workforce
+                Commission WIOA program. The data for this website is pulled from this
                 <a class="underline" href="https://www.twc.texas.gov/files/partners/statewide-eligible-training-program-list-twc.xlsx"> Excel spreadsheet</a>
-                that's available at the Texas Workforce Commission website.
+                that is available at the Texas Workforce Commission website.
                 <br />
+            </p>
+            <p class="px-1 py-1 prose">
+                Currently you can search for class names, view details about the class, soon you'll be
+                able to filter the results by your city.
+            </p>
 
-                You can search for class names, and soon you'll be able to filter the results by your city.
+        </div>
+        <span class="space-y-4 space-x-4"> &nbsp; </span>
+        <div class="sticky top-0 p-4 bg-gray-100 rounded-xl w-full">
+            <p class="space-y-2 px-1 py-1 prose font-semibold"> The last database update happened on December 18th 2021 @ 11:30PM CDT.
+
             </p>
         </div>
 
-
-    </div>
+        </div>
 
     <!-- end of left side navigation -->
