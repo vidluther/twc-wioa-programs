@@ -9,8 +9,9 @@ use App\Models\Program;
 
 class About extends Component
 {
-    public $num_documents;
+
     public $programs;
+
     public function render()
     {
         $programs = null ;
