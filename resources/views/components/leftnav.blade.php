@@ -45,9 +45,8 @@
         </div>
         <span class="space-y-4 space-x-4"> &nbsp; </span>
         <div class="sticky top-0 p-4 bg-gray-100 rounded-xl w-full">
-            <p class="space-y-2 px-1 py-1 prose font-semibold"> The last database update happened on December 18th 2021 @ 11:30PM CDT.
 
-            </p>
+                @livewire('lastmodified')
         </div>
 
         </div>
