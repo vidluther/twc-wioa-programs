@@ -4,8 +4,11 @@
     {{-- https://github.com/butschster/LaravelMetaTags  --}}
     {!! Meta::toHtml() !!}
     <link rel="canonical" href="{{ url()->current() }}" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <link rel="preload" href="{{ asset('css/app.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Optimization trick.. as suggested here https://web.dev/defer-non-critical-css/ -->
+    <noscript> <link href="{{ asset('css/app.css') }}" rel="stylesheet"> </noscript>
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @livewireStyles
 
@@ -31,5 +34,7 @@
     <x-analytics> </x-analytics>
 @endif
 @livewireScripts
+
+
 </body>
 </html>
