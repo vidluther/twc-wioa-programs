@@ -1,4 +1,4 @@
-name: Build Sitemap
+name: Clear Things
 
 on:
  workflow_dispatch:
@@ -17,8 +17,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            cd twc-webapp
+            cd {{ secrets.PATH_TO_APP }}
             php artisan optimize:clear
-            php artisan sitemap:generate
             php artisan optimize
 
