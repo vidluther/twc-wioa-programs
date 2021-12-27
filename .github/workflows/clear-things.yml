@@ -17,7 +17,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            cd {{ secrets.PATH_TO_APP }}
+            cd ${{ secrets.PATH_TO_APP }}
             php artisan optimize:clear
             php artisan optimize
 
