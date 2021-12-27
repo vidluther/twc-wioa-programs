@@ -1,10 +1,11 @@
 <?php
-
 use App\Models\Program;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Show;
 use App\Http\Livewire\About;
+
+use App\Http\Controllers\Sitemap;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,7 @@ use App\Http\Livewire\About;
 |
 */
 
+Route::get('sitemap.xml',[Sitemap::class, 'index']);
 
 //Route::match(['get','post'],'/', Dashboard::class);
 
