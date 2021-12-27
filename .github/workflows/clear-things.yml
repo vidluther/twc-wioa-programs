@@ -10,7 +10,7 @@ jobs:
       name: staging
 
     steps:
-      - name: sitemap generator
+      - name: clear things
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
