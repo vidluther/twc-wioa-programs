@@ -54,7 +54,7 @@ jobs:
             git checkout -f
             git pull
             composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
-            cp ${{ secrets.PATH_TO_ENV_FILE }} /home/twc/twc-webapp/.env
+            cp ${{ secrets.PATH_TO_ENV_FILE }} ${{ secrets.PATH_TO_APP }}.env
             php artisan cache:clear
             php artisan view:clear
             php artisan optimize
