@@ -34,8 +34,8 @@ class Dashboard extends Component
             ->orderBy('provider_campus_city', 'ASC')
             ->paginate(30);
 
-        Meta::setDescription("WIOA eligible providers and classes that teach " . $this->search . " in Texas")
-            ->setTitle("WIOA Eligible Providers that teach " . $this->search . " classes in Texas");
+        Meta::setDescription("Eligible Training Providers and Programs that teach " . $this->search . " in Texas")
+            ->setTitle("Eligible Training Providers that teach " . $this->search . " classes in Texas");
 
         $this->setOgandCard();
 

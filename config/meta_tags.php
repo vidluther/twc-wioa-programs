@@ -13,7 +13,7 @@ return [
 //    ],
 
     'title' => [
-        'default' => "A list of WIOA eligible training providers and programs in Texas",
+        'default' => "A list of eligible training providers and programs for WIOA in Texas",
         'separator' => '-',
         'max_length' => 255,
     ],

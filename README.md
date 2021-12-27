@@ -26,20 +26,9 @@ Here's what I see as the steps to learning Laravel.
 
 
 ## Why Laravel? Why not X, or Y, or Z?
-Because it's my time, and I want to learn Laravel and React/Next.js etc. I needed to reference this sheet for something else that I'm doing and I thought it would better if this sheet could be a web app of it's own, so I'm building it. 
+Because it's my time, and I know PHP already, I figured I should get familiar with how the app would be built
+using the latest/most popular PHP framework first, before I tried to do this again in Vue/Nuxt/Next/React/... etc.
 
-## NoCode solutions exist for this!!
-Yes, I know. I've already imported this into Airtable, but I'm over the free plan. I would need to pay $10/month, and I wouldn't have a reason to learn Laravel.
-
-## The Models 
-
-If you look at the spreadsheet, you can see that there are **Providers** that provide **Programs** at different **Campuses**, so the database tries to reflect that. 
-
-> One Provider can provide multiple Programs, so the relationship between Provders and Programs is one-to-many.
-
-> One Provider may also have multiple Campuses, so the relationship here is also one-to-many. 
-
-## Deployment Strategies
 
 ### Actions Secrets
 
@@ -51,11 +40,11 @@ If you look at the spreadsheet, you can see that there are **Providers** that pr
 
 # Building the Database/Importing the records. 
 
-I take the XLS file found on the website, and import it into a Google Sheet, and then download it as a CSV. 
+1. I take the XLS file found on the website, and import it into a Google Sheet, and then export/download it as a CSV. 
+2. Run the command 
+```bash
+php artisan migrate:fresh --seed
+```
+3. If all goes well, there is no step 3. If something goes awry.. try to figure out why..
 
-Once I have the CSV, I can then read it using a [CSV reader](https://csv.thephpleague.com/9.0/) in PHP. 
 
-# Using MongoDB instead of MySQL as of 11/24/2021 
-
-While I was thinking through the process of importing the records from the spreadsheet, I realized that in 2021
-this is probably a job for a document database like MongoDB. So, I refactored a lot of code to use MongoDB. 

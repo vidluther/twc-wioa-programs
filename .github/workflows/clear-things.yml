@@ -4,20 +4,20 @@ on:
  workflow_dispatch:
 
 jobs:
-  build-sitemap:
+  clear-things:
     runs-on: ubuntu-latest
     environment:
       name: staging
 
     steps:
-      - name: sitemap generator
+      - name: clearthings
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            cd {{ secrets.PATH_TO_APP }}
+            cd ${{ secrets.PATH_TO_APP }}
             php artisan optimize:clear
             php artisan optimize
 
