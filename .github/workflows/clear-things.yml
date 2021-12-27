@@ -10,7 +10,7 @@ jobs:
       name: staging
 
     steps:
-      - name: clear things
+      - name: clearthings
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
