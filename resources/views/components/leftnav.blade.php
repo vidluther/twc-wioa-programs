@@ -38,8 +38,7 @@
                 <br />
             </p>
             <p class="px-1 py-1 prose">
-                Currently you can search for class names, view details about the class, soon you'll be
-                able to filter the results by your city.
+              
             </p>
 
         </div>
