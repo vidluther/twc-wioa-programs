@@ -18,10 +18,12 @@ use Spatie\SchemaOrg\Graph;
 use Spatie\SchemaOrg\ListItem;
 use Spatie\SchemaOrg\ItemList;
 
+
+
 class Dashboard extends Component
 {
     use WithPerPagePagination;
-    public ?string $search = null;
+    public ?string $search = '';
     public ?string $search_city = null;
 
 
@@ -29,8 +31,9 @@ class Dashboard extends Component
     {
 
         $cities = Program::getUniquesFor('provider_campus_city');
-
+        
         $programs = Program::search('program_name', $this->search)
+            ->search('provider_campus_city', $this->search_city)
             ->orderBy('provider_campus_city', 'ASC')
             ->paginate(30);
 
