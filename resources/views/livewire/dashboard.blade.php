@@ -28,7 +28,7 @@
         @endif
 
         @if ($search_city)
-            searching in {{ $search_city }}
+                searching in <strong> </strong>{{ $search_city }} </strong>
         @endif
     </div>
 

@@ -31,19 +31,7 @@ class Dashboard extends Component
     {
 
         $cities = Program::getUniquesFor('provider_campus_city');
-
-
-
-//        $programs = Program::select('*')
-//                    ->where('provider_campus_city', 'LIKE', '%corpus%')
-//                    ->where('program_name', 'LIKE', '%'. $this->search . '%')
-//                    ->paginate(30);
-
-//                ->where('provider_campus_city','LIKE', '%corpus%')
-//                ->where('program_name', 'LIKE', '%welding%')
-//                ->paginate(30);
-
-
+        
         $programs = Program::search('program_name', $this->search)
             ->search('provider_campus_city', $this->search_city)
             ->orderBy('provider_campus_city', 'ASC')
