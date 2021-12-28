@@ -10,15 +10,28 @@
          </span>
         @include('statcards')
 
-        <span class="space-y-4 space-x-4"> &nbsp; </span>
 
+        <span class="space-y-4 space-x-4"> &nbsp; </span>
+        <h2 class="font-semibold py-2"> What is an Eligible Training Provider?</h2>
+        <span class="prose">
+        Eligible Training Providers (ETPs) are entities with job training programs approved by the Texas Workforce
+            Commission (TWC) to provide Workforce Innovation and Opportunity Act (WIOA)–funded training services.
+            Local Workforce Development Boards (Boards) fund training for Adult and Dislocated Worker program participants
+            primarily through Individual Training Accounts (ITAs).
+            The publicly accessible Statewide Eligible Training Providers List (ETPL) includes all programs that are currently
+            approved by TWC for ITA funding.
+            The Statewide ETPL Performance Report includes data related to student enrollment for approved programs
+            from July 1, 2019, through June 30, 2021.
+
+Inclusion on the statewide ETPL does not guarantee that a Board will refer any student to the program or that it will receive any funds.
+        </span>
         <h2 class="font-semibold py-2">What is the WIOA program?</h2>
         <span class="prose">
         The Workforce Innovation and Opportunity Act (WIOA) is a statute established in 2014 by the US Department of Labor (DOL).
         It enables workers to obtain good jobs by providing them with job search assistance and training opportunities.
         </span>
 
-        <h2 class="font-semibold py-2">How does it do that?</h2>
+        <h2 class="font-semibold py-2">How does the WIOA program pay for my continuing education class?</h2>
         <span class="prose space-y-4">
         WIOA establishes a priority requirement with respect to funds allocated to a local area for adult employment and
         training activities. American Job Center staff, when using WIOA Adult funds to provide individualized career
@@ -50,7 +63,7 @@
             and want to see if you qualify for the TWC-WIOA program. The person you talk to will take it from there.
         </span>
 
-    <h2 class="font-semibold py-2"> How do I Qualify </h2>
+    <h2 class="font-semibold py-2"> How do I Qualify for the TWC-WIOA program?</h2>
         <span class="prose space-y-4">
     While anyone can take these classes, not everyone will qualify for the WIOA assistance. In order to qualify you'll
     need to show you're eligible for this program. To do that you'll need to present the TWC with the following items.

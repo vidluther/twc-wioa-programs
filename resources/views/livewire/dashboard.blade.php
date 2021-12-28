@@ -6,19 +6,21 @@
 
 <div class="py-4 space-y-4">
     <!-- Top Bar -->
-    <div class="w-auto md:w-2/3 justify-between">
-        <div class="space-x-4">
+    <div class="w-auto md:w-1/3 justify-between">
+        <div class="space-x-2">
             <x-input.text wire:model="search" placeholder="Search for a class by name..."
                   class="bg-gray-100 border-1 rounded-md pl-8 pr-2 text-sm text-gray-700"/> &nbsp;
-{{--            <x-input.select wire:model="search_city" id="search_city">--}}
-{{--                @foreach ($cities AS $city)--}}
-{{--                    <option value="{{ $city->provider_campus_city }}"> {{ ucwords($city->provider_campus_city) }} </option>--}}
-{{--                @endforeach--}}
-{{--            </x-input.select>--}}
+        </div>
+        <div class="space-x-2">
+            <x-input.select wire:model="search_city" id="search_city">
+                    <option value=""> Pick a city </option>
+                @foreach ($cities AS $city)
+                    <option value="{{ $city->provider_campus_city }}"> {{ ucwords($city->provider_campus_city) }} </option>
+                @endforeach
+            </x-input.select>
 
 
         </div>
-
     </div>
     <div class="space-x-2">
         @if ($search)
@@ -26,7 +28,7 @@
         @endif
 
         @if ($search_city)
-            searching in {{ $search_city }}
+                searching in <strong> </strong>{{ $search_city }} </strong>
         @endif
     </div>
 
@@ -74,7 +76,7 @@
                         <x-table.cell colspan="4">
                             <div class="flex justify-center items-center space-x-2">
                                 <x-icon.inbox class="h-8 w-8 text-cool-gray-400" />
-                                <span class="font-medium py-8 text-cool-gray-400 text-xl">No programs found...</span>
+                                <span class="font-medium py-8 text-cool-gray-400 text-xl">No programs found...try changing your search parameters</span>
                             </div>
                         </x-table.cell>
                     </x-table.row>
