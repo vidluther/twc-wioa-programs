@@ -31,7 +31,7 @@ class Dashboard extends Component
     {
 
         $cities = Program::getUniquesFor('provider_campus_city');
-        
+
         $programs = Program::search('program_name', $this->search)
             ->search('provider_campus_city', $this->search_city)
             ->orderBy('provider_campus_city', 'ASC')
