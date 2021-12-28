@@ -85,7 +85,7 @@ class Dashboard extends Component
         $og = new OpenGraphPackage('og');
         $og->setType('website')
             ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
-            ->setTitle('Texas WFC Eligible Training Provider and Program List')
+            ->setTitle('List of Eligible Training Providers and Programs for the TWC-WIOA program')
 
             ->setUrl(request()->url());
         $og->addImage(env('APP_URL') . '/images/texas.svg',[
@@ -98,7 +98,7 @@ class Dashboard extends Component
         $card->setType('summary')
             ->setSite('@vidluther')
             ->setImage(env('APP_URL') . '/images/texas.svg')
-            ->setTitle('Directory of Eligible Training Providers and Programs for the Texas WFC-WIOA Program');
+            ->setTitle('List of Eligible Training Providers and Programs for the Texas WFC-WIOA Program');
 
 
         Meta::registerPackage($card);
