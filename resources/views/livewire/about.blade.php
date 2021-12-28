@@ -10,8 +10,21 @@
          </span>
         @include('statcards')
 
-        <span class="space-y-4 space-x-4"> &nbsp; </span>
 
+        <span class="space-y-4 space-x-4"> &nbsp; </span>
+        <h2 class="font-semibold py-2"> What is an Eligible Training Provider?</h2>
+        <span class="prose">
+        Eligible Training Providers (ETPs) are entities with job training programs approved by the Texas Workforce
+            Commission (TWC) to provide Workforce Innovation and Opportunity Act (WIOA)–funded training services.
+            Local Workforce Development Boards (Boards) fund training for Adult and Dislocated Worker program participants
+            primarily through Individual Training Accounts (ITAs).
+            The publicly accessible Statewide Eligible Training Providers List (ETPL) includes all programs that are currently
+            approved by TWC for ITA funding.
+            The Statewide ETPL Performance Report includes data related to student enrollment for approved programs
+            from July 1, 2019, through June 30, 2021.
+
+Inclusion on the statewide ETPL does not guarantee that a Board will refer any student to the program or that it will receive any funds.
+        </span>
         <h2 class="font-semibold py-2">What is the WIOA program?</h2>
         <span class="prose">
         The Workforce Innovation and Opportunity Act (WIOA) is a statute established in 2014 by the US Department of Labor (DOL).

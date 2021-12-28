@@ -14,18 +14,14 @@ class About extends Component
 
     public function render()
     {
-        $programs = null ;
-        if(is_null($programs)) {
-            $programs = Program::orderBy('provider_campus_city', 'asc')->paginate(20);
-            $searched_for = null;
 
-        }
 
         $num_documents = Program::count();
         $cost = 0;
         $count_unique_providers = 0;
         $count_unique_cities = 0;
         $average_cost = 0;
+        
         if($num_documents > 0 ) {
 
 
@@ -38,8 +34,7 @@ class About extends Component
         }
 
 
-        Meta::setTitle('About')
-            ->prependTitle('TexasWFC.com ')
+        Meta::setTitle('About the list of TWC - Eligible Training Providers ')
             ->setDescription('This is a list of Eligibile Training Providers for the TWC-WIOA program in Texas');
 
         return view('livewire.about',
@@ -48,7 +43,6 @@ class About extends Component
             'cities' => $cities,
             'providers' => $providers,
             'counties' => $counties,
-            'programs' => $programs,
             'average_cost' => $average_cost,
         ]);
     }
