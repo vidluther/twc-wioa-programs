@@ -79,6 +79,8 @@ class Show extends Component
                 'type' => 'image/svg+xml'
             ]
         );
+
+        // Build Open Graph Stuff
         Meta::registerPackage($og);
 
 
@@ -101,6 +103,7 @@ class Show extends Component
 
         Meta::registerPackage($card);
 
+        // Actually render the page.
 
         return view('livewire.show', [
                 'program_twist_id' => $request->program_twist_id,

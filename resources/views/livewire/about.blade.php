@@ -31,7 +31,7 @@ Inclusion on the statewide ETPL does not guarantee that a Board will refer any s
         It enables workers to obtain good jobs by providing them with job search assistance and training opportunities.
         </span>
 
-        <h2 class="font-semibold py-2">How does it do that?</h2>
+        <h2 class="font-semibold py-2">How does the WIOA program pay for my continuing education class?</h2>
         <span class="prose space-y-4">
         WIOA establishes a priority requirement with respect to funds allocated to a local area for adult employment and
         training activities. American Job Center staff, when using WIOA Adult funds to provide individualized career
@@ -63,7 +63,7 @@ Inclusion on the statewide ETPL does not guarantee that a Board will refer any s
             and want to see if you qualify for the TWC-WIOA program. The person you talk to will take it from there.
         </span>
 
-    <h2 class="font-semibold py-2"> How do I Qualify </h2>
+    <h2 class="font-semibold py-2"> How do I Qualify for the TWC-WIOA program?</h2>
         <span class="prose space-y-4">
     While anyone can take these classes, not everyone will qualify for the WIOA assistance. In order to qualify you'll
     need to show you're eligible for this program. To do that you'll need to present the TWC with the following items.
