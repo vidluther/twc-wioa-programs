@@ -76,7 +76,7 @@
                         <x-table.cell colspan="4">
                             <div class="flex justify-center items-center space-x-2">
                                 <x-icon.inbox class="h-8 w-8 text-cool-gray-400" />
-                                <span class="font-medium py-8 text-cool-gray-400 text-xl">No programs found...</span>
+                                <span class="font-medium py-8 text-cool-gray-400 text-xl">No programs found...try changing your search parameters</span>
                             </div>
                         </x-table.cell>
                     </x-table.row>
