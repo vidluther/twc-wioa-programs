@@ -6,6 +6,7 @@ use App\Http\Livewire\Show;
 use App\Http\Livewire\About;
 
 use App\Http\Controllers\Sitemap;
+use App\Http\Controllers\PrivacyPolicyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,10 @@ Route::get('/about', About::class);
 
 
 Route::get ('/show/{program_twist_id}', Show::class);
+
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
+    ->name('policy.show');
+
 
 
 Route::get('/debug-sentry', function () {

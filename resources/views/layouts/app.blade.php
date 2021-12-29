@@ -10,6 +10,11 @@
     <!-- Optimization trick.. as suggested here https://web.dev/defer-non-critical-css/ -->
     <noscript> <link href="{{ asset('css/app.css') }}" rel="stylesheet"> </noscript>
     <script src="{{ mix('/js/app.js') }}" defer></script>
+<!-- Analytics Code goes here -->
+    @if(config('app.display_analytics_js') === true)
+        <x-analytics> </x-analytics>
+    @endif
+    <!-- / Analytics Code -->
     @livewireStyles
 
 </head>
@@ -29,11 +34,10 @@
     {{ $slot }}
 
 </main>
+</div>
 
-@if(config('app.display_analytics_js') === true)
-    <x-analytics> </x-analytics>
-@endif
 @livewireScripts
+<x-footer />
 
 
 </body>
