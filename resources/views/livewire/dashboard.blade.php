@@ -4,16 +4,18 @@
         </h1>
 </x-slot>
 
+
+
 <div class="py-4 space-y-4">
     <!-- Top Bar -->
     <div class="w-auto md:w-1/3 justify-between">
         <div class="space-x-2">
-            <x-input.text wire:model="search" placeholder="Search for a class by name..."
+            <x-input.text wire:model.lazy="search" wire:change="$emit('searchedWord')" placeholder="Search for a class by name..."
                   class="bg-gray-100 border-1 rounded-md pl-8 pr-2 text-sm text-gray-700"/> &nbsp;
         </div>
         <div class="space-x-2">
-            <x-input.select wire:model="search_city" id="search_city">
-                    <option value=""> Pick a city </option>
+            <x-input.select wire:model="search_city" wire:change="$emit('searchedCity')"  id="search_city">
+                    <option value=""> Any City in Texas</option>
                 @foreach ($cities AS $city)
                     <option value="{{ $city->provider_campus_city }}"> {{ ucwords($city->provider_campus_city) }} </option>
                 @endforeach
@@ -92,4 +94,6 @@
     {!! $schema !!}
 
         <!-- / Schema.org Stuff -->
+
+
   </div>
