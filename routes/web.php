@@ -2,10 +2,11 @@
 use App\Models\Program;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
-use App\Http\Livewire\Show;
+#use App\Http\Livewire\Show;
 use App\Http\Livewire\About;
 
 use App\Http\Controllers\Sitemap;
+use App\Http\Controllers\Redirector;
 use App\Http\Controllers\PrivacyPolicyController;
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\PrivacyPolicyController;
 |
 */
 
+Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
+
 Route::get('sitemap.xml',[Sitemap::class, 'index']);
 
 //Route::match(['get','post'],'/', Dashboard::class);
@@ -26,7 +29,6 @@ Route::get('/', Dashboard::class);
 Route::get('/about', About::class);
 
 
-Route::get ('/show/{program_twist_id}', Show::class);
 
 Route::get ('/details/{twc_program_id}', \App\Http\Livewire\Details::class)
     ->name('program-details');
