@@ -92,5 +92,6 @@
 > Go Back
 </a>
 
+    <script>plausible("details",{ props: { title: document.title, path: document.location.pathname } });</script>
 </div>
 

@@ -26,6 +26,29 @@ class Dashboard extends Component
     public ?string $search = '';
     public ?string $search_city = null;
 
+    protected $listeners = ['searchedWord','searchedCity'];
+
+    public function searchedWord()
+    {
+        $this->dispatchBrowserEvent('search-updated', ['searchWord' => $this->search]);
+        //dd($this->search);
+    }
+
+    public function searchedCity()
+    {
+        $this->dispatchBrowserEvent('search-city', ['searchCity' => $this->search_city]);
+        //        dd($this->search_city);
+    }
+
+    public function updatedSearch($value)
+    {
+
+    }
+
+    public function updatedSearchCity($value)
+    {
+
+    }
 
     public function render(Request $request)
     {

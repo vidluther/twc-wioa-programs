@@ -20,6 +20,14 @@
                     </a>
                 </li>
                 <li class="py-2 hover:bg-indigo-300 rounded">
+                    <a class="truncate" href="/privacy-policy" target="new">
+                        <img style="width:28px;height:28px;" alt="Privacy Policy" title="Privacy Policy"
+                             src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/briefcase.svg"
+                             class="w-7 sm:mx-2 mx-4 inline"  />
+                        <span class="hidden sm:inline">Privacy Policy</span>
+                    </a>
+                </li>
+                <li class="py-2 hover:bg-indigo-300 rounded">
                     <a class="truncate" href="https://www.twc.texas.gov/" target="new">
                         <img style="width:28px;height:28px;" alt="Visit the Texas Workforce Commission site" title="Visit Texas Workforce Commission"
                              src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/external-link.svg"
@@ -43,10 +51,6 @@
 
         </div>
         <span class="space-y-4 space-x-4"> &nbsp; </span>
-        <div class="sticky top-0 p-4 bg-gray-100 rounded-xl w-full">
-
-                @livewire('lastmodified')
-        </div>
 
         </div>
 
