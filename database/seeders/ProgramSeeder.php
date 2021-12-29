@@ -31,26 +31,20 @@ class ProgramSeeder extends Seeder
             $program_twist_id = null;
             $provider_twist_id = null;
 
-//            if(trim($line['TWIST Program ID']) === '') {
-//#                $program_twist_id = rand(200000,299999);
-////                $this->command->error("Program id was blank at line $offset,
-////                    I changed it to $program_twist_id " . $line['Provider Name']);
-//                $this->command->error("TWIST Program id was blank at line # $offset".
-//                    " I am skipping ". $line['Program Name'] . ' by ' . $line['Provider Name']
-//
-//                );
-//                continue;
-//            } else {
-//                $program_twist_id = trim($line['TWIST Program ID']);
-//            }
+            if(trim($line['TWIST Program ID']) === '') {
+#                $program_twist_id = rand(200000,299999);
+//                $this->command->error("Program id was blank at line $offset,
+//                    I changed it to $program_twist_id " . $line['Provider Name']);
+                $this->command->line("TWIST Program id was blank at line # $offset".
+                    " ". $line['Program Name'] . ' by ' . $line['Provider Name']
 
-//            if(trim($line['TWIST Provider ID']) === '') {
-//
-//                $provider_twist_id = rand(300000,399999);
-//                $this->command->error("Provider id was blank at line $offset, I changed it to $provider_twist_id " . $line['Provider Name']);
-//            } else {
-//                $provider_twist_id = trim($line['TWIST Provider ID']);
-//            }
+                );
+                //continue;
+            } else {
+                $program_twist_id = trim($line['TWIST Program ID']);
+            }
+
+            $provider_twist_id = trim($line['TWIST Provider ID']);
 
             Program::create([
                 'twc_provider_id' => $line['Provider #'],
