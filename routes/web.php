@@ -28,6 +28,9 @@ Route::get('/about', About::class);
 
 Route::get ('/show/{program_twist_id}', Show::class);
 
+Route::get ('/details/{twc_program_id}', \App\Http\Livewire\Details::class)
+    ->name('program-details');
+
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
     ->name('policy.show');
 

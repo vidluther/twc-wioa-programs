@@ -8,7 +8,7 @@
     </url>
     @foreach ($programs as $post)
         <url>
-            <loc>{{url('/show/' .$post->program_twist_id)}}</loc>
+            <loc>{{url('/details/' .$post->twc_program_id)}}</loc>
             <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($post->updated_at)) }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.8</priority>
