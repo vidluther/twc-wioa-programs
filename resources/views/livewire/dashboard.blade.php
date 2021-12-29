@@ -57,7 +57,7 @@
 
 
                                 <p class="text-cool-gray-600 truncate">
-                                    <a href="/show/{{ $program->program_twist_id }}"> {{ $program->program_name }} </a>
+                                    <a href="/details/{{ $program->twc_program_id }}"> {{ $program->program_name }} </a>
                                 </p>
                             </span>
                         </x-table.cell>
