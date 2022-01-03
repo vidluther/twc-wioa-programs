@@ -20,6 +20,8 @@
 {!! $schema !!}
 
 <!-- / schema.org stuff -->
+
+
 <div>
 
 
