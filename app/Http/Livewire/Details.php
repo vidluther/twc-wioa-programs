@@ -20,7 +20,7 @@ class Details extends Component
 
 
         Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", "
-            . $program->provider_campus_state . ' at the ' . $program->provider_campus_name)
+            . $program->provider_campus_state . ' (' . $program->twc_program_id . ')')
             ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
                 ', '. $program->provider_campus_name
                 .', ' . $program->provider_campus_zip
