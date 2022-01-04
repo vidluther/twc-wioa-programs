@@ -11,7 +11,7 @@
           {{ $program->program_name }} classes in {{ ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state }}
         </h1>
         <h2 class="mt-1 max-w-2xl text-sm text-gray-500">
-           By {{ $program->provider_name }}
+           By {{ $program->provider_name }} at {{ $program->provider_campus_name }}
         </h2>
     </div>
 </div>

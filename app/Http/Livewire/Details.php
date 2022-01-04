@@ -19,14 +19,14 @@ class Details extends Component
         $program = Program::where('twc_program_id', $request->twc_program_id)->firstOrFail();
 
 
-        Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state)
-            ->prependTitle('')
+        Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", "
+            . $program->provider_campus_state . ' at the ' . $program->provider_campus_name)
             ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
-                ', '. $program->provider_campus_state
+                ', '. $program->provider_campus_name
                 .', ' . $program->provider_campus_zip
             )
             ->setDescription($program->program_name . " classes in " . ucwords($program->provider_campus_city) . " ".
-                $program->provider_campus_state . " by " . $program->provider_name);
+                $program->provider_campus_state . " by " . $program->provider_name . ' ' . $program->provider_campus_name);
 
         $local_twc_website = Program::getOfficeByCounty($program->provider_campus_county);
 
