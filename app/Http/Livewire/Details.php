@@ -39,9 +39,17 @@ class Details extends Component
         // Build the Schema.org stuff now
         $streetAddress = $program->provider_campus_addr1 . ' ' . $program->provider_campus_addr2 ;
         $sdPublishdate = strftime("%Y-%m-%d", (int) $program->program_last_updated);
+
+        $program_description = trim($program->program_description);
+        if(strlen(trim($program->program_description)) === 0) {
+            $program_description = $program->program_name;
+        } else {
+            $program_description = trim($program->program_description);
+        }
+
         $schema = Schema::course()
             ->name($program->program_name)
-            ->description($program->program_description)
+            ->description($program_description)
             ->provider(
                 Schema::organization()
                     ->name($program->provider_name)
