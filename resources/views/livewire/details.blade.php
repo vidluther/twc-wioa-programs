@@ -72,13 +72,16 @@
             {{ ucwords($program->provider_campus_city) }} {{ $program->provider_campus_state }}, {{ $program->provider_campus_zip }}
         </x-program.detail>
 
-        <x-program.label class="bg-white "> County</x-program.label>
+        <x-program.label class="bg-white "> Campus Name</x-program.label>
+        <x-program.detail> {{ ucwords($program->provider_campus_name) }}</x-program.detail>
+
+        <x-program.label class="bg-gray-50"> County</x-program.label>
         <x-program.detail> {{ ucwords($program->provider_campus_county) }}</x-program.detail>
 
-        <x-program.label class="bg-gray-50 "> Day Care on Site? </x-program.label>
+        <x-program.label class="bg-white"> Day Care on Site? </x-program.label>
         <x-program.detail> {{ $program->onsite_childcare }}</x-program.detail>
 
-        <x-program.label class="bg-white"> Public Transport Available? </x-program.label>
+        <x-program.label class="bg-gray-50"> Public Transport Available? </x-program.label>
         <x-program.detail> {{ $program->public_transit }}</x-program.detail>
 
 
