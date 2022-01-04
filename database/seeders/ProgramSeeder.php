@@ -30,20 +30,20 @@ class ProgramSeeder extends Seeder
 
             $program_twist_id = null;
             $provider_twist_id = null;
-
-            if(trim($line['TWIST Program ID']) === '') {
-#                $program_twist_id = rand(200000,299999);
-//                $this->command->error("Program id was blank at line $offset,
-//                    I changed it to $program_twist_id " . $line['Provider Name']);
-                $this->command->line("TWIST Program id was blank at line # $offset".
-                    " ". $line['Program Name'] . ' by ' . $line['Provider Name']
-
-                );
-                //continue;
-            } else {
-                $program_twist_id = trim($line['TWIST Program ID']);
-            }
-
+//
+//            if(trim($line['TWIST Program ID']) === '') {
+//#                $program_twist_id = rand(200000,299999);
+////                $this->command->error("Program id was blank at line $offset,
+////                    I changed it to $program_twist_id " . $line['Provider Name']);
+////                $this->command->line("TWIST Program id was blank at line # $offset".
+////                    " ". $line['Program Name'] . ' by ' . $line['Provider Name']
+////
+////                );
+//                //continue;
+//            } else {
+//
+//            }
+            $program_twist_id = trim($line['TWIST Program ID']);
             $provider_twist_id = trim($line['TWIST Provider ID']);
 
             Program::create([
@@ -104,13 +104,66 @@ class ProgramSeeder extends Seeder
 
     public function fixUrl($url)
     {
-        // If the start of the string doesn't have http or https, add it.
-
-        if ((!(substr($url, 0, 7) == 'http://')) && (!(substr($url, 0, 8) == 'https://'))) {
-            $url = 'https://' . $url;
+        // If the url is blank.. change it to example.com for now.. and return it.
+        if(strlen($url) ===0) {
+            #$this->command->error('Got a blank url .. returning https://www.example.com/');
+            return 'https://www.example.com/';
         }
 
-        return $url;
+        # fix for El Centro College (dcccd.edu)
+        # https:www1.dcccd.edu
+        if(substr($url,0,20) == 'https:www1.dcccd.edu') {
+            $new_url = str_replace('https:www1.dcccd.edu','https://www1.dcccd.edu/', $url);
+            $this->command->info("Changed $url to ". $new_url);
+            //die;
+            return $new_url;
+        }
+
+
+
+        # fix for lonestar edu links
+        #http:www.lonestar.eduFJDJDJ
+        if(substr($url,0,21) == 'http:www.lonestar.edu') {
+            $new_url = str_replace('http:www.lonestar.edu','https://www.lonestar.edu/', $url);
+            $this->command->info("Changed $url to ". $new_url);
+            //die;
+            return $new_url;
+        }
+
+        # North Harris College
+        #  http:www.northharriscollege.com
+
+        if(substr($url,0,21) == 'http:www.northharriscollege.com') {
+            $new_url = str_replace('http:www.northharriscollege.com','https://www.northharriscollege.com/', $url);
+            $this->command->info("Changed $url to ". $new_url);
+            //die;
+            return $new_url;
+        }
+
+        // If the start of the url is http:www , change it to https://
+        if(substr($url,0,8) == 'http:www') {
+           # $this->command->error('Need to fix ' . $url);
+            $new_url = str_replace('http:www','https://www', $url);
+            $this->command->info("Changed $url to: $new_url");
+            return $new_url;
+        }
+
+
+        // If the start of the string doesn't have http or https, add it.
+
+        if ((!(substr($url, 0, 7) == 'http://'))
+                &&
+            (!(substr($url, 0, 8) == 'https://'))
+        ) {
+
+            $new_url = 'https://' . $url;
+            #$this->command->info("Fixed $url to => $new_url");
+            return $new_url;
+        } else {
+            return $url;
+        }
+
+
     }
 
     public function slugify($str)

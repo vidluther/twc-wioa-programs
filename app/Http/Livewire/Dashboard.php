@@ -61,7 +61,7 @@ class Dashboard extends Component
             ->paginate(30);
 
         Meta::setDescription("Eligible Training Providers and Programs that teach " . $this->search . " in Texas")
-            ->setTitle("Eligible Training Providers that teach " . $this->search . " classes in Texas");
+            ->setTitle("TWC - Eligible Training Provider List (ETPL Texas) ");
 
         $this->setOgandCard();
 
