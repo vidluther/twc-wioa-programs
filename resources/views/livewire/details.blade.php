@@ -81,6 +81,8 @@
         <x-program.label class="bg-white"> Public Transport Available? </x-program.label>
         <x-program.detail> {{ $program->public_transit }}</x-program.detail>
 
+        <x-program.label class="bg-gray-50"> TWC Program ID</x-program.label>
+        <x-program.detail> {{ $program->twc_program_id }}</x-program.detail>
 
 
 </div>

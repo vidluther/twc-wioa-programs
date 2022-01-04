@@ -46,7 +46,7 @@ class Details extends Component
         } else {
             $program_description = trim($program->program_description);
         }
-        
+
         $schema = Schema::course()
             ->name($program->program_name)
             ->description($program_description)
