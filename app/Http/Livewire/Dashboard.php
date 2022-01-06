@@ -60,8 +60,8 @@ class Dashboard extends Component
             ->orderBy('provider_campus_city', 'ASC')
             ->paginate(30);
 
-        Meta::setDescription("Eligible Training Providers and Programs that teach " . $this->search . " in Texas")
-            ->setTitle("TWC - Eligible Training Provider List (ETPL Texas) ");
+        Meta::setDescription("Eligible Training Providers List for the TWC WIOA program (etpl twc) ")
+            ->setTitle("ETPL - TWC - Eligible Training Provider List for the TWC WIOA program");
 
         $this->setOgandCard();
 
