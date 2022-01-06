@@ -52,6 +52,8 @@
         <x-program.label class="bg-gray-50"> Provided By </x-program.label>
         <x-program.detail> <a class="underline" href="{{ $program->provider_url }}" target="new"> {{ $program->provider_name }}</a></x-program.detail>
 
+
+
         <x-program.label class="bg-white"> About {{ $program->provider_name }}</x-program.label>
         <x-program.detail> {{ $program->provider_description }}</x-program.detail>
 
@@ -79,6 +81,9 @@
         <x-program.label class="bg-gray-50"> TWC Program ID</x-program.label>
         <x-program.detail> {{ $program->twc_program_id }}</x-program.detail>
 
+
+        <x-program.label class="bg-white"> Record Updated On</x-program.label>
+        <x-program.detail> {{ date_format($record_update_date,'l, F d Y h:i:s T') }}</x-program.detail>
 
 </div>
 
