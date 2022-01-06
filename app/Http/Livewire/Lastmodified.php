@@ -14,9 +14,9 @@ class Lastmodified extends Component
         $latestRecord = Program::where('program_name', 'LIKE', '%')
                 ->orderByDesc('updated_at')->first();
 
-        $this->last_modified = $latestRecord->updated_at;
+        $this->last_modified = date_format($latestRecord->updated_at, 'l, F d Y h:i:s T');
 
-
+        //dd($this->last_modified);
         return view('livewire.lastmodified');
     }
 }
