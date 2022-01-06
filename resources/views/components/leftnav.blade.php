@@ -45,13 +45,10 @@
                 that is available at the Texas Workforce Commission website.
                 <br />
             </p>
-            <p class="px-1 py-1 prose">
 
-            </p>
 
         </div>
         <span class="space-y-4 space-x-4"> &nbsp; </span>
 
-        </div>
-
+</div>
     <!-- end of left side navigation -->

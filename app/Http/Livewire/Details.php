@@ -6,9 +6,12 @@ use App\Models\Program;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
+use Carbon\Traits\Date;
 use Livewire\Component;
+use Spatie\SchemaOrg\Car;
 use Spatie\SchemaOrg\Schema;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class Details extends Component
 {
@@ -114,7 +117,12 @@ class Details extends Component
 
         // Actually render the page.
 
+        $program_start_date = Carbon::createFromTimestamp($program->program_start_date);
+        $record_update_date = Carbon::createFromTimestamp($program->program_last_updated);
+       // dd($program_start_date);
         return view('livewire.details', [
+                'program_start_date' => $program_start_date,
+                'record_update_date' => $record_update_date,
                 'program_twist_id' => $request->program_twist_id,
                 'program' => $program,
                 'local_twc_website' => $local_twc_website,
