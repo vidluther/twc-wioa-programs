@@ -26,7 +26,8 @@ class Details extends Component
                 .', ' . $program->provider_campus_zip
             )
             ->setDescription($program->program_name . " classes in " . ucwords($program->provider_campus_city) . " ".
-                $program->provider_campus_state . " by " . $program->provider_name . ' ' . $program->provider_campus_name);
+                $program->provider_campus_state . " by " . $program->provider_name . ' ' . $program->provider_campus_name .
+            ' ('. $program->twc_program_id . ')');
 
         $local_twc_website = Program::getOfficeByCounty($program->provider_campus_county);
 
