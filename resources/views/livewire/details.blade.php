@@ -1,30 +1,25 @@
-{{--<x-slot name="header">--}}
-{{--        <h1 class="font-semibold text-xl text-gray-800 leading-tight">--}}
-{{--            {{ __('') . $program->program_name }} class in {{ ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state }}--}}
-{{--        </h1>--}}
-{{--</x-slot>--}}
-<div>
-
-<div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ $program->program_name }} classes in {{ ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state }}
-        </h1>
-        <h2 class="mt-1 max-w-2xl text-sm text-gray-500">
-           By {{ $program->provider_name }} at {{ $program->provider_campus_name }}
-        </h2>
-    </div>
-</div>
 <!-- schema.org stuff -->
 
 {!! $schema !!}
 
 <!-- / schema.org stuff -->
 
+<x-slot name="header">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
 
+            {{ __('') . $program->program_name }} class in {{ ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state }}
+        </h1>
+            <h2 class="mt-1 max-w-2xl text-sm text-gray-500">
+                By {{ $program->provider_name }} at {{ $program->provider_campus_name }}
+            </h2>
+        </div>
+    </div>
+</x-slot>
+
+<!-- livewire magic starts here -->
 <div>
-
-
         <div class="border-t border-gray-200">
         <dl>
         <x-program.label class="bg-white"> Name </x-program.label>
