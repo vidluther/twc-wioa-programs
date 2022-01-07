@@ -44,6 +44,7 @@
             <x-slot name="head">
                 <x-table.heading class="w-1/3">Name</x-table.heading>
                 <x-table.heading class="w-auto"> Description</x-table.heading>
+                <x-table.heading> Provider </x-table.heading>
                 <x-table.heading >City</x-table.heading>
                 <x-table.heading >Cost</x-table.heading>
 
@@ -63,6 +64,9 @@
                         </x-table.cell>
                         <x-table.cell>
                             <span class="text-cool-gray-900">{{ $program->program_description }} </span>
+                        </x-table.cell>
+                        <x-table.cell>
+                            <span class="text-cool-gray-900">{{ $program->provider_name }} </span>
                         </x-table.cell>
                         <x-table.cell>
                             {{ ucwords($program->provider_campus_city) }}

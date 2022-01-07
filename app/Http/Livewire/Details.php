@@ -6,9 +6,12 @@ use App\Models\Program;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
+use Carbon\Traits\Date;
 use Livewire\Component;
+use Spatie\SchemaOrg\Car;
 use Spatie\SchemaOrg\Schema;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class Details extends Component
 {
@@ -19,14 +22,15 @@ class Details extends Component
         $program = Program::where('twc_program_id', $request->twc_program_id)->firstOrFail();
 
 
-        Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", " . $program->provider_campus_state)
-            ->prependTitle('')
+        Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", "
+            . $program->provider_campus_state . ' (' . $program->twc_program_id . ')')
             ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
-                ', '. $program->provider_campus_state
+                ', '. $program->provider_campus_name
                 .', ' . $program->provider_campus_zip
             )
-            ->setDescription($program->program_description . " classes in " . ucwords($program->provider_campus_city) . " ".
-                $program->provider_campus_state . " by " . $program->provider_name);
+            ->setDescription($program->program_name . " classes in " . ucwords($program->provider_campus_city) . " ".
+                $program->provider_campus_state . " by " . $program->provider_name . ' ' . $program->provider_campus_name .
+            ' ('. $program->twc_program_id . ')');
 
         $local_twc_website = Program::getOfficeByCounty($program->provider_campus_county);
 
@@ -39,9 +43,17 @@ class Details extends Component
         // Build the Schema.org stuff now
         $streetAddress = $program->provider_campus_addr1 . ' ' . $program->provider_campus_addr2 ;
         $sdPublishdate = strftime("%Y-%m-%d", (int) $program->program_last_updated);
+
+        $program_description = trim($program->program_description);
+        if(strlen(trim($program->program_description)) === 0) {
+            $program_description = $program->program_name;
+        } else {
+            $program_description = trim($program->program_description);
+        }
+
         $schema = Schema::course()
             ->name($program->program_name)
-            ->description($program->program_description)
+            ->description($program_description)
             ->provider(
                 Schema::organization()
                     ->name($program->provider_name)
@@ -105,7 +117,12 @@ class Details extends Component
 
         // Actually render the page.
 
+        $program_start_date = Carbon::createFromTimestamp($program->program_start_date);
+        $record_update_date = Carbon::createFromTimestamp($program->program_last_updated);
+       // dd($program_start_date);
         return view('livewire.details', [
+                'program_start_date' => $program_start_date,
+                'record_update_date' => $record_update_date,
                 'program_twist_id' => $request->program_twist_id,
                 'program' => $program,
                 'local_twc_website' => $local_twc_website,
