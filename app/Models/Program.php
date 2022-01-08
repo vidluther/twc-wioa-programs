@@ -52,20 +52,10 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
         }
     }
 
-//    public static function getProgramName($program_twist_id) {
-//        $program = Program::select($column)->groupBy($column)->orderBy($column)->get();
-//
-//        return $this->getAttribute('program_name');
-//    }
+    public static function getNumberOfProgramsByCity($city)
+    {
+        $num = Program::where('provider_campus_city', $city)->count();
+        return $num;
+    }
 
-//    public static function getCities()
-//    {
-//        $cities = Program::select('provider_campus_city')->distinct()->get();
-//        if($cities->count() > 0) {
-//            return $cities;
-//        } else {
-//            return false;
-//        }
-//
-//    }
 }

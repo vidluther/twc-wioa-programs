@@ -29,7 +29,7 @@ class cityIndex extends Controller
         foreach($cities AS $city) {
             // get the number of records with this city name
             $cityName = $city['provider_campus_city'];
-            $num = Program::where('provider_campus_city', $cityName)->count();
+            $num = Program::getNumberOfProgramsByCity($cityName);
             $grouped[$cityName] = $num;
          }
         //sdd($grouped);
@@ -47,7 +47,7 @@ class cityIndex extends Controller
     {
         $city = $request->city;
 
-        $programs = Program::where('provider_campus_city', $city)->paginate(30);
+        $programs = Program::where('provider_campus_city', $city)->paginate(50);
 
 
         return view ('cities.listbycity',

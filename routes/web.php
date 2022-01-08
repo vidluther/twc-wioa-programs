@@ -21,7 +21,10 @@ use App\Http\Controllers\cityIndex;
 |
 */
 
-Route::get('/cities', [cityIndex::class,'listCities']);
+Route::get('/cities', [cityIndex::class,'listCities'])
+    ->name('list-of-cities');
+Route::get('/in/{city}', [cityIndex::class,'listByCity'])
+    ->name('list-by-city');
 
 Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
 
@@ -30,10 +33,10 @@ Route::get('sitemap.xml',[Sitemap::class, 'index']);
 //Route::match(['get','post'],'/', Dashboard::class);
 
 Route::get('/', Dashboard::class);
-Route::get('/about', About::class);
+Route::get('/about', About::class)->name('about');
 
 
-Route::get('/in/{city}', [cityIndex::class,'listByCity']);
+
 
 
 Route::get ('/details/{twc_program_id}', \App\Http\Livewire\Details::class)
