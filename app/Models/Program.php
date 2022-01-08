@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 #use Illuminate\Database\Eloquent\Model;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+#use Jenssegers\Mongodb\Eloquent\Model;
 
 
-class Program extends Model
+class Program extends \Jenssegers\Mongodb\Eloquent\Model
 {
    // protected $connection = 'mongodb';
     use HasFactory;

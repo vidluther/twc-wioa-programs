@@ -8,6 +8,8 @@ use App\Http\Livewire\About;
 use App\Http\Controllers\Sitemap;
 use App\Http\Controllers\Redirector;
 use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\cityIndex;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,8 @@ use App\Http\Controllers\PrivacyPolicyController;
 |
 */
 
+Route::get('/cities', [cityIndex::class,'listCities']);
+
 Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
 
 Route::get('sitemap.xml',[Sitemap::class, 'index']);
@@ -29,12 +33,15 @@ Route::get('/', Dashboard::class);
 Route::get('/about', About::class);
 
 
+Route::get('/in/{city}', [cityIndex::class,'listByCity']);
+
 
 Route::get ('/details/{twc_program_id}', \App\Http\Livewire\Details::class)
     ->name('program-details');
 
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
     ->name('policy.show');
+
 
 
 
