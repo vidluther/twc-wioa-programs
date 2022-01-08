@@ -78,5 +78,5 @@ Inclusion on the statewide ETPL does not guarantee that a Board will refer any s
 
         </span>
     <span class="prose" >
-         <a href="/" class="underline text-bold"> Go checkout the list </h2>
+        Go Search the  <a href="/" class="underline text-bold">  Texas ETPL</h2>
     </span>
