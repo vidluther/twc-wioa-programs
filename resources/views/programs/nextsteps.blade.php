@@ -1,5 +1,5 @@
 <span class="prose">
-<h3 class="py-6 font-semibold text-gray-700"> How to Apply for {{ $program->program_name }} class </h3>
+<h3 class="py-6 font-semibold text-gray-700"> How to Apply for {{ $program->program_name }} class in {{ ucfirst($program->provider_campus_city) }}, TX </h3>
    If you're interested in signing up or learning more about this class, the next program start date is {{ date_format($program_start_date,'l, F d Y h:i:s T') }}
 
     <ol>

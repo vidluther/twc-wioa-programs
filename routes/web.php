@@ -34,7 +34,7 @@ Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
 Route::get ('/details/{twc_program_id}', [Redirector::class, 'RedirectDetails'])
     ->name('old-program-details');
 
-Route::get('/in/{city}/', [cityIndex::class,'listByCity'])
+Route::get('/programs-in/{city}/', [cityIndex::class,'listByCity'])
     ->name('list-by-city');
 
 Route::get ('/{slug}', \App\Http\Livewire\Details::class)
