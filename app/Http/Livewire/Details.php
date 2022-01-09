@@ -22,9 +22,9 @@ class Details extends Component
 
         $program = Program::where('program_slug', $request->slug)->firstOrFail();
         // limit page title to 70 characters
-        $pageTitle = Str::limit($program->program_name . ' ' .
+        $pageTitle = $program->program_name . ' ' .
                 ucwords($program->provider_campus_city) .
-            ',TX ('. $program->twc_program_id . ')',70);
+            ',TX ('. $program->twc_program_id . ')';
 
 //        echo Str::length($pageTitle) ;
         Meta::setTitle($pageTitle);

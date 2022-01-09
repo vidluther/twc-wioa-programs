@@ -52,9 +52,8 @@
                 <a class="underline" href="https://www.twc.texas.gov/files/partners/statewide-eligible-training-program-list-twc.xlsx"> Excel spreadsheet</a>
                 that is available at the Texas Workforce Commission website.
                 <br />
+
             </p>
-
-
         </div>
         <span class="space-y-4 space-x-4"> &nbsp; </span>
 
