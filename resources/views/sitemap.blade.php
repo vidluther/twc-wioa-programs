@@ -12,10 +12,17 @@
         <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
-    @foreach ($programs as $post)
+    <url>
+        <loc>{{ route('list-of-cities') }} </loc>
+        <lastmod>2021-12-19T05:45:04Z</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    @foreach ($programs as $program)
         <url>
-            <loc>{{url('/details/' .$post->twc_program_id)}}</loc>
-            <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($post->updated_at)) }}</lastmod>
+            <loc>{{ route('program-details', $program->program_slug) }}</loc>
+            <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($program->updated_at)) }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.8</priority>
         </url>
