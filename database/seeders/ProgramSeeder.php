@@ -30,19 +30,7 @@ class ProgramSeeder extends Seeder
 
             $program_twist_id = null;
             $provider_twist_id = null;
-//
-//            if(trim($line['TWIST Program ID']) === '') {
-//#                $program_twist_id = rand(200000,299999);
-////                $this->command->error("Program id was blank at line $offset,
-////                    I changed it to $program_twist_id " . $line['Provider Name']);
-////                $this->command->line("TWIST Program id was blank at line # $offset".
-////                    " ". $line['Program Name'] . ' by ' . $line['Provider Name']
-////
-////                );
-//                //continue;
-//            } else {
-//
-//            }
+
             $program_twist_id = trim($line['TWIST Program ID']);
             $provider_twist_id = trim($line['TWIST Provider ID']);
 
@@ -59,6 +47,7 @@ class ProgramSeeder extends Seeder
                 'provider_campus_addr1' => $line['Campus Address1'],
                 'provider_campus_addr2' => $line['Campus Address2'],
                 'provider_campus_city' => mb_strtolower($line['Campus City']),
+
                 'provider_campus_state' => $line['Campus State'],
                 'provider_campus_zip' => $line['Campus Zip Code'],
                 'provider_campus_county' => mb_strtolower($line['Campus County']),
@@ -87,16 +76,17 @@ class ProgramSeeder extends Seeder
                 'program_cost_tuition_and_fees' => trim($line[" Required Cost:\nTuition & Fees "]),
                 'program_cost_books_and_supplies' => trim($line[" Required Cost:\nBooks Supplies "]),
                 'program_cost_other' => trim($line[" Optional Cost:\nOther "]),
-                'outofdistrict_tuition_and_fees' => $line[" out_of_district_cost_tuition_and_fees "],
+//                'outofdistrict_tuition_and_fees' => $line[" (Out Of District)\n
+//Cost: \n
+//Tuition & Fees\n"],
                 'program_total_apprentices' => $line['Number Of Apprentices'],
                 'program_start_date' => strtotime($line['Program Start Date']),
-                'program_last_updated' => strtotime($line['Program Last Update Date'])
+                'program_last_updated' => strtotime($line['Program Last Update Date']),
 
-
+                'city_slug' => Str::slug($line['Campus City'],'-')
 
             ]) ;
 
-            # Go check and see if the Database already has a provider with this number.
         }
 
 

@@ -25,7 +25,7 @@
                             <span href="#" class="inline-flex space-x-2 truncate text-sm leading-5">
 
                                 <p class="text-cool-gray-600 truncate">
-                                    <a href="/details/{{ $program->twc_program_id }}"> {{ $program->program_name }} </a>
+                                    <a href="{{ route('program-details' , $program->program_slug ) }}"> {{ $program->program_name }} </a>
                                 </p>
                             </span>
                         </x-table.cell>

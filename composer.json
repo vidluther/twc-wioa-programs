@@ -17,6 +17,7 @@
         "league/csv": "^9.0",
         "livewire/livewire": "^2.8",
         "sentry/sentry-laravel": "^2.10",
+        "spatie/laravel-sluggable": "^3.2",
         "spatie/schema-org": "^3.8"
     },
     "require-dev": {

@@ -3,18 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 #use Illuminate\Database\Eloquent\Model;
 
-#use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 
 class Program extends \Jenssegers\Mongodb\Eloquent\Model
 {
    // protected $connection = 'mongodb';
     use HasFactory;
+    use HasSlug;
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['provider_campus_city','program_name'])
+            ->saveSlugsTo('program_slug');
+    }
 
     public static function getUniquesFor($column)
     {
+//        $records = Program::select($column)->groupBy($column)->orderBy($column)->get();
+
         $records = Program::select($column)->groupBy($column)->orderBy($column)->get();
         if($records->count() > 0 ) {
             return $records;
@@ -56,6 +69,22 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
     {
         $num = Program::where('provider_campus_city', $city)->count();
         return $num;
+    }
+
+    public static function getCitySlug($city)
+    {
+        $slug = Program::select('city_slug')->where('provider_campus_city', $city)->firstOrFail();
+        return $slug;
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'program_slug';
     }
 
 }

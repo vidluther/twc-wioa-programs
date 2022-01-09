@@ -23,19 +23,28 @@ class cityIndex extends Controller
         # so we'll have to do this manually.
         // $grouped = Program::groupBy('provider_campus_city')->aggregate('count',['provider_campus_city'])->get()->toArray();
 
-        $cities = Program::getUniquesFor('provider_campus_city')->toArray();
+        $columns = ['provider_campus_city', 'city_slug'];
+        $cities = Program::getUniquesFor('provider_campus_city');
+        // Now that we have a list of cities, get the number of programs per city.
 
+
+//        dd(count($cities));
         $grouped = [];
-        foreach($cities AS $city) {
-            // get the number of records with this city name
-            $cityName = $city['provider_campus_city'];
-            $num = Program::getNumberOfProgramsByCity($cityName);
-            $grouped[$cityName] = $num;
-         }
-        //sdd($grouped);
+//        foreach($cities AS $city) {
+//            // get the number of records with this city name
+//            $cityName = $city['provider_campus_city'];
+//            $num = Program::getNumberOfProgramsByCity($cityName);
+//            $citySlug = Program::getCitySlug($cityName);
+//            //echo $citySlug . '<br />';
+//            $grouped[$cityName] = $num;
+//         }
+//
+//
+//        dd($grouped);
 
         return view('cities.listofcities',
         [
+            'cities'    => $cities,
             'grouped' => $grouped
         ]);
 
@@ -46,8 +55,8 @@ class cityIndex extends Controller
     public function listByCity(Request $request)
     {
         $city = $request->city;
-
-        $programs = Program::where('provider_campus_city', $city)->paginate(50);
+       // dd($city);
+        $programs = Program::where('city_slug', $city)->paginate(50);
 
 
         return view ('cities.listbycity',
