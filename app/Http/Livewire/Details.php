@@ -22,8 +22,8 @@ class Details extends Component
         $program = Program::where('program_slug', $request->slug)->firstOrFail();
 
 
-        Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", "
-            . $program->provider_campus_state . ' (' . $program->twc_program_id . ')')
+        Meta::setTitle(ucwords($program->provider_campus_city)  . ' ' . $program->program_name . " program"
+        .' (' . $program->twc_program_id . ')')
             ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
                 ', '. $program->provider_campus_name
                 .', ' . $program->provider_campus_zip

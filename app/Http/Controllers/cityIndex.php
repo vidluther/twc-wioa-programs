@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Jenssegers\Mongodb\Eloquent\Model;
 use MongoDB\Operation\Aggregate;
 
+use Butschster\Head\Facades\Meta;
+use Butschster\Head\Packages\Entities\OpenGraphPackage;
+use Butschster\Head\Packages\Entities\TwitterCardPackage;
+
 /**
  * Helps show an index of cities that have ETPs.
  */
@@ -17,6 +21,8 @@ class cityIndex extends Controller
     public function listCities()
     {
 
+        Meta::setDescription("Cities that have an ETP for the TWC-WIOA program in Texas")
+            ->setTitle("Cities in Texas that have an Eligible Training Provider for TWC");
 #        $grouped = Program::groupBy('provider_campus_city')->get(['provider_campus_city','program_name'])->toArray();
         # Ideally this should work.. and give us a count of records per city.. but
         # it's not working in this package..https://github.com/jenssegers/laravel-mongodb/issues/1763
@@ -55,8 +61,17 @@ class cityIndex extends Controller
     public function listByCity(Request $request)
     {
         $city = $request->city;
+
+        $infoForMeta = Program::where('city_slug', $city)->firstOrFail();
+
+        Meta::setDescription("Eligible Training Providers List for the TWC WIOA program (etpl twc) ")
+            ->setTitle("List of Eligible Providers and Programs in " . ucwords($infoForMeta->provider_campus_city)
+                . ',' . $infoForMeta->provider_campus_state );
+
+
        // dd($city);
-        $programs = Program::where('city_slug', $city)->paginate(50);
+        $programs = Program::where('city_slug', $city)->paginate(30);
+
 
 
         return view ('cities.listbycity',
