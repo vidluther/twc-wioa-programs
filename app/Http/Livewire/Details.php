@@ -19,7 +19,7 @@ class Details extends Component
     {
 
 
-        $program = Program::where('twc_program_id', $request->twc_program_id)->firstOrFail();
+        $program = Program::where('program_slug', $request->slug)->firstOrFail();
 
 
         Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", "
