@@ -1,7 +1,7 @@
 <x-layouts.app>
 <x-slot name="header">
     <h1 class="font-bold text-xl text-gray-800 leading-tight">
-        {{ __('Index of Programs by City') }}
+        {{ __('Index of TWC-WIOA Programs by City') }}
     </h1>
 </x-slot>
 

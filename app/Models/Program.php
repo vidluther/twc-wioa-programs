@@ -20,7 +20,7 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(['provider_campus_city','program_name'])
+            ->generateSlugsFrom(['program_name','provider_campus_city',])
             ->saveSlugsTo('program_slug');
     }
 
