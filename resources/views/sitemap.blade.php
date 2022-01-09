@@ -15,7 +15,7 @@
     <url>
         <loc>{{ route('list-of-cities') }} </loc>
         <lastmod>2021-12-19T05:45:04Z</lastmod>
-        <changefreq>yearly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
