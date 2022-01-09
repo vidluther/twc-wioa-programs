@@ -21,8 +21,8 @@
                 </li>
                 <li class="py-2 hover:bg-indigo-300 rounded">
                     <a class="truncate" href="{{ route('list-of-cities') }}">
-                        <img style="width:28px;height:28px;" alt="About TexasWFC.com" title="ETPL By City"
-                             src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/information-circle.svg"
+                        <img style="width:28px;height:28px;" alt="ETPL by City" title="ETPL By City"
+                             src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/location-marker.svg"
                              class="w-7 sm:mx-2 mx-4 inline" />
                         <span class="hidden sm:inline">ETPL by City</span>
                     </a>
