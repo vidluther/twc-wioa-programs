@@ -12,6 +12,7 @@ use Spatie\SchemaOrg\Car;
 use Spatie\SchemaOrg\Schema;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Str;
 
 class Details extends Component
 {
@@ -20,11 +21,14 @@ class Details extends Component
 
 
         $program = Program::where('program_slug', $request->slug)->firstOrFail();
+        // limit page title to 70 characters
+        $pageTitle = Str::limit($program->program_name . ' ' .
+                ucwords($program->provider_campus_city) .
+            ',TX ('. $program->twc_program_id . ')',70);
 
-
-        Meta::setTitle( $program->program_name . " program " . ucwords($program->provider_campus_city)  . ', TX '
-        .' (' . $program->twc_program_id . ')')
-            ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
+//        echo Str::length($pageTitle) ;
+        Meta::setTitle($pageTitle);
+        Meta::setKeywords($program->program_name. ', '.  $program->provider_campus_city .
                 ', '. $program->provider_campus_name
                 .', ' . $program->provider_campus_zip
             )
