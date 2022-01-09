@@ -26,6 +26,8 @@ Route::get('/cities', [cityIndex::class,'listCities'])
     ->name('list-of-cities');
 
 Route::get('sitemap.xml',[Sitemap::class, 'index']);
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
+    ->name('policy.show');
 
 
 Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
@@ -51,8 +53,6 @@ Route::get('/', Dashboard::class);
 
 
 
-Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
-    ->name('policy.show');
 
 
 
