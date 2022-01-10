@@ -104,15 +104,15 @@ class Details extends Component
         $card->setType('summary')
             ->setSite('@vidluther')
             ->setImage(env('APP_URL') . '/images/texas.svg')
-            ->setDescription("More information on".
+            ->setDescription("More information on ".
                 $program->program_name .
-                ' class in ' . $program->provider_campus_city .
+                ' class in ' . ucwords($program->provider_campus_city) .
                 ', ' . $program->provider_campus_state
 
             )
             ->setTitle(
                 $program->program_name .
-                ' class in ' . $program->provider_campus_city .
+                ' class in ' . ucwords($program->provider_campus_city) .
                 ', ' . $program->provider_campus_state
             );
 
