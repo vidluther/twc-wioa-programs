@@ -103,7 +103,10 @@ class ProgramSeeder extends Seeder
         # fix for El Centro College (dcccd.edu)
         # https:www1.dcccd.edu
         if(substr($url,0,20) == 'https:www1.dcccd.edu') {
-            $new_url = str_replace('https:www1.dcccd.edu','https://www1.dcccd.edu/', $url);
+            //$new_url = str_replace('https:www1.dcccd.edu','https://www1.dcccd.edu/', $url);
+            // since most of the newly formed urls were ending up being 404s.. we're just sending directly to dcccd.edu
+            // home page.
+            $new_url = 'https://www1.dcccd.edu/';
             $this->command->info("Changed $url to ". $new_url);
             //die;
             return $new_url;
@@ -114,19 +117,61 @@ class ProgramSeeder extends Seeder
         # fix for lonestar edu links
         #http:www.lonestar.eduFJDJDJ
         if(substr($url,0,21) == 'http:www.lonestar.edu') {
-            $new_url = str_replace('http:www.lonestar.edu','https://www.lonestar.edu/', $url);
+           // $new_url = str_replace('http:www.lonestar.edu','https://www.lonestar.edu/', $url);
+            $new_url = 'https://www.lonestar.edu/';
             $this->command->info("Changed $url to ". $new_url);
             //die;
             return $new_url;
         }
+        // navarro college (navarrocollege.edu)
+        if(str_contains($url, 'navarrocollege.edu')) {
+            $new_url = 'https://navarrocollege.edu';
+            $this->command->info("Changed $url to " . $new_url);
+            return $new_url;
+        }
 
+        // wc.edu
+        if(str_contains($url, 'wc.edu')) {
+            $new_url = 'https://wc.edu';
+            $this->command->info("Changed $url to " . $new_url);
+            return $new_url;
+        }
         # North Harris College
         #  http:www.northharriscollege.com
+        if(str_contains($url, 'northharriscollege.com')) {
+            $new_url = 'https://www.lonestar.edu/northharris';
+            $this->command->info("Changed $url to " . $new_url);
+            return $new_url;
+        }
 
-        if(substr($url,0,21) == 'http:www.northharriscollege.com') {
-            $new_url = str_replace('http:www.northharriscollege.com','https://www.northharriscollege.com/', $url);
+//        if(substr($url,0,21) == 'http:www.northharriscollege.com') {
+//            // $new_url = str_replace('http:www.northharriscollege.com','https://www.northharriscollege.com/', $url);
+//            $new_url = 'https://www.northharriscollege.com/';
+//            $this->command->info("Changed $url to ". $new_url);
+//            //die;
+//            return $new_url;
+//        }
+
+        if(Str::startsWith($url,'http:www.sanjac.edu')) {
+            //$new_url = str_replace('http:www.sanjac.edu','https://www.sanjac.edu/', $url);
+            $new_url = 'https://www.sanjac.edu';
             $this->command->info("Changed $url to ". $new_url);
-            //die;
+            return $new_url;
+        }
+        //https://catalog.grayson.edu/catalog/accounting/index.php
+
+        if(Str::startsWith($url,'https://catalog.grayson.edu')) {
+            //$new_url = str_replace('http:www.sanjac.edu','https://www.sanjac.edu/', $url);
+            $new_url = 'https://catalog.grayson.edu/';
+            $this->command->info("Changed $url to ". $new_url);
+            return $new_url;
+        }
+        //https://www.hccs.edu/
+
+        if(Str::startsWith($url,'https://www.hccs.edu/')) {
+            //$new_url = str_replace('http:www.sanjac.edu','https://www.sanjac.edu/', $url);
+            $new_url = 'https://www.hccs.edu/';
+            $this->command->info("Changed $url to ". $new_url);
             return $new_url;
         }
 
@@ -137,6 +182,7 @@ class ProgramSeeder extends Seeder
             $this->command->info("Changed $url to: $new_url");
             return $new_url;
         }
+
 
 
         // If the start of the string doesn't have http or https, add it.
