@@ -100,6 +100,13 @@ class ProgramSeeder extends Seeder
             return 'https://www.example.com/';
         }
 
+        // https://www.lonestar.edu/accountingaas.htm
+        if(str_contains($url, 'https://www.lonestar.edu/accountingaas.htm')) {
+            $new_url = 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm';
+            $this->command->info("Changed $url to " . $new_url);
+            return $new_url;
+        }
+
         # fix for El Centro College (dcccd.edu)
         # https:www1.dcccd.edu
         if(substr($url,0,20) == 'https:www1.dcccd.edu') {
@@ -143,6 +150,9 @@ class ProgramSeeder extends Seeder
             $this->command->info("Changed $url to " . $new_url);
             return $new_url;
         }
+
+
+
 
 //        if(substr($url,0,21) == 'http:www.northharriscollege.com') {
 //            // $new_url = str_replace('http:www.northharriscollege.com','https://www.northharriscollege.com/', $url);
