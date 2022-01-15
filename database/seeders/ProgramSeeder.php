@@ -25,8 +25,8 @@ class ProgramSeeder extends Seeder
         foreach($csv AS $offset => $line) {
 
             // sanitize provider_url
-            $provider_url = $this->fixUrl(trim($line['Provider URL']));
-            $program_url = $this->fixUrl(trim($line['Program URL']));
+            $provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])));
+            $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])));
 
             $program_twist_id = null;
             $provider_twist_id = null;
@@ -92,20 +92,7 @@ class ProgramSeeder extends Seeder
 
     }
 
-    public function fixBroken($originalString, $broken,$fixed)
-    {
-        print_r($originalString);
-        print_r($broken);
-        print_r($fixed);
-        die;
-        echo "Checking if string contains $broken so we can change it to $fixed" . PHP_EOL;
-die;
-        if(str_contains($broken)) {
-            $this->command->error("URL had $broken.. changed it to $fixed");
-            return $fixed;
-        }
-        echo "Done"; die;
-    }
+
 
     public function fixUrl($url)
     {
@@ -131,9 +118,15 @@ die;
          */
         $bad_to_good_map = [
             'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
+            'http:www.lonestar.eduuniversitypark.htm' => 'https://www.lonestar.edu/universitypark.htm',
+            'www.wc.edu/academics/programs-study/computer-information-systems/information-technology-aas-options' => 'https://www.wc.edu/programs/all-programs/it-degree/index.php',
+            'www.wc.edu/academics/programs-study/accounting/accounting-aas' => 'https://www.wc.edu/programs/all-programs/accounting_certificate/index.php',
             'www.lonestar.educyfair.htm' => 'https://www.lonestar.edu/cyfair.htm',
             'http:www.lonestar.educonroecenter.htm' => 'https://www.lonestar.edu/conroecenter.htm',
-
+            'http:www.sanjac.eduvn' => 'https://www.sanjac.edu/vn',
+            'https://www.texarkanacollege.edu/study/associatedegreenursing/'=>'https://www.texarkanacollege.edu/study/associate-degree-nursing/adn-basic-program/',
+            'http://www.austincareerinstitute.com/index2.html' => 'https://www.austincareerinstitute.edu/',
+            'nationaldentalservices.com' => 'https://national-dental-services.com/nds-dental-assisting-school',
             'http:www.lonestar.edu' => 'https://www.lonestar.edu',
             'https:www1.dcccd.edu' => 'https://www1.dcccd.edu',
             'gatewaytc.net' => 'https://www.gatewaytechnicalschool.com',
@@ -142,8 +135,11 @@ die;
             'http:www.northharriscollege.com' => 'https://www.lonestar.edu/northharris',
             'wc.edu'    => 'https://wc.edu',
             'http:www.sanjac.edu' => 'https://www.sanjac.edu',
+            'https://catalog.grayson.edu/catalog/Accounting/index.php' => 'https://cataglog.grayson.edu',
             'https://catalog.grayson.edu/catalog/accounting/index.php' => 'https://catalog.grayson.edu/',
             'http://www.hccs.edu/finder/programs/heatingairconditioningrefrigeration' => 'https://www.hccs.edu',
+            'https://www.hccs.edu/programs/areasofstudy/business/accounting/' => 'https://www.hccs.edu/programs/areas-of-study/business/accounting/',
+           'https://www.nctc.edu/accounting/index.html' => 'https://nctc.site/accounting/index.html'
 
 
         ];
@@ -161,7 +157,7 @@ die;
         if(substr($url,0,8) == 'http:www') {
            # $this->command->error('Need to fix ' . $url);
             $new_url = str_replace('http:www','https://www', $url);
-            $this->command->info("Changed $url to: $new_url");
+           // $this->command->info("Changed $url to: $new_url");
             return strtolower($new_url);
         }
         // change http:// to https://
@@ -170,7 +166,7 @@ die;
             (!(substr($url, 0, 8) == 'https://'))
         ) {
             $new_url = 'https://' . $url;
-            $this->command->info("Fixed $url to => $new_url");
+           // $this->command->info("Fixed $url to => $new_url");
             return strtolower($new_url);
         } else {
             return strtolower($url);
