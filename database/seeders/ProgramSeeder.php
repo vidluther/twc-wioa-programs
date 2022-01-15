@@ -92,125 +92,93 @@ class ProgramSeeder extends Seeder
 
     }
 
+    public function fixBroken($originalString, $broken,$fixed)
+    {
+        print_r($originalString);
+        print_r($broken);
+        print_r($fixed);
+        die;
+        echo "Checking if string contains $broken so we can change it to $fixed" . PHP_EOL;
+die;
+        if(str_contains($broken)) {
+            $this->command->error("URL had $broken.. changed it to $fixed");
+            return $fixed;
+        }
+        echo "Done"; die;
+    }
+
     public function fixUrl($url)
     {
         // If the url is blank.. change it to example.com for now.. and return it.
-        if(strlen($url) ===0) {
+        if (strlen($url) === 0) {
             #$this->command->error('Got a blank url .. returning https://www.example.com/');
             return 'https://www.example.com/';
         }
 
-        // https://www.lonestar.edu/accountingaas.htm
-        if(str_contains($url, 'https://www.lonestar.edu/accountingaas.htm')) {
-            $new_url = 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm';
-            $this->command->info("Changed $url to " . $new_url);
-            return $new_url;
+
+        /**
+         * keep the longer strings that we have a map for at the top of this array because
+         * the more exact match we have up top, the faster we can exit from this loop, and
+         * we won't run into wildcard issues. For example
+         *
+         * we know that http:www.lonestar.eduaccounting-aas.htm needs to be changed to
+         * https://www.lonestar.edu/programs-of-study/accounting-aas.htm
+         *
+         * We keep that at the top of the map, because later on we may have
+         * a url that's like http:www.lonestar.edusomethingelse , and we don't have an exact map for this url
+         * so the wildcard key of http:www.lonestar.edu will match and give us https://www.lonestar.edu
+         * foo
+         */
+        $bad_to_good_map = [
+            'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
+            'www.lonestar.educyfair.htm' => 'https://www.lonestar.edu/cyfair.htm',
+            'http:www.lonestar.educonroecenter.htm' => 'https://www.lonestar.edu/conroecenter.htm',
+
+            'http:www.lonestar.edu' => 'https://www.lonestar.edu',
+            'https:www1.dcccd.edu' => 'https://www1.dcccd.edu',
+            'gatewaytc.net' => 'https://www.gatewaytechnicalschool.com',
+            'dynamicadvancement.com' => 'https://www.dynamicadvancement.com',
+            'navarrocollege' => 'https://www.navarro.edu',
+            'http:www.northharriscollege.com' => 'https://www.lonestar.edu/northharris',
+            'wc.edu'    => 'https://wc.edu',
+            'http:www.sanjac.edu' => 'https://www.sanjac.edu',
+            'https://catalog.grayson.edu/catalog/accounting/index.php' => 'https://catalog.grayson.edu/',
+            'http://www.hccs.edu/finder/programs/heatingairconditioningrefrigeration' => 'https://www.hccs.edu',
+
+
+        ];
+
+        foreach ($bad_to_good_map as $bad => $good) {
+            $pos = strpos($url,$bad);
+            if ($pos !== false) {
+                $this->command->info("$url will be changed to $good");
+                return $good;
+            }
         }
 
-        # fix for El Centro College (dcccd.edu)
-        # https:www1.dcccd.edu
-        if(substr($url,0,20) == 'https:www1.dcccd.edu') {
-            //$new_url = str_replace('https:www1.dcccd.edu','https://www1.dcccd.edu/', $url);
-            // since most of the newly formed urls were ending up being 404s.. we're just sending directly to dcccd.edu
-            // home page.
-            $new_url = 'https://www1.dcccd.edu/';
-            $this->command->info("Changed $url to ". $new_url);
-            //die;
-            return $new_url;
-        }
+        // just check for malformed strings..
 
-
-
-        # fix for lonestar edu links
-        #http:www.lonestar.eduFJDJDJ
-        if(substr($url,0,21) == 'http:www.lonestar.edu') {
-           // $new_url = str_replace('http:www.lonestar.edu','https://www.lonestar.edu/', $url);
-            $new_url = 'https://www.lonestar.edu/';
-            $this->command->info("Changed $url to ". $new_url);
-            //die;
-            return $new_url;
-        }
-        // navarro college (navarrocollege.edu)
-        if(str_contains($url, 'navarrocollege.edu')) {
-            $new_url = 'https://navarrocollege.edu';
-            $this->command->info("Changed $url to " . $new_url);
-            return $new_url;
-        }
-
-        // wc.edu
-        if(str_contains($url, 'wc.edu')) {
-            $new_url = 'https://wc.edu';
-            $this->command->info("Changed $url to " . $new_url);
-            return $new_url;
-        }
-        # North Harris College
-        #  http:www.northharriscollege.com
-        if(str_contains($url, 'northharriscollege.com')) {
-            $new_url = 'https://www.lonestar.edu/northharris';
-            $this->command->info("Changed $url to " . $new_url);
-            return $new_url;
-        }
-
-
-
-
-//        if(substr($url,0,21) == 'http:www.northharriscollege.com') {
-//            // $new_url = str_replace('http:www.northharriscollege.com','https://www.northharriscollege.com/', $url);
-//            $new_url = 'https://www.northharriscollege.com/';
-//            $this->command->info("Changed $url to ". $new_url);
-//            //die;
-//            return $new_url;
-//        }
-
-        if(Str::startsWith($url,'http:www.sanjac.edu')) {
-            //$new_url = str_replace('http:www.sanjac.edu','https://www.sanjac.edu/', $url);
-            $new_url = 'https://www.sanjac.edu';
-            $this->command->info("Changed $url to ". $new_url);
-            return $new_url;
-        }
-        //https://catalog.grayson.edu/catalog/accounting/index.php
-
-        if(Str::startsWith($url,'https://catalog.grayson.edu')) {
-            //$new_url = str_replace('http:www.sanjac.edu','https://www.sanjac.edu/', $url);
-            $new_url = 'https://catalog.grayson.edu/';
-            $this->command->info("Changed $url to ". $new_url);
-            return $new_url;
-        }
-        //https://www.hccs.edu/
-
-        if(Str::startsWith($url,'https://www.hccs.edu/')) {
-            //$new_url = str_replace('http:www.sanjac.edu','https://www.sanjac.edu/', $url);
-            $new_url = 'https://www.hccs.edu/';
-            $this->command->info("Changed $url to ". $new_url);
-            return $new_url;
-        }
-
-        // If the start of the url is http:www , change it to https://
         if(substr($url,0,8) == 'http:www') {
            # $this->command->error('Need to fix ' . $url);
             $new_url = str_replace('http:www','https://www', $url);
             $this->command->info("Changed $url to: $new_url");
-            return $new_url;
+            return strtolower($new_url);
         }
-
-
-
-        // If the start of the string doesn't have http or https, add it.
-
+        // change http:// to https://
         if ((!(substr($url, 0, 7) == 'http://'))
                 &&
             (!(substr($url, 0, 8) == 'https://'))
         ) {
-
             $new_url = 'https://' . $url;
-            #$this->command->info("Fixed $url to => $new_url");
-            return $new_url;
+            $this->command->info("Fixed $url to => $new_url");
+            return strtolower($new_url);
         } else {
-            return $url;
+            return strtolower($url);
         }
 
-
     }
+
+
 
     public function slugify($str)
     {
