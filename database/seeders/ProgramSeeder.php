@@ -139,7 +139,8 @@ class ProgramSeeder extends Seeder
             'https://catalog.grayson.edu/catalog/accounting/index.php' => 'https://catalog.grayson.edu/',
             'http://www.hccs.edu/finder/programs/heatingairconditioningrefrigeration' => 'https://www.hccs.edu',
             'https://www.hccs.edu/programs/areasofstudy/business/accounting/' => 'https://www.hccs.edu/programs/areas-of-study/business/accounting/',
-           'https://www.nctc.edu/accounting/index.html' => 'https://nctc.site/accounting/index.html'
+           'https://www.nctc.edu/accounting/index.html' => 'https://nctc.site/accounting/index.html',
+            'https://www.hccs.edu/' => 'https://www.hccs.edu/'
 
 
         ];
