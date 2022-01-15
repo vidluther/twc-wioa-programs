@@ -148,7 +148,7 @@ class ProgramSeeder extends Seeder
         foreach ($bad_to_good_map as $bad => $good) {
             $pos = strpos($url,$bad);
             if ($pos !== false) {
-                $this->command->info("$url will be changed to $good");
+               // $this->command->info("$url will be changed to $good");
                 return $good;
             }
         }
