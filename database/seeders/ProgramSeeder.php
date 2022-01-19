@@ -3,9 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\Program;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use League\Csv\Reader;
+
+use GuzzleHttp\Psr7;
+#use GuzzleHttp\Exception\ClientException;
 
 class ProgramSeeder extends Seeder
 {
@@ -25,9 +30,15 @@ class ProgramSeeder extends Seeder
         foreach($csv AS $offset => $line) {
 
             // sanitize provider_url
-            $provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])));
-            $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])));
+          $provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
+          $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])),$line['Program Name']);
 
+            //https://www.alamo.edu/academics/programfinder/workforceprograms/welding/
+
+          //  $this->fixUrl('https://www.alamo.edu/academics/programfinder/workforceprograms/welding/', 'some name');
+
+
+           // $this->checkUrl($program_url,$line['Program Name'],);
             $program_twist_id = null;
             $provider_twist_id = null;
 
@@ -92,9 +103,29 @@ class ProgramSeeder extends Seeder
 
     }
 
+    public function checkUrl($url, $program_name) {
+        #echo $this->command->info("Going to check if $url is working or not");
+        $client = new \GuzzleHttp\Client();
+       // echo $this->command->info("Checking on $program_name");
+
+        try {
+            $response = $client->request('GET', $url,['allow_redirects' => true, 'verify' => false]);
+        } catch (ClientException $e) {
+            echo $this->command->error("$url for $program_name is returning " . $e->getResponse()->getStatusCode());
+           // echo Psr7\Message::toString($e->getRequest());
+         //   echo $e->getResponse()->getStatusCode();
+        } catch (ServerException $s) {
+            echo $this->command->error("$url for $program_name is returning " . $s->getResponse()->getStatusCode());
+        } catch (RequestException $r) {
+            echo $this->command->error("Could not talk to $url for $program_name because.." . $r->getResponse());
+        }
 
 
-    public function fixUrl($url)
+
+
+    }
+
+    public function fixUrl($url,$program_name)
     {
         // If the url is blank.. change it to example.com for now.. and return it.
         if (strlen($url) === 0) {
@@ -102,6 +133,23 @@ class ProgramSeeder extends Seeder
             return 'https://www.example.com/';
         }
 
+        // if we have alamo.edu in the url, we just send people to the search url for the program name
+        $alamo_in_url = strpos($url,'alamo.edu');
+        if($alamo_in_url !== false) {
+            $changed_url = 'https://www.alamo.edu/search/?q=' . $program_name   ;
+            $this->command->info("Alamo.edu found..in ($url)");
+            $this->command->info("\t  $changed_url");
+            return $changed_url;
+        }
+
+        // if we have alvincollege.edu in the url, we just send people to the search url for the program name
+        $alamo_in_url = strpos($url,'alvincollege');
+        if($alamo_in_url !== false) {
+            $changed_url = 'https://www.alvincollege.edu/search/?q=' . $program_name   ;
+            $this->command->info("AlvinCollege found..in ($url)");
+            $this->command->info("\t  $changed_url");
+            return $changed_url;
+        }
 
         /**
          * keep the longer strings that we have a map for at the top of this array because
@@ -117,7 +165,11 @@ class ProgramSeeder extends Seeder
          * foo
          */
         $bad_to_good_map = [
-            'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
+
+
+            'https://www.goapprenticeship.com' => 'https://www.twc.texas.gov/',
+            'www.accd.edu' => 'https://www.alamo.edu',
+             'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
             'http:www.lonestar.eduuniversitypark.htm' => 'https://www.lonestar.edu/universitypark.htm',
             'www.wc.edu/academics/programs-study/computer-information-systems/information-technology-aas-options' => 'https://www.wc.edu/programs/all-programs/it-degree/index.php',
             'www.wc.edu/academics/programs-study/accounting/accounting-aas' => 'https://www.wc.edu/programs/all-programs/accounting_certificate/index.php',
@@ -140,15 +192,16 @@ class ProgramSeeder extends Seeder
             'http://www.hccs.edu/finder/programs/heatingairconditioningrefrigeration' => 'https://www.hccs.edu',
             'https://www.hccs.edu/programs/areasofstudy/business/accounting/' => 'https://www.hccs.edu/programs/areas-of-study/business/accounting/',
            'https://www.nctc.edu/accounting/index.html' => 'https://nctc.site/accounting/index.html',
-            'https://www.hccs.edu/' => 'https://www.hccs.edu/'
-
+            'https://www.hccs.edu/' => 'https://www.hccs.edu/',
+            'altierus.edu/campus/houstonbissonnet' => 'https://www.altierus.edu/',
+            'https://www.alamo.edu/academics/programfinder/workforceprograms/industrialmaintenance_mechatronicstechnician/' => 'https://www.alamo.edu/academics/program-finder/Workforce-Programs/PLC-Programmer/',
+            'http://alliedskills.info///programs.html' => 'https://alliedskills.info',
 
         ];
 
         foreach ($bad_to_good_map as $bad => $good) {
             $pos = strpos($url,$bad);
             if ($pos !== false) {
-               // $this->command->info("$url will be changed to $good");
                 return $good;
             }
         }
