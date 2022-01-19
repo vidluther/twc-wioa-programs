@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ExampleTest extends DuskTestCase
+class navigationTest extends DuskTestCase
 {
     /**
      * A basic browser test example.
@@ -48,23 +48,23 @@ class ExampleTest extends DuskTestCase
      * the program_url link..
      * @return void
      */
-    public function test_program_urls()
-    {
-        $programs = Program::all()->take(5);
-
-        foreach($programs AS $program) {
-
-            $this->browse(function (Browser $browser) use ($program) {
-                $browser->visit($program->program_slug)
-                    ->clickLink($program->program_name)
-                    ->assertSeeLink($program->program_name);
-                 #   ->assertTitleContains('TX');
-
-            });
-
-
-        }
-
-    }
+//    public function test_program_urls()
+//    {
+//        $programs = Program::all()->take(5);
+//
+//        foreach($programs AS $program) {
+//
+//            $this->browse(function (Browser $browser) use ($program) {
+//                $browser->visit($program->program_slug)
+//                    ->clickLink($program->program_name)
+//                    ->assertSeeLink($program->program_name);
+//                 #   ->assertTitleContains('TX');
+//
+//            });
+//
+//
+//        }
+//
+//    }
 
 }
