@@ -32,11 +32,11 @@ class ProgramSeeder extends Seeder
 
             // sanitize provider_url
           $provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
+
+          // Sanitize Program URL
           $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])),$line['Program Name']);
 
-            //https://www.alamo.edu/academics/programfinder/workforceprograms/welding/
 
-          //  $this->fixUrl('https://www.alamo.edu/academics/programfinder/workforceprograms/welding/', 'some name');
 
 
            // $this->checkUrl($program_url,$line['Program Name'],);
@@ -189,6 +189,21 @@ class ProgramSeeder extends Seeder
             return 'https://catalog.grayson.edu/2021-2022/search.php?q=' . rawurlencode($program_name)   ;
         }
 
+        // blinn
+        //https://www.blinn.edu/vocational-nursing/index.html?ss360Query=truck+driving
+        $blinn_in_url = strpos($url,'blinn.edu');
+        if($blinn_in_url !== false) {
+            return 'https://www.blinn.edu/?ss360Query=' . rawurlencode($program_name)   ;
+        }
+
+        // austincc
+        //https://www.blinn.edu/vocational-nursing/index.html?ss360Query=truck+driving
+        $austincc_in_url = strpos($url,'austincc.edu');
+        if($austincc_in_url !== false) {
+            return 'https://www.austincc.edu/search?search=' . rawurlencode($program_name)   ;
+        }
+
+
         /**
          * keep the longer strings that we have a map for at the top of this array because
          * the more exact match we have up top, the faster we can exit from this loop, and
@@ -203,6 +218,7 @@ class ProgramSeeder extends Seeder
          * foo
          */
         $bad_to_good_map = [
+            'www.consultingsolutions.net' => 'https://www.twc.texas.gov',
             'austin.cc.tx.us' => 'https://www.austincc.edu/',
             'ntxapics.org' => 'https://www.ascm.org/learning-development/',
             'https:www.angelo.edu'=>'https://www.angelo.edu/',
@@ -210,7 +226,7 @@ class ProgramSeeder extends Seeder
 
             'cis.actx.edu' => 'https://www.actx.edu/',
             'cp4566.edgewebhosting.net' => 'https://www.twc.texas.gov/',
-            'https://www.goapprenticeship.com' => 'https://www.twc.texas.gov/',
+            'www.goapprenticeship.com' => 'http://www.goapprenticeship.com/',
             'www.accd.edu' => 'https://www.alamo.edu',
              'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
             'http:www.lonestar.eduuniversitypark.htm' => 'https://www.lonestar.edu/universitypark.htm',
