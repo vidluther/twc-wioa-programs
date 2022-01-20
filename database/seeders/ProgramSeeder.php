@@ -203,7 +203,12 @@ class ProgramSeeder extends Seeder
             return 'https://www.austincc.edu/search?search=' . rawurlencode($program_name)   ;
         }
 
-
+        // apprenticareers
+        // https://apprenticareers.org/?s=software+analyst
+        $apprenticareers_in_url = strpos($url,'apprenticareers');
+        if($apprenticareers_in_url !== false) {
+            return 'https://apprenticareers.org/?s=' . rawurlencode($program_name)   ;
+        }
         /**
          * keep the longer strings that we have a map for at the top of this array because
          * the more exact match we have up top, the faster we can exit from this loop, and
