@@ -182,6 +182,12 @@ class ProgramSeeder extends Seeder
             return 'https://computerminds.com/?s=' . rawurlencode($program_name)   ;
         }
 
+        // grayson
+        // https://catalog.grayson.edu/2021-2022/search.php?q=office+and+computer+tech
+        $grayson_in_url = strpos($url,'grayson.edu');
+        if($grayson_in_url !== false) {
+            return 'https://catalog.grayson.edu/2021-2022/search.php?q=' . rawurlencode($program_name)   ;
+        }
 
         /**
          * keep the longer strings that we have a map for at the top of this array because
