@@ -32,11 +32,11 @@ class ProgramSeeder extends Seeder
 
             // sanitize provider_url
           $provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
+
+          // Sanitize Program URL
           $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])),$line['Program Name']);
 
-            //https://www.alamo.edu/academics/programfinder/workforceprograms/welding/
 
-          //  $this->fixUrl('https://www.alamo.edu/academics/programfinder/workforceprograms/welding/', 'some name');
 
 
            // $this->checkUrl($program_url,$line['Program Name'],);
@@ -138,18 +138,14 @@ class ProgramSeeder extends Seeder
         // if we have alamo.edu in the url, we just send people to the search url for the program name
         $alamo_in_url = strpos($url,'alamo.edu');
         if($alamo_in_url !== false) {
-            $changed_url = 'https://www.alamo.edu/search/?q=' . rawurlencode($program_name)   ;
-//            $this->command->info("Alamo.edu found..in ($url)");
-//            $this->command->info("\t  $changed_url");
-            return $changed_url;
+            return 'https://www.alamo.edu/search/?q=' . rawurlencode($program_name)   ;
+
         }
 
         // if we have alvincollege.edu in the url, we just send people to the search url for the program name
         $alvin_in_url = strpos($url,'alvincollege');
         if($alvin_in_url !== false) {
-            $changed_url = 'https://www.alvincollege.edu/search/?q=' . rawurlencode($program_name)   ;
-
-            return $changed_url;
+            return 'https://www.alvincollege.edu/search/?q=' . rawurlencode($program_name)   ;
         }
 
         // Asher.edu search
@@ -157,9 +153,8 @@ class ProgramSeeder extends Seeder
 
         $asher_in_url = strpos($url,'asher.edu');
         if($asher_in_url !== false) {
-            $changed_url = 'https://asher.edu/?s=' . rawurlencode($program_name)   ;
+            return 'https://asher.edu/?s=' . rawurlencode($program_name)   ;
 
-            return $changed_url;
         }
 
         // ACTX.edu search
@@ -167,9 +162,45 @@ class ProgramSeeder extends Seeder
 
         $actx_in_url = strpos($url,'actx.edu');
         if($actx_in_url !== false) {
-            $changed_url = 'https://www.actx.edu/searchac/search.html?q=' . rawurlencode($program_name)   ;
+            return 'https://www.actx.edu/searchac/search.html?q=' . rawurlencode($program_name)   ;
 
-            return $changed_url;
+
+        }
+
+        // collin
+        // https://www.collin.edu/search.html?q=nurse+training
+        $collin_in_url = strpos($url,'collin.edu');
+        if($collin_in_url !== false) {
+            return 'https://www.collin.edu/search.html?q=' . rawurlencode($program_name)   ;
+        }
+
+        // computerminds.com
+        //https://computerminds.com/?s=microsoft+training
+
+        $computerminds_in_url = strpos($url,'computerminds.com');
+        if($computerminds_in_url !== false) {
+            return 'https://computerminds.com/?s=' . rawurlencode($program_name)   ;
+        }
+
+        // grayson
+        // https://catalog.grayson.edu/2021-2022/search.php?q=office+and+computer+tech
+        $grayson_in_url = strpos($url,'grayson.edu');
+        if($grayson_in_url !== false) {
+            return 'https://catalog.grayson.edu/2021-2022/search.php?q=' . rawurlencode($program_name)   ;
+        }
+
+        // blinn
+        //https://www.blinn.edu/vocational-nursing/index.html?ss360Query=truck+driving
+        $blinn_in_url = strpos($url,'blinn.edu');
+        if($blinn_in_url !== false) {
+            return 'https://www.blinn.edu/?ss360Query=' . rawurlencode($program_name)   ;
+        }
+
+        // austincc
+        //https://www.blinn.edu/vocational-nursing/index.html?ss360Query=truck+driving
+        $austincc_in_url = strpos($url,'austincc.edu');
+        if($austincc_in_url !== false) {
+            return 'https://www.austincc.edu/search?search=' . rawurlencode($program_name)   ;
         }
 
 
@@ -187,6 +218,7 @@ class ProgramSeeder extends Seeder
          * foo
          */
         $bad_to_good_map = [
+            'www.consultingsolutions.net' => 'https://www.twc.texas.gov',
             'austin.cc.tx.us' => 'https://www.austincc.edu/',
             'ntxapics.org' => 'https://www.ascm.org/learning-development/',
             'https:www.angelo.edu'=>'https://www.angelo.edu/',
@@ -194,7 +226,7 @@ class ProgramSeeder extends Seeder
 
             'cis.actx.edu' => 'https://www.actx.edu/',
             'cp4566.edgewebhosting.net' => 'https://www.twc.texas.gov/',
-            'https://www.goapprenticeship.com' => 'https://www.twc.texas.gov/',
+            'www.goapprenticeship.com' => 'http://www.goapprenticeship.com/',
             'www.accd.edu' => 'https://www.alamo.edu',
              'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
             'http:www.lonestar.eduuniversitypark.htm' => 'https://www.lonestar.edu/universitypark.htm',
@@ -241,17 +273,20 @@ class ProgramSeeder extends Seeder
            // $this->command->info("Changed $url to: $new_url");
             return strtolower($new_url);
         }
+
+        $url = preg_replace("/^http:/i", "https:", $url);
+        return strtolower($url);
         // change http:// to https://
-        if ((!(substr($url, 0, 7) == 'http://'))
-                &&
-            (!(substr($url, 0, 8) == 'https://'))
-        ) {
-            $new_url = 'https://' . $url;
-           // $this->command->info("Fixed $url to => $new_url");
-            return strtolower($new_url);
-        } else {
-            return strtolower($url);
-        }
+//        if ((!(substr($url, 0, 7) == 'http://'))
+//                &&
+//            (!(substr($url, 0, 8) == 'https://'))
+//        ) {
+//            $new_url = 'https://' . $url;
+//           // $this->command->info("Fixed $url to => $new_url");
+//            return strtolower($new_url);
+//        } else {
+//            return strtolower($url);
+//        }
 
     }
 

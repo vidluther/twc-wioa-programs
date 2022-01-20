@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Exception\MalformedUriException;
 
@@ -71,7 +72,7 @@ class linkChecker extends Command
     private function checkUrls($url, $counter)
     {
         //$url = "https://https:www.angelo.edudeptnursingprograms.php";
-
+        //$url = 'https://www.wetraincdldrivers.com';
         // If the url is not in the goodUrl or badUrl array, check it.
         if(!in_array($url, $this->goodUrls) && (!in_array($url, $this->badUrls))) {
 
@@ -93,9 +94,9 @@ class linkChecker extends Command
                 $this->badUrls[] = $url;
                 echo $this->error("$url is returning " . $s->getMessage());
                 $this->logBrokenLink($url);
-            } catch (RequestException $r) {
+            } catch (RequestException $re) {
                 $this->badUrls[] = $url;
-                echo $this->error("Could not talk to $url because.." . $r->getResponse());
+                echo $this->error("Could not talk to $url because..of a Request Exception");
                 $this->logBrokenLink($url);
             } catch (MalformedUriException $mu) {
                 $this->badUrls[] = $url;
