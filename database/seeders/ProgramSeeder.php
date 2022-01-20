@@ -136,7 +136,7 @@ class ProgramSeeder extends Seeder
         // if we have alamo.edu in the url, we just send people to the search url for the program name
         $alamo_in_url = strpos($url,'alamo.edu');
         if($alamo_in_url !== false) {
-            $changed_url = 'https://www.alamo.edu/search/?q=' . $program_name   ;
+            $changed_url = 'https://www.alamo.edu/search/?q=' . rawurlencode($program_name)   ;
             $this->command->info("Alamo.edu found..in ($url)");
             $this->command->info("\t  $changed_url");
             return $changed_url;
@@ -145,7 +145,7 @@ class ProgramSeeder extends Seeder
         // if we have alvincollege.edu in the url, we just send people to the search url for the program name
         $alamo_in_url = strpos($url,'alvincollege');
         if($alamo_in_url !== false) {
-            $changed_url = 'https://www.alvincollege.edu/search/?q=' . $program_name   ;
+            $changed_url = 'https://www.alvincollege.edu/search/?q=' . rawurlencode($program_name)   ;
             $this->command->info("AlvinCollege found..in ($url)");
             $this->command->info("\t  $changed_url");
             return $changed_url;
@@ -166,7 +166,7 @@ class ProgramSeeder extends Seeder
          */
         $bad_to_good_map = [
 
-
+            'cp4566.edgewebhosting.net' => 'https://www.twc.texas.gov/',
             'https://www.goapprenticeship.com' => 'https://www.twc.texas.gov/',
             'www.accd.edu' => 'https://www.alamo.edu',
              'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
