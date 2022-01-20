@@ -27,6 +27,7 @@ class ProgramSeeder extends Seeder
         $this->command->info(count($csv) . " records found");
         //dd($header);
         $provider_url = null;
+        $counter =1;
         foreach($csv AS $offset => $line) {
 
             // sanitize provider_url
@@ -97,7 +98,8 @@ class ProgramSeeder extends Seeder
                 'city_slug' => Str::slug($line['Campus City'],'-')
 
             ]) ;
-
+            //$this->command->info($counter);
+            $counter++;
         }
 
 
@@ -137,19 +139,39 @@ class ProgramSeeder extends Seeder
         $alamo_in_url = strpos($url,'alamo.edu');
         if($alamo_in_url !== false) {
             $changed_url = 'https://www.alamo.edu/search/?q=' . rawurlencode($program_name)   ;
-            $this->command->info("Alamo.edu found..in ($url)");
-            $this->command->info("\t  $changed_url");
+//            $this->command->info("Alamo.edu found..in ($url)");
+//            $this->command->info("\t  $changed_url");
             return $changed_url;
         }
 
         // if we have alvincollege.edu in the url, we just send people to the search url for the program name
-        $alamo_in_url = strpos($url,'alvincollege');
-        if($alamo_in_url !== false) {
+        $alvin_in_url = strpos($url,'alvincollege');
+        if($alvin_in_url !== false) {
             $changed_url = 'https://www.alvincollege.edu/search/?q=' . rawurlencode($program_name)   ;
-            $this->command->info("AlvinCollege found..in ($url)");
-            $this->command->info("\t  $changed_url");
+
             return $changed_url;
         }
+
+        // Asher.edu search
+        // https://asher.edu/?s=covid+stuff
+
+        $asher_in_url = strpos($url,'asher.edu');
+        if($asher_in_url !== false) {
+            $changed_url = 'https://asher.edu/?s=' . rawurlencode($program_name)   ;
+
+            return $changed_url;
+        }
+
+        // ACTX.edu search
+        // https://www.actx.edu/searchac/search.html?q=wind
+
+        $actx_in_url = strpos($url,'actx.edu');
+        if($actx_in_url !== false) {
+            $changed_url = 'https://www.actx.edu/searchac/search.html?q=' . rawurlencode($program_name)   ;
+
+            return $changed_url;
+        }
+
 
         /**
          * keep the longer strings that we have a map for at the top of this array because
@@ -165,7 +187,12 @@ class ProgramSeeder extends Seeder
          * foo
          */
         $bad_to_good_map = [
+            'austin.cc.tx.us' => 'https://www.austincc.edu/',
+            'ntxapics.org' => 'https://www.ascm.org/learning-development/',
+            'https:www.angelo.edu'=>'https://www.angelo.edu/',
+            'absolutecprdallas.com' => 'https://absolutecprdallas.com/',
 
+            'cis.actx.edu' => 'https://www.actx.edu/',
             'cp4566.edgewebhosting.net' => 'https://www.twc.texas.gov/',
             'https://www.goapprenticeship.com' => 'https://www.twc.texas.gov/',
             'www.accd.edu' => 'https://www.alamo.edu',
@@ -235,13 +262,5 @@ class ProgramSeeder extends Seeder
         return Str::lower(Str::camel($str));
     }
 
-    public function checkIfExists($twc_id)
-    {
-        echo "Checking if $twc_id is in the DB already " . PHP_EOL;
-        // Get all the providers in the DB
-        $providers_in_db = Provider::all();
-//        foreach ($providers_in_db AS $provider) {
-//            dd($provider);
-//        }
-    }
+
 }
