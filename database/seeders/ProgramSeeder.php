@@ -139,7 +139,16 @@ class ProgramSeeder extends Seeder
             'midland.edu' => 'https://www.midland.edu/search.php?q=',
             'odessa.edu' => 'https://www.google.com/search?sitesearch=www.odessa.edu&q=',
             'tstc.edu' => 'https://www.tstc.edu/?s=',
-            'hccs.edu' => 'https://www.hccs.edu/search-results/?q='
+            'hccs.edu' => 'https://www.hccs.edu/search-results/?q=',
+            'wcjc.edu' => 'https://www.wcjc.edu/Search_Results.aspx?q=',
+            'sanjac.edu'    =>  'https://www.sanjac.edu/search?combine=',
+            'swjtc.edu' => 'https://swtjc.edu:8443/dir/qsearch3.jsp?qsearch=',
+            'tjc.edu' => 'https://www.tjc.edu/site/scripts/google_results.php?q=',
+            'catalog.southtexascollege.edu' => 'https://catalog.southtexascollege.edu/search/?search=',
+            'gc.edu' => 'https://gc.edu/?s=',
+            'nctc.edu' => 'https://www.nctc.edu/search-test?q=',
+            'rangercollege.edu' => 'https://www.rangercollege.edu/?s='
+
         ];
 
         foreach ($has_search_url_map as $badstring => $search_url) {
@@ -176,7 +185,7 @@ class ProgramSeeder extends Seeder
             'ntxapics.org' => 'https://www.ascm.org/learning-development/',
             'https:www.angelo.edu'=>'https://www.angelo.edu/',
             'absolutecprdallas.com' => 'https://absolutecprdallas.com/',
-
+            'nctc.edu' => 'https://www.nctc.edu/',
             'cis.actx.edu' => 'https://www.actx.edu/',
             'cp4566.edgewebhosting.net' => 'https://www.twc.texas.gov/',
             'www.goapprenticeship.com' => 'http://www.goapprenticeship.com/',
@@ -198,7 +207,7 @@ class ProgramSeeder extends Seeder
             'navarrocollege' => 'https://www.navarro.edu',
             'http:www.northharriscollege.com' => 'https://www.lonestar.edu/northharris',
             'wc.edu'    => 'https://wc.edu',
-            'http:www.sanjac.edu' => 'https://www.sanjac.edu',
+
             'https://catalog.grayson.edu/catalog/Accounting/index.php' => 'https://cataglog.grayson.edu',
             'https://catalog.grayson.edu/catalog/accounting/index.php' => 'https://catalog.grayson.edu/',
             'http://www.hccs.edu/finder/programs/heatingairconditioningrefrigeration' => 'https://www.hccs.edu',
