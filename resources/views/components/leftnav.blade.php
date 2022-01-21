@@ -1,6 +1,6 @@
 <!--left side navigation -->
-<div class="w-full flex flex-col sm:flex-row flex-grow overflow-hidden">
-    <div class="sm:w-1/3 md:1/4 w-full flex-shrink flex-grow-0 p-4">
+<div class="w-full flex flex-col sm:flex-row flex-grow overflow-hidden ">
+    <div class="sm:w-1/3 md:1/4 w-full flex-shrink flex-grow-0 p-4 print:hidden">
         <div class="sticky top-0 p-4 bg-gray-100 rounded-xl w-full">
             <ul class="flex sm:flex-col overflow-hidden content-center justify-between">
                 <li class="py-2 hover:bg-indigo-300 rounded">
