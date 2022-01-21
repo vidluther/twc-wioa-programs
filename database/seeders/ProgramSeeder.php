@@ -197,7 +197,7 @@ class ProgramSeeder extends Seeder
         }
 
         // austincc
-        //https://www.blinn.edu/vocational-nursing/index.html?ss360Query=truck+driving
+
         $austincc_in_url = strpos($url,'austincc.edu');
         if($austincc_in_url !== false) {
             return 'https://www.austincc.edu/search?search=' . rawurlencode($program_name)   ;
@@ -209,6 +209,9 @@ class ProgramSeeder extends Seeder
         if($apprenticareers_in_url !== false) {
             return 'https://apprenticareers.org/?s=' . rawurlencode($program_name)   ;
         }
+
+
+
         /**
          * keep the longer strings that we have a map for at the top of this array because
          * the more exact match we have up top, the faster we can exit from this loop, and
@@ -223,6 +226,11 @@ class ProgramSeeder extends Seeder
          * foo
          */
         $bad_to_good_map = [
+            'www.lsco.edu' => 'https://www.lsco.edu',
+            'lamar state college orange' => 'https://www.lsco.edu',
+            'rangercollege.edu/truck-driving' => 'https://www.rangercollege.edu/',
+            'rangercollege.edu/emt' => 'https://www.rangercollege.edu/emt/',
+            'dni.edu' => 'https://www.thechicagoschool.edu',
             'www.consultingsolutions.net' => 'https://www.twc.texas.gov',
             'austin.cc.tx.us' => 'https://www.austincc.edu/',
             'ntxapics.org' => 'https://www.ascm.org/learning-development/',
