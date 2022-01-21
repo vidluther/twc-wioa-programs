@@ -14,6 +14,7 @@ use GuzzleHttp\Psr7;
 
 class ProgramSeeder extends Seeder
 {
+    private int $numBadUrls = 0;
 
     /**
      * @throws \League\Csv\Exception
@@ -105,27 +106,8 @@ class ProgramSeeder extends Seeder
 
     }
 
-    public function checkUrl($url, $program_name) {
-        #echo $this->command->info("Going to check if $url is working or not");
-        $client = new \GuzzleHttp\Client();
-       // echo $this->command->info("Checking on $program_name");
-
-        try {
-            $response = $client->request('GET', $url,['allow_redirects' => true, 'verify' => false]);
-        } catch (ClientException $e) {
-            echo $this->command->error("$url for $program_name is returning " . $e->getResponse()->getStatusCode());
-           // echo Psr7\Message::toString($e->getRequest());
-         //   echo $e->getResponse()->getStatusCode();
-        } catch (ServerException $s) {
-            echo $this->command->error("$url for $program_name is returning " . $s->getResponse()->getStatusCode());
-        } catch (RequestException $r) {
-            echo $this->command->error("Could not talk to $url for $program_name because.." . $r->getResponse());
-        }
 
 
-
-
-    }
 
     public function fixUrl($url,$program_name)
     {
@@ -135,81 +117,39 @@ class ProgramSeeder extends Seeder
             return 'https://www.example.com/';
         }
 
-        // if we have alamo.edu in the url, we just send people to the search url for the program name
-        $alamo_in_url = strpos($url,'alamo.edu');
-        if($alamo_in_url !== false) {
-            return 'https://www.alamo.edu/search/?q=' . rawurlencode($program_name)   ;
 
+
+
+
+
+
+
+        $has_search_url_map = [
+            'alamo.edu' => 'https://www.alamo.edu/search/?q=',
+            'alvincollege' => 'https://www.alvincollege.edu/search/?q=',
+            'asher.edu' => 'https://asher.edu/?s=',
+            'actx.edu' => 'https://www.actx.edu/searchac/search.html?q=',
+            'collin.edu' => 'https://www.collin.edu/search.html?q=',
+            'computerminds.com' => 'https://computerminds.com/?s=',
+            'grayson.edu' => 'https://catalog.grayson.edu/2021-2022/search.php?q=',
+            'blinn.edu' => 'https://www.blinn.edu/?ss360Query=',
+            'templejc.edu' => 'https://www.templejc.edu/search/?q=',
+            'apprenticareers' => 'https://apprenticareers.org/?s=',
+            'austincc.edu' => 'https://www.austincc.edu/search?search=',
+            'midland.edu' => 'https://www.midland.edu/search.php?q=',
+            'odessa.edu' => 'https://www.google.com/search?sitesearch=www.odessa.edu&q=',
+            'tstc.edu' => 'https://www.tstc.edu/?s=',
+            'hccs.edu' => 'https://www.hccs.edu/search-results/?q='
+        ];
+
+        foreach ($has_search_url_map as $badstring => $search_url) {
+            $pos = strpos($url,$badstring);
+            if ($pos !== false) {
+                $this->numBadUrls++;
+                $this->command->info($this->numBadUrls . " found $badstring converted to $search_url");
+                return $search_url . rawurlencode($program_name);
+            }
         }
-
-        // if we have alvincollege.edu in the url, we just send people to the search url for the program name
-        $alvin_in_url = strpos($url,'alvincollege');
-        if($alvin_in_url !== false) {
-            return 'https://www.alvincollege.edu/search/?q=' . rawurlencode($program_name)   ;
-        }
-
-        // Asher.edu search
-        // https://asher.edu/?s=covid+stuff
-
-        $asher_in_url = strpos($url,'asher.edu');
-        if($asher_in_url !== false) {
-            return 'https://asher.edu/?s=' . rawurlencode($program_name)   ;
-
-        }
-
-        // ACTX.edu search
-        // https://www.actx.edu/searchac/search.html?q=wind
-
-        $actx_in_url = strpos($url,'actx.edu');
-        if($actx_in_url !== false) {
-            return 'https://www.actx.edu/searchac/search.html?q=' . rawurlencode($program_name)   ;
-
-
-        }
-
-        // collin
-        // https://www.collin.edu/search.html?q=nurse+training
-        $collin_in_url = strpos($url,'collin.edu');
-        if($collin_in_url !== false) {
-            return 'https://www.collin.edu/search.html?q=' . rawurlencode($program_name)   ;
-        }
-
-        // computerminds.com
-        //https://computerminds.com/?s=microsoft+training
-
-        $computerminds_in_url = strpos($url,'computerminds.com');
-        if($computerminds_in_url !== false) {
-            return 'https://computerminds.com/?s=' . rawurlencode($program_name)   ;
-        }
-
-        // grayson
-        // https://catalog.grayson.edu/2021-2022/search.php?q=office+and+computer+tech
-        $grayson_in_url = strpos($url,'grayson.edu');
-        if($grayson_in_url !== false) {
-            return 'https://catalog.grayson.edu/2021-2022/search.php?q=' . rawurlencode($program_name)   ;
-        }
-
-        // blinn
-        //https://www.blinn.edu/vocational-nursing/index.html?ss360Query=truck+driving
-        $blinn_in_url = strpos($url,'blinn.edu');
-        if($blinn_in_url !== false) {
-            return 'https://www.blinn.edu/?ss360Query=' . rawurlencode($program_name)   ;
-        }
-
-        // austincc
-
-        $austincc_in_url = strpos($url,'austincc.edu');
-        if($austincc_in_url !== false) {
-            return 'https://www.austincc.edu/search?search=' . rawurlencode($program_name)   ;
-        }
-
-        // apprenticareers
-        // https://apprenticareers.org/?s=software+analyst
-        $apprenticareers_in_url = strpos($url,'apprenticareers');
-        if($apprenticareers_in_url !== false) {
-            return 'https://apprenticareers.org/?s=' . rawurlencode($program_name)   ;
-        }
-
 
 
         /**
