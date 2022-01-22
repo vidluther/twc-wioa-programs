@@ -147,7 +147,10 @@ class ProgramSeeder extends Seeder
             'catalog.southtexascollege.edu' => 'https://catalog.southtexascollege.edu/search/?search=',
             'gc.edu' => 'https://gc.edu/?s=',
             'nctc.edu' => 'https://www.nctc.edu/search-test?q=',
-            'rangercollege.edu' => 'https://www.rangercollege.edu/?s='
+            'rangercollege.edu' => 'https://www.rangercollege.edu/?s=',
+            'uiw.edu'   => 'https://search.uiw.edu/s/search.html?collection=uiw-search&query=',
+            'texarkanacollege.edu' => 'https://www.texarkanacollege.edu/zoomsearch/?zoom_query=',
+            'com.edu' => 'https://www.com.edu/search/?ousearchq='
 
         ];
 
