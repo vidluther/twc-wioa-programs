@@ -158,7 +158,7 @@ class ProgramSeeder extends Seeder
             $pos = strpos($url,$badstring);
             if ($pos !== false) {
                 $this->numBadUrls++;
-                $this->command->info($this->numBadUrls . " found $badstring converted to $search_url");
+               // $this->command->info($this->numBadUrls . " found $badstring converted to $search_url");
                 return $search_url . rawurlencode($program_name);
             }
         }
@@ -239,19 +239,25 @@ class ProgramSeeder extends Seeder
             return strtolower($new_url);
         }
 
-        $url = preg_replace("/^http:/i", "https:", $url);
-        return strtolower($url);
+
+
         // change http:// to https://
-//        if ((!(substr($url, 0, 7) == 'http://'))
-//                &&
-//            (!(substr($url, 0, 8) == 'https://'))
-//        ) {
-//            $new_url = 'https://' . $url;
-//           // $this->command->info("Fixed $url to => $new_url");
-//            return strtolower($new_url);
-//        } else {
-//            return strtolower($url);
-//        }
+        if ((!(substr($url, 0, 7) == 'http://'))
+                &&
+            (!(substr($url, 0, 8) == 'https://'))
+        ) {
+            $new_url = 'https://' . $url;
+           // $this->command->info("Fixed $url to => $new_url");
+            return strtolower($new_url);
+        } else {
+            $url = preg_replace("/^http:/i", "https:", $url);
+            //$this->command->info("Returning $url ");
+            return strtolower($url);
+        }
+
+        // replace http with https
+
+        //return strtolower($url);
 
     }
 
