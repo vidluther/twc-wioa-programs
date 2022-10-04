@@ -12,6 +12,7 @@ use Spatie\SchemaOrg\Car;
 use Spatie\SchemaOrg\Schema;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Str;
 
 class Details extends Component
 {
@@ -19,12 +20,15 @@ class Details extends Component
     {
 
 
-        $program = Program::where('twc_program_id', $request->twc_program_id)->firstOrFail();
+        $program = Program::where('program_slug', $request->slug)->firstOrFail();
+        // limit page title to 70 characters
+        $pageTitle = $program->program_name . ' ' .
+                ucwords($program->provider_campus_city) .
+            ',TX ('. $program->twc_program_id . ')';
 
-
-        Meta::setTitle($program->program_name . " class in " . ucwords($program->provider_campus_city) . ", "
-            . $program->provider_campus_state . ' (' . $program->twc_program_id . ')')
-            ->setKeywords($program->program_name. ', '.  $program->provider_campus_city .
+//        echo Str::length($pageTitle) ;
+        Meta::setTitle($pageTitle);
+        Meta::setKeywords($program->program_name. ', '.  $program->provider_campus_city .
                 ', '. $program->provider_campus_name
                 .', ' . $program->provider_campus_zip
             )
@@ -100,15 +104,15 @@ class Details extends Component
         $card->setType('summary')
             ->setSite('@vidluther')
             ->setImage(env('APP_URL') . '/images/texas.svg')
-            ->setDescription("More information on".
+            ->setDescription("More information on ".
                 $program->program_name .
-                ' class in ' . $program->provider_campus_city .
+                ' class in ' . ucwords($program->provider_campus_city) .
                 ', ' . $program->provider_campus_state
 
             )
             ->setTitle(
                 $program->program_name .
-                ' class in ' . $program->provider_campus_city .
+                ' class in ' . ucwords($program->provider_campus_city) .
                 ', ' . $program->provider_campus_state
             );
 

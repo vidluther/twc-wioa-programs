@@ -8,12 +8,12 @@
 
 <div class="py-4 space-y-4">
     <!-- Top Bar -->
-    <div class="w-auto md:w-1/3 justify-between">
+    <div class="w-auto md:w-1/3 justify-between print:hidden">
         <div class="space-x-2">
             <x-input.text wire:model.lazy="search" wire:change="$emit('searchedWord')" placeholder="Search for a class by name..."
                   class="bg-gray-100 border-1 rounded-md pl-8 pr-2 text-sm text-gray-700"/> &nbsp;
         </div>
-        <div class="space-x-2">
+        <div class="space-x-2 ">
             <x-input.select wire:model="search_city" wire:change="$emit('searchedCity')"  id="search_city">
                     <option value=""> Any City in Texas</option>
                 @foreach ($cities AS $city)
@@ -34,7 +34,7 @@
         @endif
     </div>
 
-    <div class="py-4 space-y-4">
+    <div class="py-4 space-y-4 print:hidden">
         {{ $programs->links() }}
     </div>
 
@@ -58,7 +58,7 @@
 
 
                                 <p class="text-cool-gray-600 truncate">
-                                    <a href="/details/{{ $program->twc_program_id }}"> {{ $program->program_name }} </a>
+                                    <a href="{{ route('program-details', $program->program_slug) }}"> {{ $program->program_name }} </a>
                                 </p>
                             </span>
                         </x-table.cell>

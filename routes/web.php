@@ -8,6 +8,8 @@ use App\Http\Livewire\About;
 use App\Http\Controllers\Sitemap;
 use App\Http\Controllers\Redirector;
 use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\cityIndex;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,23 +20,40 @@ use App\Http\Controllers\PrivacyPolicyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/about', About::class)->name('about');
 
-Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
+Route::get('/cities', [cityIndex::class,'listCities'])
+    ->name('list-of-cities');
 
 Route::get('sitemap.xml',[Sitemap::class, 'index']);
-
-//Route::match(['get','post'],'/', Dashboard::class);
-
-Route::get('/', Dashboard::class);
-Route::get('/about', About::class);
-
-
-
-Route::get ('/details/{twc_program_id}', \App\Http\Livewire\Details::class)
-    ->name('program-details');
-
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
     ->name('policy.show');
+
+
+Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
+Route::get ('/details/{twc_program_id}', [Redirector::class, 'RedirectDetails'])
+    ->name('old-program-details');
+
+Route::get('/programs-in/{city}/', [cityIndex::class,'listByCity'])
+    ->name('list-by-city');
+
+Route::get ('/{slug}', \App\Http\Livewire\Details::class)
+    ->name('program-details');
+
+
+
+
+Route::get('/', Dashboard::class);
+
+
+
+//Route::get('/{city}', [cityIndex::class, 'listByCity']);
+
+
+
+
+
+
 
 
 

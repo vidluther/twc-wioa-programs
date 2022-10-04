@@ -19,7 +19,7 @@
                 <p
                     class="mb-2 text-sm font-medium text-gray-600"
                 >
-                    # of Programs
+                    # Of Programs
                 </p>
                 <p
                     class="text-lg font-semibold text-gray-900"

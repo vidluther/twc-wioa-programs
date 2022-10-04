@@ -50,7 +50,7 @@
         <x-program.detail> {{ $program->program_format }}</x-program.detail>
 
         <x-program.label class="bg-gray-50"> Provided By </x-program.label>
-        <x-program.detail> <a class="underline" href="{{ $program->provider_url }}" target="new"> {{ $program->provider_name }}</a></x-program.detail>
+        <x-program.detail>  {{ $program->provider_name }}</x-program.detail>
 
 
 
@@ -73,7 +73,7 @@
         <x-program.detail> {{ ucwords($program->provider_campus_county) }}</x-program.detail>
 
         <x-program.label class="bg-gray-50"> Day Care on Site? </x-program.label>
-        <x-program.detail> {{ $program->onsite_childcare }}</x-program.detail>
+        <x-program.detail> {{ $program->onsite_childcare ?? 'no information available' }}</x-program.detail>
 
         <x-program.label class="bg-white"> Public Transport Available? </x-program.label>
         <x-program.detail> {{ $program->public_transit }}</x-program.detail>
@@ -96,6 +96,6 @@
 > Go Back
 </a>
 
-    <script>plausible("details",{ props: { title: document.title, path: document.location.pathname } });</script>
+
 </div>
 
