@@ -49,7 +49,7 @@
         <div class="sticky top-0 p-4 bg-gray-100 rounded-xl w-full">
             <p class="space-y-2 px-1 py-1 prose"> This is the list of eligible training providers for the Texas Workforce
                 Commission WIOA program. The data for this website is pulled from this
-                <a class="underline" href="https://www.twc.texas.gov/files/partners/statewide-eligible-training-program-list-twc.xlsx"> Excel spreadsheet</a>
+                <a class="underline" href="https://www.twc.texas.gov/files/partners/statewide-eligible-training-program-list-twc.xlsm"> Excel spreadsheet</a>
                 that is available at the Texas Workforce Commission website.
                 <br />
 
