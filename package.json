@@ -24,6 +24,6 @@
     "dependencies": {
         "alpinejs": "^3.4.2",
         "daisyui": "^1.16.5",
-        "puppeteer": "^13.0.0"
+        "puppeteer": "^13.7.0"
     }
 }
