@@ -50,7 +50,7 @@
         <x-program.detail> {{ $program->program_format }}</x-program.detail>
 
         <x-program.label class="bg-gray-50"> Provided By </x-program.label>
-        <x-program.detail> <a class="underline" href="{{ $program->provider_url }}" target="new"> {{ $program->provider_name }}</a></x-program.detail>
+        <x-program.detail>  {{ $program->provider_name }}</x-program.detail>
 
 
 

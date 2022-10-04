@@ -32,7 +32,7 @@ class ProgramSeeder extends Seeder
         foreach($csv AS $offset => $line) {
 
             // sanitize provider_url
-          $provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
+          //$provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
 
           // Sanitize Program URL
           $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])),$line['Program Name']);
@@ -48,30 +48,30 @@ class ProgramSeeder extends Seeder
             $provider_twist_id = trim($line['TWIST Provider ID']);
 
             Program::create([
-                'twc_provider_id' => $line['Provider #'],
-                'twc_program_id' => $line['Program #'],
+                'twc_provider_id' => $line['Provider ID'],
+                'twc_program_id' => $line['Program ID'],
                 'twc_program_status' => $line['Program Status'],
 
-                'provider_name' => $line['Provider Name'],
-                'provider_url' => mb_strtolower($provider_url),
-                'provider_description' => $line['Description Of Provider'],
+                'provider_name' => $line['ProviderName'],
+            //    'provider_url' => mb_strtolower($provider_url),
+                'provider_description' => $line['Provider Description'],
                 'provider_type' => $line['Institution Type'],
                 'provider_campus_name' => $line['Campus Name'],
-                'provider_campus_addr1' => $line['Campus Address1'],
-                'provider_campus_addr2' => $line['Campus Address2'],
-                'provider_campus_city' => mb_strtolower($line['Campus City']),
+                'provider_campus_addr1' => $line[' Campus Address '],
+                'provider_campus_addr2' => $line['Campus Address 2'],
+                'provider_campus_city' => mb_strtolower($line[' Campus City ']),
 
                 'provider_campus_state' => $line['Campus State'],
-                'provider_campus_zip' => $line['Campus Zip Code'],
+                'provider_campus_zip' => $line[' Campus Zip Code '],
                 'provider_campus_county' => mb_strtolower($line['Campus County']),
 
                 'provider_twist_id' => $provider_twist_id,
                 'program_twist_id' => $program_twist_id,
 
 
-                'public_transit' => $line["Information:\nPublic Transit?"],
-                'onsite_childcare' => $line["Information:\nOnsite Childcare?"],
-                'flexible_hours' => $line["Information:\nFlexible Hours?"],
+                'public_transit' => $line["Information: Public Transit"],
+                'onsite_childcare' => $line["Information: Onsite Childcare"],
+                'flexible_hours' => $line["Information: Flexible Hours"],
 
                 'program_name' => $line['Program Name'],
                 'program_description' => $line['Program Description'],
@@ -79,24 +79,24 @@ class ProgramSeeder extends Seeder
                 'program_pre_reqs' => $line['Academic PreRequisites'],
                 'program_url' => mb_strtolower($program_url),
                 'program_outcome' => $line['Program Outcome'],
-                'program_credential_name' => $line['Associated Credential Name'],
-                'program_length_hours' => $line["Length:\nContact Hours"],
-                'program_length_weeks' => $line["Length:\nWeeks"],
-                'program_format' => $line['Program Format'],
-                'program_occupation_code1' => $line['Occupation Code 1'],
-                'program_occupation_code2' => $line['Occupation Code 2'],
-                'program_occupation_code3' => $line['Occupation Code 3'],
-                'program_cost_tuition_and_fees' => trim($line[" Required Cost:\nTuition & Fees "]),
-                'program_cost_books_and_supplies' => trim($line[" Required Cost:\nBooks Supplies "]),
-                'program_cost_other' => trim($line[" Optional Cost:\nOther "]),
+                'program_credential_name' => $line['Associted Credential Name'],
+                'program_length_hours' => $line["Length: Contact Hours"],
+                'program_length_weeks' => $line["Length: Weeks"],
+                'program_format' => $line['Delivery Method'],
+                'program_occupation_code1' => $line['Occupation Code (ONET 1)'],
+                'program_occupation_code2' => $line['Occupation Code (ONET 2)'],
+                'program_occupation_code3' => $line['Occupation Code (ONET 1)'],
+                'program_cost_tuition_and_fees' => trim($line[" Required Cost: Tuition & Fees "]),
+                'program_cost_books_and_supplies' => trim($line[" Required Cost: Books & Supplies "]),
+                'program_cost_other' => trim($line[" Optional Cost "]),
 //                'outofdistrict_tuition_and_fees' => $line[" (Out Of District)\n
 //Cost: \n
 //Tuition & Fees\n"],
                 'program_total_apprentices' => $line['Number Of Apprentices'],
-                'program_start_date' => strtotime($line['Program Start Date']),
-                'program_last_updated' => strtotime($line['Program Last Update Date']),
+                'program_start_date' => strtotime($line['Program ETPL Start Date']),
+                'program_last_updated' => strtotime($line['Program ETPL Last Update']),
 
-                'city_slug' => Str::slug($line['Campus City'],'-')
+                'city_slug' => Str::slug($line[' Campus City '],'-')
 
             ]) ;
             //$this->command->info($counter);
