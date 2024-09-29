@@ -8,31 +8,31 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.1",
-        "butschster/meta-tags": "^2.1",
+        "php": "^8.0",
+        "butschster/meta-tags": "^2.2",
         "fruitcake/php-cors": "*",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "itsgoingd/clockwork": "^5.1",
-        "laravel/framework": "^8.65",
-        "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5",
-        "league/csv": "^9.0",
-        "livewire/livewire": "^2.8",
+        "laravel/framework": "^9.52",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7",
+        "league/csv": "^9.6",
+        "livewire/livewire": "^2.10",
         "mongodb/mongodb": "*",
         "psr/http-factory": "*",
-        "spatie/laravel-sluggable": "^3.2",
+        "spatie/laravel-sluggable": "^3.3",
         "spatie/schema-org": "^3.23.0",
         "symfony/mailer": "*",
         "league/flysystem-aws-s3-v3": "^3.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/dusk": "^6.21",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "^1.15",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "nunomaduro/collision": "^6.3",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.4"
     },
     "autoload": {
         "psr-4": {
@@ -52,7 +52,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
