@@ -6,14 +6,14 @@ return [
     /*
      * Meta title section
      */
-//    'title' => [
-//        'default' => env('APP_NAME'),
-//        'separator' => '-',
-//        'max_length' => 255,
-//    ],
+    //    'title' => [
+    //        'default' => env('APP_NAME'),
+    //        'separator' => '-',
+    //        'max_length' => 255,
+    //    ],
 
     'title' => [
-        'default' => "A list of eligible training providers and programs for WIOA in Texas",
+        'default' => 'A list of eligible training providers and programs for WIOA in Texas',
         'separator' => '-',
         'max_length' => 255,
     ],
@@ -27,13 +27,12 @@ return [
         'max_length' => 255,
     ],
 
-
     /*
      * Meta keywords section
      */
     'keywords' => [
         'default' => 'welding, CDL, pipe fitter, electrical, plumber training in Texas',
-        'max_length' => 255
+        'max_length' => 255,
     ],
 
     /*
@@ -42,7 +41,7 @@ return [
      * Packages, that should be included everywhere
      */
     'packages' => [
-        'OG'
+        'OG',
         // 'jquery', 'bootstrap', ...
     ],
 

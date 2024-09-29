@@ -2,17 +2,14 @@
 
 namespace App\Providers;
 
-use Butschster\Head\Contracts\Packages\PackageInterface;
-use Butschster\Head\Facades\PackageManager;
-use Butschster\Head\MetaTags\Meta;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Butschster\Head\Contracts\Packages\ManagerInterface;
+use Butschster\Head\MetaTags\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Providers\MetaTagsApplicationServiceProvider as ServiceProvider;
 
 class MetaTagsServiceProvider extends ServiceProvider
 {
-
     protected function packages()
     {
         // Create your own packages here
@@ -21,11 +18,11 @@ class MetaTagsServiceProvider extends ServiceProvider
             ->setSiteName('Texas Workforce Commission WIOA Eligible Training Provider and Program List')
             ->setTitle('I am a OG title');
 
-        $og->addImage(env('APP_URL') . '/images/texas.svg',[
-                'type' => 'image/svg+xml'
-            ]
+        $og->addImage(env('APP_URL').'/images/texas.svg', [
+            'type' => 'image/svg+xml',
+        ]
         );
-       //Meta::registerPackage($og);
+        //Meta::registerPackage($og);
     }
 
     // if you don't want to change anything in this method just remove it

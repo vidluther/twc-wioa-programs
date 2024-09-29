@@ -2,31 +2,25 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Models\Program;
 use Butschster\Head\Facades\Meta;
 use Butschster\Head\Packages\Entities\OpenGraphPackage;
 use Butschster\Head\Packages\Entities\TwitterCardPackage;
-use Livewire\Component;
 use Illuminate\Http\Request;
-use App\Http\Livewire\DataTable\WithSorting;
-use App\Http\Livewire\DataTable\WithCachedRows;
-use App\Http\Livewire\DataTable\WithBulkActions;
-use App\Http\Livewire\DataTable\WithPerPagePagination;
-
-use Spatie\SchemaOrg\Schema;
-use Spatie\SchemaOrg\Graph;
-use Spatie\SchemaOrg\ListItem;
+use Livewire\Component;
 use Spatie\SchemaOrg\ItemList;
-
-
+use Spatie\SchemaOrg\Schema;
 
 class Dashboard extends Component
 {
     use WithPerPagePagination;
+
     public ?string $search = '';
+
     public ?string $search_city = null;
 
-    protected $listeners = ['searchedWord','searchedCity'];
+    protected $listeners = ['searchedWord', 'searchedCity'];
 
     public function searchedWord()
     {
@@ -40,15 +34,9 @@ class Dashboard extends Component
         //        dd($this->search_city);
     }
 
-    public function updatedSearch($value)
-    {
+    public function updatedSearch($value) {}
 
-    }
-
-    public function updatedSearchCity($value)
-    {
-
-    }
+    public function updatedSearchCity($value) {}
 
     public function render(Request $request)
     {
@@ -60,8 +48,8 @@ class Dashboard extends Component
             ->orderBy('provider_campus_city', 'ASC')
             ->paginate(30);
 
-        Meta::setDescription("Eligible Training Providers List for the TWC WIOA program (etpl twc) ")
-            ->setTitle("ETPL - TWC - Eligible Training Provider List for the TWC WIOA program");
+        Meta::setDescription('Eligible Training Providers List for the TWC WIOA program (etpl twc) ')
+            ->setTitle('ETPL - TWC - Eligible Training Provider List for the TWC WIOA program');
 
         $this->setOgandCard();
 
@@ -70,7 +58,7 @@ class Dashboard extends Component
         return view('livewire.dashboard', [
             'cities' => $cities,
             'programs' => $programs,
-            'schema' => $schema
+            'schema' => $schema,
         ]);
     }
 
@@ -79,18 +67,16 @@ class Dashboard extends Component
         $schema = Schema::itemList();
         $i = 1;
 
-
-
-        $itemList = new ItemList();
+        $itemList = new ItemList;
         $listItems = null;
-        foreach($programs AS $program) {
-            $listItems[] =  Schema::listItem()
+        foreach ($programs as $program) {
+            $listItems[] = Schema::listItem()
                 ->position($i)
-                ->url(env('APP_URL') . '/show/' . $program->program_twist_id);
-                //->url("https://www.foo.com/show/" . $program->program_twist_id);
+                ->url(env('APP_URL').'/show/'.$program->program_twist_id);
+            //->url("https://www.foo.com/show/" . $program->program_twist_id);
             $i++;
         }
-        if(!is_null($listItems)) {
+        if (! is_null($listItems)) {
             $itemList->itemListElement(
                 $listItems
             );
@@ -111,18 +97,17 @@ class Dashboard extends Component
             ->setTitle('List of Eligible Training Providers and Programs for the TWC-WIOA program')
 
             ->setUrl(request()->url());
-        $og->addImage(env('APP_URL') . '/images/texas.svg',[
-                'type' => 'image/svg+xml'
-            ]
+        $og->addImage(env('APP_URL').'/images/texas.svg', [
+            'type' => 'image/svg+xml',
+        ]
         );
         Meta::registerPackage($og);
 
         $card = new TwitterCardPackage('twitter');
         $card->setType('summary')
             ->setSite('@vidluther')
-            ->setImage(env('APP_URL') . '/images/texas.svg')
+            ->setImage(env('APP_URL').'/images/texas.svg')
             ->setTitle('List of Eligible Training Providers and Programs for the Texas WFC-WIOA Program');
-
 
         Meta::registerPackage($card);
     }

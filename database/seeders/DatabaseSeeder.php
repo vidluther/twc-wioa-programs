@@ -4,11 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use League\Csv\Reader;
-use League\Csv\Statement;
-use App\Models\Program;
-use Illuminate\Support\Str;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $name = "vid luther";
+        $name = 'vid luther';
         $email = 'v@l.com';
         $password = Hash::make('Testing321');
 
@@ -40,4 +35,3 @@ class DatabaseSeeder extends Seeder
         $this->command->line('Imported from CSV!');
     }
 }
-

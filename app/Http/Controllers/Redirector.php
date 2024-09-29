@@ -14,19 +14,18 @@ class Redirector extends Controller
         $program_slug = $program->program_slug;
         $new_url = "/$program_slug";
 
-        return redirect($new_url,301);
+        return redirect($new_url, 301);
     }
 
     public function RedirectDetails(Request $request)
     {
-//        dd($request);
+        //        dd($request);
         $program = Program::where('twc_program_id', $request->twc_program_id)->firstOrFail();
-//        dd($program);
+        //        dd($program);
         $program_slug = $program->program_slug;
         $new_url = "/$program_slug";
-//        dd($new_url);
-        return redirect('/' . $program_slug,301);
+
+        //        dd($new_url);
+        return redirect('/'.$program_slug, 301);
     }
-
-
 }

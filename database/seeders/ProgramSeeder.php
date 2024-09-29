@@ -3,14 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Program;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use League\Csv\Reader;
 
-use GuzzleHttp\Psr7;
-#use GuzzleHttp\Exception\ClientException;
+//use GuzzleHttp\Exception\ClientException;
 
 class ProgramSeeder extends Seeder
 {
@@ -25,22 +22,19 @@ class ProgramSeeder extends Seeder
         $csv->setHeaderOffset(0);
         $header_offset = $csv->getHeaderOffset(); //returns 0
         $header = $csv->getHeader();
-        $this->command->info(count($csv) . " records found");
+        $this->command->info(count($csv).' records found');
         //dd($header);
         $provider_url = null;
-        $counter =1;
-        foreach($csv AS $offset => $line) {
+        $counter = 1;
+        foreach ($csv as $offset => $line) {
 
             // sanitize provider_url
-          //$provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
+            //$provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
 
-          // Sanitize Program URL
-          $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])),$line['Program Name']);
+            // Sanitize Program URL
+            $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])), $line['Program Name']);
 
-
-
-
-           // $this->checkUrl($program_url,$line['Program Name'],);
+            // $this->checkUrl($program_url,$line['Program Name'],);
             $program_twist_id = null;
             $provider_twist_id = null;
 
@@ -53,7 +47,7 @@ class ProgramSeeder extends Seeder
                 'twc_program_status' => $line['Program Status'],
 
                 'provider_name' => $line['ProviderName'],
-            //    'provider_url' => mb_strtolower($provider_url),
+                //    'provider_url' => mb_strtolower($provider_url),
                 'provider_description' => $line['Provider Description'],
                 'provider_type' => $line['Institution Type'],
                 'provider_campus_name' => $line['Campus Name'],
@@ -68,10 +62,9 @@ class ProgramSeeder extends Seeder
                 'provider_twist_id' => $provider_twist_id,
                 'program_twist_id' => $program_twist_id,
 
-
-                'public_transit' => $line["Information: Public Transit"],
-                'onsite_childcare' => $line["Information: Onsite Childcare"],
-                'flexible_hours' => $line["Information: Flexible Hours"],
+                'public_transit' => $line['Information: Public Transit'],
+                'onsite_childcare' => $line['Information: Onsite Childcare'],
+                'flexible_hours' => $line['Information: Flexible Hours'],
 
                 'program_name' => $line['Program Name'],
                 'program_description' => $line['Program Description'],
@@ -80,49 +73,38 @@ class ProgramSeeder extends Seeder
                 'program_url' => mb_strtolower($program_url),
                 'program_outcome' => $line['Program Outcome'],
                 'program_credential_name' => $line['Associted Credential Name'],
-                'program_length_hours' => $line["Length: Contact Hours"],
-                'program_length_weeks' => $line["Length: Weeks"],
+                'program_length_hours' => $line['Length: Contact Hours'],
+                'program_length_weeks' => $line['Length: Weeks'],
                 'program_format' => $line['Delivery Method'],
                 'program_occupation_code1' => $line['Occupation Code (ONET 1)'],
                 'program_occupation_code2' => $line['Occupation Code (ONET 2)'],
                 'program_occupation_code3' => $line['Occupation Code (ONET 1)'],
-                'program_cost_tuition_and_fees' => trim($line[" Required Cost: Tuition & Fees "]),
-                'program_cost_books_and_supplies' => trim($line[" Required Cost: Books & Supplies "]),
-                'program_cost_other' => trim($line[" Optional Cost "]),
-//                'outofdistrict_tuition_and_fees' => $line[" (Out Of District)\n
-//Cost: \n
-//Tuition & Fees\n"],
+                'program_cost_tuition_and_fees' => trim($line[' Required Cost: Tuition & Fees ']),
+                'program_cost_books_and_supplies' => trim($line[' Required Cost: Books & Supplies ']),
+                'program_cost_other' => trim($line[' Optional Cost ']),
+                //                'outofdistrict_tuition_and_fees' => $line[" (Out Of District)\n
+                //Cost: \n
+                //Tuition & Fees\n"],
                 'program_total_apprentices' => $line['Number Of Apprentices'],
                 'program_start_date' => strtotime($line['Program ETPL Start Date']),
                 'program_last_updated' => strtotime($line['Program ETPL Last Update']),
 
-                'city_slug' => Str::slug($line[' Campus City '],'-')
+                'city_slug' => Str::slug($line[' Campus City '], '-'),
 
-            ]) ;
+            ]);
             //$this->command->info($counter);
             $counter++;
         }
 
-
     }
 
-
-
-
-    public function fixUrl($url,$program_name)
+    public function fixUrl($url, $program_name)
     {
         // If the url is blank.. change it to example.com for now.. and return it.
         if (strlen($url) === 0) {
-            #$this->command->error('Got a blank url .. returning https://www.example.com/');
+            //$this->command->error('Got a blank url .. returning https://www.example.com/');
             return 'https://www.example.com/';
         }
-
-
-
-
-
-
-
 
         $has_search_url_map = [
             'alamo.edu' => 'https://www.alamo.edu/search/?q=',
@@ -141,28 +123,28 @@ class ProgramSeeder extends Seeder
             'tstc.edu' => 'https://www.tstc.edu/?s=',
             'hccs.edu' => 'https://www.hccs.edu/search-results/?q=',
             'wcjc.edu' => 'https://www.wcjc.edu/Search_Results.aspx?q=',
-            'sanjac.edu'    =>  'https://www.sanjac.edu/search?combine=',
+            'sanjac.edu' => 'https://www.sanjac.edu/search?combine=',
             'swjtc.edu' => 'https://swtjc.edu:8443/dir/qsearch3.jsp?qsearch=',
             'tjc.edu' => 'https://www.tjc.edu/site/scripts/google_results.php?q=',
             'catalog.southtexascollege.edu' => 'https://catalog.southtexascollege.edu/search/?search=',
             'gc.edu' => 'https://gc.edu/?s=',
             'nctc.edu' => 'https://www.nctc.edu/search-test?q=',
             'rangercollege.edu' => 'https://www.rangercollege.edu/?s=',
-            'uiw.edu'   => 'https://search.uiw.edu/s/search.html?collection=uiw-search&query=',
+            'uiw.edu' => 'https://search.uiw.edu/s/search.html?collection=uiw-search&query=',
             'texarkanacollege.edu' => 'https://www.texarkanacollege.edu/zoomsearch/?zoom_query=',
-            'com.edu' => 'https://www.com.edu/search/?ousearchq='
+            'com.edu' => 'https://www.com.edu/search/?ousearchq=',
 
         ];
 
         foreach ($has_search_url_map as $badstring => $search_url) {
-            $pos = strpos($url,$badstring);
+            $pos = strpos($url, $badstring);
             if ($pos !== false) {
                 $this->numBadUrls++;
-               // $this->command->info($this->numBadUrls . " found $badstring converted to $search_url");
-                return $search_url . rawurlencode($program_name);
+
+                // $this->command->info($this->numBadUrls . " found $badstring converted to $search_url");
+                return $search_url.rawurlencode($program_name);
             }
         }
-
 
         /**
          * keep the longer strings that we have a map for at the top of this array because
@@ -186,21 +168,21 @@ class ProgramSeeder extends Seeder
             'www.consultingsolutions.net' => 'https://www.twc.texas.gov',
             'austin.cc.tx.us' => 'https://www.austincc.edu/',
             'ntxapics.org' => 'https://www.ascm.org/learning-development/',
-            'https:www.angelo.edu'=>'https://www.angelo.edu/',
+            'https:www.angelo.edu' => 'https://www.angelo.edu/',
             'absolutecprdallas.com' => 'https://absolutecprdallas.com/',
             'nctc.edu' => 'https://www.nctc.edu/',
             'cis.actx.edu' => 'https://www.actx.edu/',
             'cp4566.edgewebhosting.net' => 'https://www.twc.texas.gov/',
             'www.goapprenticeship.com' => 'http://www.goapprenticeship.com/',
             'www.accd.edu' => 'https://www.alamo.edu',
-             'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
+            'http:www.lonestar.eduaccounting-aas.htm' => 'https://www.lonestar.edu/programs-of-study/accounting-aas.htm',
             'http:www.lonestar.eduuniversitypark.htm' => 'https://www.lonestar.edu/universitypark.htm',
             'www.wc.edu/academics/programs-study/computer-information-systems/information-technology-aas-options' => 'https://www.wc.edu/programs/all-programs/it-degree/index.php',
             'www.wc.edu/academics/programs-study/accounting/accounting-aas' => 'https://www.wc.edu/programs/all-programs/accounting_certificate/index.php',
             'www.lonestar.educyfair.htm' => 'https://www.lonestar.edu/cyfair.htm',
             'http:www.lonestar.educonroecenter.htm' => 'https://www.lonestar.edu/conroecenter.htm',
             'http:www.sanjac.eduvn' => 'https://www.sanjac.edu/vn',
-            'https://www.texarkanacollege.edu/study/associatedegreenursing/'=>'https://www.texarkanacollege.edu/study/associate-degree-nursing/adn-basic-program/',
+            'https://www.texarkanacollege.edu/study/associatedegreenursing/' => 'https://www.texarkanacollege.edu/study/associate-degree-nursing/adn-basic-program/',
             'http://www.austincareerinstitute.com/index2.html' => 'https://www.austincareerinstitute.edu/',
             'nationaldentalservices.com' => 'https://national-dental-services.com/nds-dental-assisting-school',
             'http:www.lonestar.edu' => 'https://www.lonestar.edu',
@@ -209,13 +191,13 @@ class ProgramSeeder extends Seeder
             'dynamicadvancement.com' => 'https://www.dynamicadvancement.com',
             'navarrocollege' => 'https://www.navarro.edu',
             'http:www.northharriscollege.com' => 'https://www.lonestar.edu/northharris',
-            'wc.edu'    => 'https://wc.edu',
+            'wc.edu' => 'https://wc.edu',
 
             'https://catalog.grayson.edu/catalog/Accounting/index.php' => 'https://cataglog.grayson.edu',
             'https://catalog.grayson.edu/catalog/accounting/index.php' => 'https://catalog.grayson.edu/',
             'http://www.hccs.edu/finder/programs/heatingairconditioningrefrigeration' => 'https://www.hccs.edu',
             'https://www.hccs.edu/programs/areasofstudy/business/accounting/' => 'https://www.hccs.edu/programs/areas-of-study/business/accounting/',
-           'https://www.nctc.edu/accounting/index.html' => 'https://nctc.site/accounting/index.html',
+            'https://www.nctc.edu/accounting/index.html' => 'https://nctc.site/accounting/index.html',
             'https://www.hccs.edu/' => 'https://www.hccs.edu/',
             'altierus.edu/campus/houstonbissonnet' => 'https://www.altierus.edu/',
             'https://www.alamo.edu/academics/programfinder/workforceprograms/industrialmaintenance_mechatronicstechnician/' => 'https://www.alamo.edu/academics/program-finder/Workforce-Programs/PLC-Programmer/',
@@ -224,7 +206,7 @@ class ProgramSeeder extends Seeder
         ];
 
         foreach ($bad_to_good_map as $bad => $good) {
-            $pos = strpos($url,$bad);
+            $pos = strpos($url, $bad);
             if ($pos !== false) {
                 return $good;
             }
@@ -232,25 +214,26 @@ class ProgramSeeder extends Seeder
 
         // just check for malformed strings..
 
-        if(substr($url,0,8) == 'http:www') {
-           # $this->command->error('Need to fix ' . $url);
-            $new_url = str_replace('http:www','https://www', $url);
-           // $this->command->info("Changed $url to: $new_url");
+        if (substr($url, 0, 8) == 'http:www') {
+            // $this->command->error('Need to fix ' . $url);
+            $new_url = str_replace('http:www', 'https://www', $url);
+
+            // $this->command->info("Changed $url to: $new_url");
             return strtolower($new_url);
         }
 
-
-
         // change http:// to https://
-        if ((!(substr($url, 0, 7) == 'http://'))
+        if ((! (substr($url, 0, 7) == 'http://'))
                 &&
-            (!(substr($url, 0, 8) == 'https://'))
+            (! (substr($url, 0, 8) == 'https://'))
         ) {
-            $new_url = 'https://' . $url;
-           // $this->command->info("Fixed $url to => $new_url");
+            $new_url = 'https://'.$url;
+
+            // $this->command->info("Fixed $url to => $new_url");
             return strtolower($new_url);
         } else {
-            $url = preg_replace("/^http:/i", "https:", $url);
+            $url = preg_replace('/^http:/i', 'https:', $url);
+
             //$this->command->info("Returning $url ");
             return strtolower($url);
         }
@@ -261,12 +244,8 @@ class ProgramSeeder extends Seeder
 
     }
 
-
-
     public function slugify($str)
     {
         return Str::lower(Str::camel($str));
     }
-
-
 }

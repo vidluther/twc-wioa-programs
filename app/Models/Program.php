@@ -3,33 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
-
-#use Illuminate\Database\Eloquent\Model;
-
 use Jenssegers\Mongodb\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+//use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Sluggable\SlugOptions;
 
 class Program extends \Jenssegers\Mongodb\Eloquent\Model
 {
-   // protected $connection = 'mongodb';
+    // protected $connection = 'mongodb';
     use HasFactory;
     use HasSlug;
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(['program_name','provider_campus_city',])
+            ->generateSlugsFrom(['program_name', 'provider_campus_city'])
             ->saveSlugsTo('program_slug');
     }
 
     public static function getUniquesFor($column)
     {
-//        $records = Program::select($column)->groupBy($column)->orderBy($column)->get();
+        //        $records = Program::select($column)->groupBy($column)->orderBy($column)->get();
 
         $records = Program::select($column)->groupBy($column)->orderBy($column)->get();
-        if($records->count() > 0 ) {
+        if ($records->count() > 0) {
             return $records;
         } else {
             return false;
@@ -37,34 +35,37 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
 
     }
 
-    public static function getAverageCost() {
+    public static function getAverageCost()
+    {
         $programs = Program::all();
-        $cost = 0 ;
+        $cost = 0;
         $average_cost = 0;
 
-        foreach($programs AS $program) {
+        foreach ($programs as $program) {
             $cost = $cost + (int) $program->program_cost_tuition_and_fees;
         }
 
         $average = $cost / Program::count();
         $average_cost = number_format($average, '2');
+
         return $average_cost;
     }
 
-    public static function getOfficeByCounty($county) {
-        $officeMap = array (
+    public static function getOfficeByCounty($county)
+    {
+        $officeMap = [
             'county' => 'https://www.officeoflocalcountywfc.com',
             'atascosa' => 'https://www.workforcesolutionsalamo.org/',
             'nueces' => 'https://www.workforcesolutionscb.org/',
             'travis' => 'http://www.wfscapitalarea.com/',
             'bexar' => 'http://www.workforcesolutionsalamo.org/',
             'el paso' => 'http://www.borderplexjobs.com/',
-            'gray'  => 'http://wspanhandle.com/',
+            'gray' => 'http://wspanhandle.com/',
             'houston' => 'https://detwork.org/',
             'jasper' => 'https://detwork.org/',
-            'polk'  => 'https://detwork.org/',
+            'polk' => 'https://detwork.org/',
             'angelina' => 'https://detwork.org/',
-            'polk'  => 'https://detwork.org/',
+            'polk' => 'https://detwork.org/',
             'nacodoches' => 'https://detwork.org/',
             'shelby' => 'https://detwork.org/',
             'webb' => 'http://southtexasworkforce.org/',
@@ -96,10 +97,10 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
             'waller' => 'https://www.wrksolutions.com/find-a-location',
             'wharton' => 'https://www.wrksolutions.com/find-a-location',
 
-            'tarrant' => 'https://workforcesolutions.net/'
-        );
+            'tarrant' => 'https://workforcesolutions.net/',
+        ];
 
-        if(array_key_exists($county, $officeMap)) {
+        if (array_key_exists($county, $officeMap)) {
             return $officeMap[$county];
         } else {
             return 'https://www.twc.texas.gov/partners/workforce-development-boards-websites';
@@ -109,12 +110,14 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
     public static function getNumberOfProgramsByCity($city)
     {
         $num = Program::where('provider_campus_city', $city)->count();
+
         return $num;
     }
 
     public static function getCitySlug($city)
     {
         $slug = Program::select('city_slug')->where('provider_campus_city', $city)->firstOrFail();
+
         return $slug;
     }
 
@@ -127,5 +130,4 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
     {
         return 'program_slug';
     }
-
 }

@@ -16,7 +16,7 @@ class ProgramFactory extends Factory
         return [
             'program_name' => $this->faker->text(),
             'program_url' => $this->faker->url(),
-            'provider_campus_city' => $this->faker->city()
+            'provider_campus_city' => $this->faker->city(),
         ];
     }
 }
