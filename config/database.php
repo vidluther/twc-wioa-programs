@@ -40,7 +40,6 @@ return [
             'database' => env('MONGO_DB_NAME'),
         ],
 
-
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),

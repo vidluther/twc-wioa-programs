@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Program;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use MongoDB\Operation\Aggregate;
 
 /**
