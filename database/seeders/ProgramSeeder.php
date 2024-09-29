@@ -16,7 +16,7 @@ class ProgramSeeder extends Seeder
     /**
      * @throws \League\Csv\Exception
      */
-    public function run()
+    public function run(): void
     {
         $csv = Reader::createFromPath('./storage/twc-file.csv', 'r');
         $csv->setHeaderOffset(0);

@@ -11,7 +11,7 @@ class ProgramFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'program_name' => $this->faker->text(),

@@ -15,7 +15,7 @@ class ExternalLinkTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_example(): void
     {
         //$this->seed();
         $response = $this->get('/');
@@ -23,7 +23,7 @@ class ExternalLinkTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_cities_page()
+    public function test_cities_page(): void
     {
         $response = $this->get('/cities');
 
