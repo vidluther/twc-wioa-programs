@@ -49,7 +49,7 @@ class linkChecker extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $programs = Program::all(); //->take(100);
         $counter = 1;

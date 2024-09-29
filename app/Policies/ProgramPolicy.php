@@ -15,7 +15,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         //
     }
@@ -25,7 +25,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Program $program)
+    public function view(User $user, Program $program): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         //
     }
@@ -45,7 +45,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Program $program)
+    public function update(User $user, Program $program): bool
     {
         //
     }
@@ -55,7 +55,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Program $program)
+    public function delete(User $user, Program $program): bool
     {
         //
     }
@@ -65,7 +65,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Program $program)
+    public function restore(User $user, Program $program): bool
     {
         //
     }
@@ -75,7 +75,7 @@ class ProgramPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Program $program)
+    public function forceDelete(User $user, Program $program): bool
     {
         //
     }

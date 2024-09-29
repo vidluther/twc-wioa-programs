@@ -13,7 +13,7 @@ class navigationTest extends DuskTestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testBasicExample(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -21,7 +21,7 @@ class navigationTest extends DuskTestCase
         });
     }
 
-    public function testEtplByCity()
+    public function testEtplByCity(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visitRoute('list-of-cities')
@@ -32,7 +32,7 @@ class navigationTest extends DuskTestCase
         });
     }
 
-    public function testAbout()
+    public function testAbout(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visitRoute('about')
