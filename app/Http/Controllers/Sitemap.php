@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class Sitemap extends Controller
 {
