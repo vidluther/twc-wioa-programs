@@ -22,7 +22,8 @@
         "psr/http-factory": "*",
         "spatie/laravel-sluggable": "^3.2",
         "spatie/schema-org": "^3.23.0",
-        "symfony/mailer": "*"
+        "symfony/mailer": "*",
+        "league/flysystem-aws-s3-v3": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
