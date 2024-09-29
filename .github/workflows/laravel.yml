@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     # PHP Linter (https://github.com/marketplace/actions/check-php-syntax-errors)
     - name: Linter
-      uses: overtrue/phplint@8.0
+      uses: overtrue/phplint@9.4
       with:
         path: .
         options: --exclude=*.log
