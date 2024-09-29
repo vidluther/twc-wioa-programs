@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Program;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ use MongoDB\Operation\Aggregate;
  */
 class cityIndex extends Controller
 {
-    public function listCities()
+    public function listCities(): View
     {
 
         Meta::setDescription('Cities that have an ETP for the TWC-WIOA program in Texas')
@@ -50,7 +51,7 @@ class cityIndex extends Controller
         // basically we need to get a count of programs by city.
     }
 
-    public function listByCity(Request $request)
+    public function listByCity(Request $request): View
     {
         $city = $request->city;
 
