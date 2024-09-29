@@ -126,7 +126,7 @@ class Program extends \Jenssegers\Mongodb\Eloquent\Model
      *
      * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'program_slug';
     }
