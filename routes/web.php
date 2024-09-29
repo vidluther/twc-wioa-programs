@@ -1,14 +1,13 @@
 <?php
-use App\Models\Program;
-use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Dashboard;
-#use App\Http\Livewire\Show;
-use App\Http\Livewire\About;
 
-use App\Http\Controllers\Sitemap;
-use App\Http\Controllers\Redirector;
-use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\cityIndex;
+use App\Http\Controllers\PrivacyPolicyController;
+//use App\Http\Livewire\Show;
+use App\Http\Controllers\Redirector;
+use App\Http\Controllers\Sitemap;
+use App\Http\Livewire\About;
+use App\Http\Livewire\Dashboard;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,40 +21,26 @@ use App\Http\Controllers\cityIndex;
 */
 Route::get('/about', About::class)->name('about');
 
-Route::get('/cities', [cityIndex::class,'listCities'])
+Route::get('/cities', [cityIndex::class, 'listCities'])
     ->name('list-of-cities');
 
-Route::get('sitemap.xml',[Sitemap::class, 'index']);
+Route::get('sitemap.xml', [Sitemap::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
     ->name('policy.show');
 
-
 Route::get('/show/{program_twist_id}', [Redirector::class, 'RedirectShow']);
-Route::get ('/details/{twc_program_id}', [Redirector::class, 'RedirectDetails'])
+Route::get('/details/{twc_program_id}', [Redirector::class, 'RedirectDetails'])
     ->name('old-program-details');
 
-Route::get('/programs-in/{city}/', [cityIndex::class,'listByCity'])
+Route::get('/programs-in/{city}/', [cityIndex::class, 'listByCity'])
     ->name('list-by-city');
 
-Route::get ('/{slug}', \App\Http\Livewire\Details::class)
+Route::get('/{slug}', \App\Http\Livewire\Details::class)
     ->name('program-details');
-
-
-
 
 Route::get('/', Dashboard::class);
 
-
-
 //Route::get('/{city}', [cityIndex::class, 'listByCity']);
-
-
-
-
-
-
-
-
 
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');

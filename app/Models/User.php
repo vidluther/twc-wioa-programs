@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-#use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
+//   https://www.mongodb.com/compatibility/mongodb-laravel-intergration
+
+// https://github.com/jenssegers/laravel-mongodb#eloquent
 use Laravel\Sanctum\HasApiTokens;
-
-#   https://www.mongodb.com/compatibility/mongodb-laravel-intergration
-
-# https://github.com/jenssegers/laravel-mongodb#eloquent
-use Jenssegers\Mongodb\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
+
     //use HasProfilePhoto;
     use Notifiable;
     //use TwoFactorAuthenticatable;

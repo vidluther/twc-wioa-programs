@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Program;
+use Illuminate\Http\Request;
+
 class Sitemap extends Controller
 {
-
     public function index(Request $r)
     {
 
@@ -16,5 +16,4 @@ class Sitemap extends Controller
             ->header('Content-Type', 'text/xml');
 
     }
-
 }

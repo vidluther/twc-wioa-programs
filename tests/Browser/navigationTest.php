@@ -3,7 +3,6 @@
 namespace Tests\Browser;
 
 use App\Models\Program;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
@@ -18,7 +17,7 @@ class navigationTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Texas');
+                ->assertSee('Texas');
         });
     }
 
@@ -46,25 +45,26 @@ class navigationTest extends DuskTestCase
     /**
      * basically load all programs, and then visit their slug url, and then try to click on
      * the program_url link..
+     *
      * @return void
      */
-//    public function test_program_urls()
-//    {
-//        $programs = Program::all()->take(5);
-//
-//        foreach($programs AS $program) {
-//
-//            $this->browse(function (Browser $browser) use ($program) {
-//                $browser->visit($program->program_slug)
-//                    ->clickLink($program->program_name)
-//                    ->assertSeeLink($program->program_name);
-//                 #   ->assertTitleContains('TX');
-//
-//            });
-//
-//
-//        }
-//
-//    }
+    //    public function test_program_urls()
+    //    {
+    //        $programs = Program::all()->take(5);
+    //
+    //        foreach($programs AS $program) {
+    //
+    //            $this->browse(function (Browser $browser) use ($program) {
+    //                $browser->visit($program->program_slug)
+    //                    ->clickLink($program->program_name)
+    //                    ->assertSeeLink($program->program_name);
+    //                 #   ->assertTitleContains('TX');
+    //
+    //            });
+    //
+    //
+    //        }
+    //
+    //    }
 
 }
