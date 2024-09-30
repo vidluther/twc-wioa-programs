@@ -27,9 +27,9 @@
 
         <x-program.label class="bg-gray-50 "> Description </x-program.label>
         <x-program.detail> {{ $program->program_description }}</x-program.detail>
-{{-- 
+
         <x-program.label class="bg-white"> Cost </x-program.label>
-        <x-program.detail> {{   $program->cost }} </x-program.detail> --}}
+        <x-program.detail> {{   $program->cost }} </x-program.detail>
 
         <x-program.label class="bg-gray-50"> Pell Eligible </x-program.label>
         <x-program.detail> {{ $program->program_pell_eligible }}</x-program.detail>
