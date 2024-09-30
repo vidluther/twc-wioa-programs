@@ -59,6 +59,8 @@ class ProgramSeeder extends Seeder
                 'program_cost_tuition_and_fees' => trim($line['Required Tutition and Fee Cost']),
                 'program_cost_books_and_supplies' => trim($line['Required Books and Supplies Cost']),
                 'city_slug' => Str::slug($line['Campus City'], '-'),
+                'program_last_updated' => \Carbon\Carbon::today(),
+                'program_start_date' => \Carbon\Carbon::today(),
             ];
 
             Program::updateOrCreate(

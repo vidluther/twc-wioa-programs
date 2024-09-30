@@ -27,9 +27,9 @@
 
         <x-program.label class="bg-gray-50 "> Description </x-program.label>
         <x-program.detail> {{ $program->program_description }}</x-program.detail>
-
+{{-- 
         <x-program.label class="bg-white"> Cost </x-program.label>
-        <x-program.detail> {{   $program->cost }} </x-program.detail>
+        <x-program.detail> {{   $program->cost }} </x-program.detail> --}}
 
         <x-program.label class="bg-gray-50"> Pell Eligible </x-program.label>
         <x-program.detail> {{ $program->program_pell_eligible }}</x-program.detail>
@@ -56,9 +56,9 @@
 
         <x-program.label class="bg-white"> About {{ $program->provider_name }}</x-program.label>
         <x-program.detail> {{ $program->provider_description }}</x-program.detail>
-
+{{-- 
         <x-program.label class="bg-gray-50"> Provider Type</x-program.label>
-        <x-program.detail> {{ $program->provider_type }}</x-program.detail>
+        <x-program.detail> {{ $program->provider_type }}</x-program.detail> --}}
 
         <x-program.label class="bg-white"> Address </x-program.label>
         <x-program.detail> {{ $program->provider_campus_addr1 }}
@@ -83,7 +83,7 @@
 
 
         <x-program.label class="bg-white"> Record Updated On</x-program.label>
-        <x-program.detail> {{ date_format($record_update_date,'l, F d Y h:i:s T') }}</x-program.detail>
+        <x-program.detail> {{ $record_update_date }}</x-program.detail>
 
 </div>
 
