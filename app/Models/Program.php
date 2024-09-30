@@ -3,17 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use MongoDB\Laravel\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
-//use Illuminate\Database\Eloquent\Model;
 
 use Spatie\Sluggable\SlugOptions;
 
-class Program extends \Jenssegers\Mongodb\Eloquent\Model
+class Program extends Model
 {
     // protected $connection = 'mongodb';
     use HasFactory;
     use HasSlug;
+    use HasUuids;
+    public $incrementing = true;
+        public static $uniques = ['_id'];
 
     public function getSlugOptions(): SlugOptions
     {
