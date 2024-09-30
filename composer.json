@@ -17,13 +17,15 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "league/csv": "^9.6",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.3",
+        "mongodb/laravel-mongodb": "^5.0",
         "mongodb/mongodb": "*",
+        "phpoffice/phpspreadsheet": "^3.3",
         "psr/http-factory": "*",
         "spatie/laravel-sluggable": "^3.6",
         "spatie/schema-org": "^3.23.0",
-        "symfony/mailer": "*",
-        "league/flysystem-aws-s3-v3": "^3.0"
+        "symfony/mailer": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

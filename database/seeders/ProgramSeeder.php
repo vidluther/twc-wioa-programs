@@ -16,87 +16,65 @@ class ProgramSeeder extends Seeder
     /**
      * @throws \League\Csv\Exception
      */
-    public function run(): void
+      public function run(): void
     {
-        $csv = Reader::createFromPath('./storage/twc-file.csv', 'r');
+        $csv = Reader::createFromPath('./storage/2024-twc.csv', 'r');
         $csv->setHeaderOffset(0);
-        $header_offset = $csv->getHeaderOffset(); //returns 0
+        $header_offset = $csv->getHeaderOffset();
         $header = $csv->getHeader();
         $this->command->info(count($csv).' records found');
-        //dd($header);
-        $provider_url = null;
+
         $counter = 1;
         foreach ($csv as $offset => $line) {
-
-            // sanitize provider_url
-            //$provider_url = $this->fixUrl(strtolower(trim($line['Provider URL'])),$line['Program Name']);
-
-            // Sanitize Program URL
             $program_url = $this->fixUrl(strtolower(trim($line['Program URL'])), $line['Program Name']);
 
-            // $this->checkUrl($program_url,$line['Program Name'],);
-            $program_twist_id = null;
-            $provider_twist_id = null;
-
-            $program_twist_id = trim($line['TWIST Program ID']);
-            $provider_twist_id = trim($line['TWIST Provider ID']);
-
-            Program::create([
+            $programData = [
                 'twc_provider_id' => $line['Provider ID'],
                 'twc_program_id' => $line['Program ID'],
-                'twc_program_status' => $line['Program Status'],
-
-                'provider_name' => $line['ProviderName'],
-                //    'provider_url' => mb_strtolower($provider_url),
+                'twc_program_status' => $line['Program Satus'],
+                'provider_name' => $line['Provder Name'],
                 'provider_description' => $line['Provider Description'],
-                'provider_type' => $line['Institution Type'],
                 'provider_campus_name' => $line['Campus Name'],
-                'provider_campus_addr1' => $line[' Campus Address '],
-                'provider_campus_addr2' => $line['Campus Address 2'],
-                'provider_campus_city' => mb_strtolower($line[' Campus City ']),
-
+                'provider_campus_addr1' => $line['Campus Address'],
+                'provider_campus_addr2' => $line['Campus Address Line 2'],
+                'provider_campus_city' => $line['Campus City'],
                 'provider_campus_state' => $line['Campus State'],
-                'provider_campus_zip' => $line[' Campus Zip Code '],
+                'provider_campus_zip' => $line['Campus Zip Code'],
                 'provider_campus_county' => mb_strtolower($line['Campus County']),
-
-                'provider_twist_id' => $provider_twist_id,
-                'program_twist_id' => $program_twist_id,
-
-                'public_transit' => $line['Information: Public Transit'],
-                'onsite_childcare' => $line['Information: Onsite Childcare'],
-                'flexible_hours' => $line['Information: Flexible Hours'],
-
+                'public_transit' => $line['On Public Bus Line'],
+                'onsite_childcare' => $line['Onsite Child Care'],
                 'program_name' => $line['Program Name'],
                 'program_description' => $line['Program Description'],
                 'program_pell_eligible' => $line['Pell Eligible'],
-                'program_pre_reqs' => $line['Academic PreRequisites'],
+                'program_pre_reqs' => $line['Academic Prerequisite'],
                 'program_url' => mb_strtolower($program_url),
                 'program_outcome' => $line['Program Outcome'],
-                'program_credential_name' => $line['Associted Credential Name'],
-                'program_length_hours' => $line['Length: Contact Hours'],
-                'program_length_weeks' => $line['Length: Weeks'],
-                'program_format' => $line['Delivery Method'],
-                'program_occupation_code1' => $line['Occupation Code (ONET 1)'],
-                'program_occupation_code2' => $line['Occupation Code (ONET 2)'],
-                'program_occupation_code3' => $line['Occupation Code (ONET 1)'],
-                'program_cost_tuition_and_fees' => trim($line[' Required Cost: Tuition & Fees ']),
-                'program_cost_books_and_supplies' => trim($line[' Required Cost: Books & Supplies ']),
-                'program_cost_other' => trim($line[' Optional Cost ']),
-                //                'outofdistrict_tuition_and_fees' => $line[" (Out Of District)\n
-                //Cost: \n
-                //Tuition & Fees\n"],
-                'program_total_apprentices' => $line['Number Of Apprentices'],
-                'program_start_date' => strtotime($line['Program ETPL Start Date']),
-                'program_last_updated' => strtotime($line['Program ETPL Last Update']),
+                'program_credential_name' => $line['Associated Credential Name'],
+                'program_length_hours' => $line['Course time Hours'],
+                'program_length_weeks' => $line['Average Length (in weeks)'],
+                'program_format' => $line['Program Format'],
+                'program_occupation_code1' => $line['O*Net SOC Code #1 '],
+                'program_occupation_code2' => $line['O*Net SOC Code #2'],
+                'program_occupation_code3' => $line['O*Net SOC Code #3'],
+                'program_cost_tuition_and_fees' => trim($line['Required Tutition and Fee Cost']),
+                'program_cost_books_and_supplies' => trim($line['Required Books and Supplies Cost']),
+                'city_slug' => Str::slug($line['Campus City'], '-'),
+                'program_last_updated' => \Carbon\Carbon::today(),
+                'program_start_date' => \Carbon\Carbon::today(),
+            ];
 
-                'city_slug' => Str::slug($line[' Campus City '], '-'),
+            Program::updateOrCreate(
+                ['twc_program_id' => $line['Program ID']],
+                $programData
+            );
 
-            ]);
-            //$this->command->info($counter);
+            $this->command->info("Processed record {$counter}");
             $counter++;
         }
 
+        $this->command->info('Seeding completed successfully.');
     }
+
 
     public function fixUrl($url, $program_name)
     {

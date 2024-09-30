@@ -44,8 +44,8 @@ class Details extends Component
 
         // Build the Schema.org stuff now
         $streetAddress = $program->provider_campus_addr1.' '.$program->provider_campus_addr2;
-        $sdPublishdate = strftime('%Y-%m-%d', (int) $program->program_last_updated);
-
+        // $sdPublishdate = strftime('%Y-%m-%d', (int) $program->program_last_updated);
+$sdPublishdate = $program->program_last_updated;
         $program_description = trim($program->program_description);
         if (strlen(trim($program->program_description)) === 0) {
             $program_description = $program->program_name;
@@ -116,8 +116,13 @@ class Details extends Component
 
         // Actually render the page.
 
+//         dd([
+//     'start_date_raw' => $program->program_start_date,
+//     'update_date_raw' => $program->program_last_updated,
+// ]);
+
         $program_start_date = Carbon::createFromTimestamp($program->program_start_date);
-        $record_update_date = Carbon::createFromTimestamp($program->program_last_updated);
+        $record_update_date = $program->program_last_updated;
 
         // dd($program_start_date);
         return view('livewire.details', [
