@@ -16,13 +16,13 @@ class ProgramSeeder extends Seeder
     /**
      * @throws \League\Csv\Exception
      */
-      public function run(): void
+    public function run(): void
     {
         $csv = Reader::createFromPath('./storage/2024-twc.csv', 'r');
         $csv->setHeaderOffset(0);
         $header_offset = $csv->getHeaderOffset();
         $header = $csv->getHeader();
-        $this->command->info(count($csv).' records found');
+        $this->command->info(count($csv) . ' records found');
 
         $counter = 1;
         foreach ($csv as $offset => $line) {
@@ -80,8 +80,9 @@ class ProgramSeeder extends Seeder
     {
         // If the url is blank.. change it to example.com for now.. and return it.
         if (strlen($url) === 0) {
-            //$this->command->error('Got a blank url .. returning https://www.example.com/');
-            return 'https://www.example.com/';
+            $googleSearchUrl = 'https://www.google.com/search?q=' . urlencode($program_name);
+            $this->command->info("Got a blank url, returning Google search for program: $program_name");
+            return $googleSearchUrl;
         }
 
         $has_search_url_map = [
@@ -120,7 +121,7 @@ class ProgramSeeder extends Seeder
                 $this->numBadUrls++;
 
                 // $this->command->info($this->numBadUrls . " found $badstring converted to $search_url");
-                return $search_url.rawurlencode($program_name);
+                return $search_url . rawurlencode($program_name);
             }
         }
 
@@ -202,10 +203,10 @@ class ProgramSeeder extends Seeder
 
         // change http:// to https://
         if ((! (substr($url, 0, 7) == 'http://'))
-                &&
+            &&
             (! (substr($url, 0, 8) == 'https://'))
         ) {
-            $new_url = 'https://'.$url;
+            $new_url = 'https://' . $url;
 
             // $this->command->info("Fixed $url to => $new_url");
             return strtolower($new_url);
