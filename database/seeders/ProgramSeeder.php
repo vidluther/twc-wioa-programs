@@ -80,8 +80,8 @@ class ProgramSeeder extends Seeder
     {
         // If the url is blank.. change it to example.com for now.. and return it.
         if (strlen($url) === 0) {
-            $googleSearchUrl = 'https://www.google.com/search?q=' . urlencode($program_name);
-            $this->command->info("Got a blank url, returning Google search for program: $program_name");
+            $googleSearchUrl = 'https://www.google.com/search?q=' . urlencode($program_name . ' in texas');
+            // $this->command->info("Got a blank url, returning Google search for program: $program_name in texas");
             return $googleSearchUrl;
         }
 
