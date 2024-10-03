@@ -68,7 +68,7 @@ class ProgramSeeder extends Seeder
                 $programData
             );
 
-            $this->command->info("Processed record {$counter}");
+            // $this->command->info("Processed record {$counter}");
             $counter++;
         }
 
