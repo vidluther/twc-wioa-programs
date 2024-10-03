@@ -75,7 +75,10 @@ $sdPublishdate = $program->program_last_updated;
             ->sdPublisher('Texas Workforce Commission')
             ->sdDatePublished($sdPublishdate)
             ->url($program->program_url);
-
+            $schema->hasCourseInstance(
+                Schema::courseInstance()
+                    ->courseMode($program->program_format)
+                    ->location($program->provider_campus_name)); 
         $schema->offers(
             Schema::offer()->price($program->cost)
                 ->priceCurrency('USD')
