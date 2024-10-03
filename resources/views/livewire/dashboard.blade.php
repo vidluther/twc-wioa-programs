@@ -72,7 +72,7 @@
                             {{ ucwords($program->provider_campus_city) }}
                         </x-table.cell>
                         <x-table.cell>
-                            <span class="text-cool-gray-900">${{ number_format((float) $program->program_cost_tuition_and_fees,2) }} </span>
+                            <span class="text-cool-gray-900">{{ $program->program_cost_tuition_and_fees }} </span>
                         </x-table.cell>
 
 

@@ -35,13 +35,9 @@ class Details extends Component
         ' ('.$program->twc_program_id.')');
 
         $local_twc_website = Program::getOfficeByCounty($program->provider_campus_county);
-
-        if (is_numeric($program->program_cost_tuition_and_fees)) {
-            $program->cost = '$'.number_format($program->program_cost_tuition_and_fees, 2);
-        } else {
-            $program->cost = 'unknown';
-        }
-
+       
+            $program->cost = $program->program_cost_tuition_and_fees;
+       
         // Build the Schema.org stuff now
         $streetAddress = $program->provider_campus_addr1.' '.$program->provider_campus_addr2;
         // $sdPublishdate = strftime('%Y-%m-%d', (int) $program->program_last_updated);
@@ -82,6 +78,7 @@ $sdPublishdate = $program->program_last_updated;
         $schema->offers(
             Schema::offer()->price($program->cost)
                 ->priceCurrency('USD')
+                ->category('Training Program')
         );
 
         $og = new OpenGraphPackage('og');
