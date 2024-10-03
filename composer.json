@@ -25,8 +25,7 @@
         "psr/http-factory": "*",
         "spatie/laravel-sluggable": "^3.6",
         "spatie/schema-org": "^3.23.0",
-        "symfony/mailer": "*",
-        "vormkracht10/laravel-open-graph-image": "^0.7.6"
+        "symfony/mailer": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

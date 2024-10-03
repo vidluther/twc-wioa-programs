@@ -1,5 +1,4 @@
 <!-- schema.org stuff -->
-<x-open-graph-image::metatags title="{{ $program->program_name }}" subtitle="{{ $program->program_description}}" />
 {!! $schema !!}
 <!-- / schema.org stuff -->
 <x-slot name="header">
