@@ -97,16 +97,15 @@ class Dashboard extends Component
             ->setTitle('List of Eligible Training Providers and Programs for the TWC-WIOA program')
 
             ->setUrl(request()->url());
-        $og->addImage(env('APP_URL').'/images/texas.svg', [
-            'type' => 'image/svg+xml',
-        ]
-        );
+        // $og->addImage(env('APP_URL').'/images/texas.svg', [
+        //     'type' => 'image/svg+xml',
+        // ]
+        // );
         Meta::registerPackage($og);
 
         $card = new TwitterCardPackage('twitter');
         $card->setType('summary')
             ->setSite('@vidluther')
-            ->setImage(env('APP_URL').'/images/texas.svg')
             ->setTitle('List of Eligible Training Providers and Programs for the Texas WFC-WIOA Program');
 
         Meta::registerPackage($card);

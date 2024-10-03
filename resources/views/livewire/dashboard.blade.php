@@ -1,3 +1,4 @@
+<x-open-graph-image::metatags title="WIOA Eligible Training Providers and Programs in Texas " subtitle="Find a class that's right for you" />
 <x-slot name="header">
         <h1 class="font-bold text-xl text-gray-800 leading-tight">
             {{ __('List of Eligible Training Providers and Programs in Texas') }}
