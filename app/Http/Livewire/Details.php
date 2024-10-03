@@ -88,10 +88,10 @@ $sdPublishdate = $program->program_last_updated;
                 ' class in '.$program->provider_campus_city.
                 ', '.$program->provider_campus_state)
             ->setUrl(request()->url());
-        $og->addImage(env('APP_URL').'/images/texas.svg', [
-            'type' => 'image/svg+xml',
-        ]
-        );
+        // $og->addImage(env('APP_URL').'/images/texas.svg', [
+        //     'type' => 'image/svg+xml',
+        // ]
+        // );
 
         // Build Open Graph Stuff
         Meta::registerPackage($og);
@@ -99,7 +99,6 @@ $sdPublishdate = $program->program_last_updated;
         $card = new TwitterCardPackage('twitter');
         $card->setType('summary')
             ->setSite('@vidluther')
-            ->setImage(env('APP_URL').'/images/texas.svg')
             ->setDescription('More information on '.
                 $program->program_name.
                 ' class in '.ucwords($program->provider_campus_city).
