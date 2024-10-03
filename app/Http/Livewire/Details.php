@@ -79,7 +79,7 @@ $sdPublishdate = $program->program_last_updated;
                 Schema::courseInstance()
                     ->courseMode("Blended")
                     ->location($program->provider_campus_name)
-                    ->workLoad($program_length_8601_format)
+                    ->courseWorkload($program_length_8601_format)
         );
         $schema->offers(
             Schema::offer()->price($program->cost)
