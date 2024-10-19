@@ -42,3 +42,5 @@ using the latest/most popular PHP framework first, before I tried to do this aga
 ```bash
 php artisan migrate:fresh --seed
 ```
+
+Minor change to test key verification   
