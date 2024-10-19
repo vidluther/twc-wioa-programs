@@ -42,9 +42,9 @@ using the latest/most popular PHP framework first, before I tried to do this aga
 
 1. I take the XLS file found on the website, and import it into a Google Sheet, and then export/download it as a CSV. 
 2. Run the command 
+
 ```bash
 php artisan migrate:fresh --seed
 ```
-3. If all goes well, there is no step 3. If something goes awry.. try to figure out why..
 
-
+3. If all goes well, there is no step 3. If something goes awry.. try to figure out why.
