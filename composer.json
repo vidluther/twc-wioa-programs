@@ -21,7 +21,7 @@
         "livewire/livewire": "^3.3",
         "mongodb/laravel-mongodb": "^5.0",
         "mongodb/mongodb": "*",
-        "phpoffice/phpspreadsheet": "^3.3",
+        "phpoffice/phpspreadsheet": "^4.1",
         "psr/http-factory": "*",
         "spatie/laravel-sluggable": "^3.6",
         "spatie/schema-org": "^3.23.0",
